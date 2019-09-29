@@ -44133,47 +44133,41 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var contactFormCtrl = function () {
-  contactFormCtrl.$inject = ["Contact", "Toastr"];
-  function contactFormCtrl(Contact, Toastr) {
-    "ngInject";
+var contactFormCtrl = function contactFormCtrl(Contact, Toastr) {
+  "ngInject";
 
-    _classCallCheck(this, contactFormCtrl);
+  _classCallCheck(this, contactFormCtrl);
 
-    console.log("entra a contactFormCtrl");
-    this._Contact = Contact;
+  console.log("entra a contactFormCtrl");
+  this._Contact = Contact;
 
-    //clavar el submitForm dins del constructor
-  }
+  //clavar el submitForm dins del constructor
+  this.submitForm = function () {
+    var formData = {
+      mail: inputMail.value,
+      name: inputName.value,
+      message: inputMessage.value
+    };
+    console.log("estamos en submit");
 
-  _createClass(contactFormCtrl, [{
-    key: "submitForm",
-    value: function submitForm() {
-      var formData = {
-        mail: inputMail.value,
-        name: inputName.value,
-        message: inputMessage.value
-      };
-      console.log("estamos en submit");
+    console.log(formData);
 
-      console.log(formData);
+    this._Contact.sendMail(formData).then(function (res) {
+      console.log("enviado");
+      Toastr.showToastr("success", "Correo enviado correctamente");
 
-      this._Contact.sendMail(formData).then(function (res) {
-        console.log("enviado");
-        Toastr.showToastr('success', 'Correo enviado correctamente');
-      }, function (err) {
-        console.log("no conecta");
-        Toastr.showToastr('error', 'Error al enviar el correo');
-      });
-    }
-  }]);
-
-  return contactFormCtrl;
-}();
+      //tiempo que tarda en desaparecer el toastr
+      $timeout(function () {}, 4000);
+    }, function (err) {
+      console.log("no conecta");
+      Toastr.showToastr("error", "Error al enviar el correo");
+    });
+  }; //cierra el submitForm
+} //cierra el constructor
+;
+contactFormCtrl.$inject = ["Contact", "Toastr"]; //cierra la clase
 
 var contactForm = {
   controller: contactFormCtrl,
