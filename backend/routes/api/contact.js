@@ -9,14 +9,18 @@ router.post("/", function(req, res, next) {
   email.sendMail(req, res);
 });
 
-function comprobarDatos(datos) {
+/*function comprobarDatos(datos) {
   
   if(datos!=""){
     return true;
    }else{
    return false;
  }
-}
+}*/
 
-module.exports.router = router;
-module.exports.comprobarDatos = comprobarDatos;
+/*module.exports ={
+ comprobarDatos: comprobarDatos,
+  router: router
+};*/
+//module.exports.comprobarDatos = comprobarDatos;
+module.exports = router;
