@@ -1,6 +1,20 @@
 class HomeCtrl {
-  constructor(User, Tags, AppConstants, $scope) {
+  constructor(User, Tags, AppConstants, $scope, hotels) {
     'ngInject';
+
+   console.log(hotels);
+
+   
+
+    if (hotels){
+      $scope.hotels = hotels;
+    }else{
+      $scope.hotels = "No hay hoteles";
+    }
+
+    $scope.load = function () {
+        $scope.infoSect = sectors.slice(0, sectors.length + 3);
+    }
 
     this.appName = AppConstants.appName;
     this._$scope = $scope;
@@ -19,6 +33,11 @@ class HomeCtrl {
     this.listConfig = {
       type: User.current ? 'feed' : 'all'
     };
+
+    
+
+
+
 
   }
 

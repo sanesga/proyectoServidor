@@ -28,5 +28,8 @@ servicesModule.service('Tags', TagsService);
 import ToastrService from './toastr.service';
 servicesModule.service('Toastr', ToastrService);
 
+import HotelsService from './hotels.service';
+servicesModule.service('Hotels', HotelsService);
+
 
 export default servicesModule;

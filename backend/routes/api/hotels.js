@@ -11,7 +11,7 @@ router.get("/", function(req, res, next) {
     })
     .catch(next);
 });
-
+//obtenim un hotel per el slug get(http://localhost:3001/api/hotels/vernissa)
 router.get('/:slug', function(req, res, next) {
   console.log(req.params.slug);
   Hotels.findOne({slug: req.params.slug}).then(function(hotels){
@@ -21,7 +21,6 @@ router.get('/:slug', function(req, res, next) {
 });
 
 //insertem un hotel
-// create a new comment
 router.post("/", function(req, res, next) {
   var hotels = new Hotels(req.body);
   
@@ -29,5 +28,19 @@ router.post("/", function(req, res, next) {
     res.json({ hotels: hotels.toJSONFor()});
   }).catch(next);
 });
+
+//borrem un hotel
+/*router.delete('/:slug', function(req, res, next) {
+    if (!user) { return res.sendStatus(401); }
+
+    if(req.article.author._id.toString() === req.payload.id.toString()){
+      return req.article.remove().then(function(){
+        return res.sendStatus(204);
+      });
+    } else {
+      return res.sendStatus(403);
+    }
+  })
+});*/
 
 module.exports = router;
