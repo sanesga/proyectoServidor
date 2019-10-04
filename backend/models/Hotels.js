@@ -21,7 +21,7 @@ HotelsSchema.methods.slugify = function() {
 };
 
 
-HotelsSchema.methods.toJSONFor = function(user){
+HotelsSchema.methods.toJSONFor = function(){
   return {
     slug: this.slug,
     name: this.name,
