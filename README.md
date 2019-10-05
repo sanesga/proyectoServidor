@@ -1,6 +1,7 @@
 RUN CLIENT
 
 - cd frontend
+- sudo npm install
 - gulp
 
 RUN DB (MONGODB)
@@ -12,6 +13,7 @@ RUN DB (MONGODB)
 RUN SERVER
 
 - cd backend
+- sudo npm install
 - npm run dev
 
 RUN TESTS (JASMINE)
@@ -22,5 +24,6 @@ RUN TESTS (JASMINE)
 RUN SWAGGER 
 
 - http://localhost:3001/api-docs/
+
 
 
