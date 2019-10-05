@@ -21,8 +21,9 @@ import './services';
 import './auth';
 //import './settings';
 import './editor';
-import './contact'; //afegim modul contact
+import './contact'; //afegim mòdul contact
 
+import './hotels'; 
 
 // Create and bootstrap application
 const requires = [
@@ -38,6 +39,7 @@ const requires = [
   //'app.settings',
   'app.editor',
   'app.contact',
+  'app.hotels',
   toastr
 ];
 

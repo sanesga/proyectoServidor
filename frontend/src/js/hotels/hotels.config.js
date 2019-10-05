@@ -1,22 +1,22 @@
 function HotelsConfig($stateProvider) {
-    'ngInject';
-    
-    $stateProvider
-    .state('app.hotels', {
-      url: '/hotels:filter',
-      controller: 'HotelssCtrl',
-      controllerAs: '$ctrl',
-      templateUrl: 'hotels/hotels.html',
-      title: 'Hotels',
+  "ngInject";
+
+  $stateProvider
+    .state("app.hotels", {
+      url: "/hotels:filter",
+      controller: "HotelsCtrl",
+      controllerAs: "$ctrl",
+      templateUrl: "hotels/hotels.html",
+      title: "Hotels",
       resolve: {
-        projects: function(Hotels) {
-          return Hotels.getHotels().then(
-            (hotels) => hotels
-          )
+        hotels: function(Hotels) {
+          return Hotels.getHotels().then(hotels => hotels);
         }
       }
     })
-    /*.state('app.detailsproject', {
+  
+
+  /*.state('app.detailsproject', {
       url: '/projects/:slug',
       controller: 'DetailsProjectCtrl',
       controllerAs: '$ctrl',
@@ -30,8 +30,6 @@ function HotelsConfig($stateProvider) {
         }
       }
     });*/
-    
-  };
+}
 
-  export default HotelsConfig;
-  
+export default HotelsConfig;

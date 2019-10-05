@@ -1,5 +1,5 @@
 <!--List the current hotels-->
-<div class="col-sm-4" ng-repeat="hotel in hotels">
+<div class="col-sm-4" ng-repeat="hotel in hotelesFiltrados">
         
         <!--card-->
         <div class="card" style="width: 18rem;">
@@ -7,7 +7,7 @@
           <div class="card-body">
             <h5 class="card-title">Name: {{hotel.name}}</h5>
             <p class="card-text">Descripcion: {{hotel.description}}</p>
-            <a ui-sref="app.details" class="btn btn-primary">Visit</a>
+            <a ng-click="openDetails()" class="btn btn-primary">Visit</a>
           </div>
         </div>
       </div>

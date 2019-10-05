@@ -1,7 +1,7 @@
 <div class="home-page">
   <h2>CATEGORIAS</h2>
   <div class="col-sm-4" ng-repeat="c in categories">
-    <button style="padding: 10px; margin: 10px" type="button" class="btn btn-primary" ui-sref="app.hotels">
+    <button style="padding: 10px; margin: 10px" type="button" class="btn btn-primary" ui-sref="app.hotels({filter:c})">
       {{ c }}
     </button>
   </div>
