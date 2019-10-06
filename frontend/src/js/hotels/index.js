@@ -8,8 +8,8 @@ hotelsModule.config(HotelsConfig);
 import HotelsCtrl from './hotels.controller';
 hotelsModule.controller('HotelsCtrl', HotelsCtrl);
 
-/*import DetailsProjectCtrl from './detailsproj.controller';
-projectsModule.controller('DetailsProjectCtrl', DetailsProjectCtrl);*/
+import DetailsHotelsCtrl from './detailshotels.controller';
+hotelsModule.controller('DetailsHotelsCtrl', DetailsHotelsCtrl);
 
 
 export default hotelsModule;

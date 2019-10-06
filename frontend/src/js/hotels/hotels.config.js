@@ -14,22 +14,21 @@ function HotelsConfig($stateProvider) {
         }
       }
     })
-  
 
-  /*.state('app.detailsproject', {
-      url: '/projects/:slug',
-      controller: 'DetailsProjectCtrl',
-      controllerAs: '$ctrl',
-      templateUrl: 'projects/detailsproj.html',
-      title: 'Details Project',
+    .state("app.detailsHotels", {
+      url: "/hotels/:slug",
+      controller: "DetailsHotelsCtrl",
+      controllerAs: "$ctrl",
+      templateUrl: "hotels/detailshotels.html",
+      title: "Details Hotels",
       resolve: {
-        project: function(Projects, $stateParams) {
-          return Projects.getProject($stateParams.slug).then(
-            (Projects) => Projects
-          )
+        hotel: function(Hotels, $stateParams) { //este nombre es el que recibe el controlador
+         // console.log("ESTOY EN EL RESOLVE DE HOTELS.CONFIG.JS"); 
+          return Hotels.getHotel($stateParams.slug).then(hotel => hotel); //recibo 1 hotel
+          //console.log(hotel));
         }
       }
-    });*/
+    });
 }
 
 export default HotelsConfig;

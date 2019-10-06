@@ -5,8 +5,10 @@
         <div class="card" style="width: 18rem;">
           <img src="#" class="card-img-top" alt="imagen hotel">
           <div class="card-body">
-            <h5 class="card-title">Name: {{hotel.name}}</h5>
-            <p class="card-text">Descripcion: {{hotel.description}}</p>
+            <h5 class="card-title"> {{hotel.name}}</h5>
+            <p class="card-text"> {{hotel.description}}</p>
+            <p class="card-text">{{hotel.location}}</p>
+            <p class="card-text">{{hotel.slug}}</p>
             <a ng-click="openDetails()" class="btn btn-primary">Visit</a>
           </div>
         </div>

@@ -5,6 +5,8 @@ class HotelsCtrl {
     this._$scope = $scope;
     this.hotels = hotels;
     this.filter = $stateParams.filter;
+    
+
 
     var hotelesFiltrados = new Array();
     this.hotels.forEach(hotel => {
@@ -17,7 +19,10 @@ class HotelsCtrl {
     console.log(hotelesFiltrados);
 
     this._$scope.openDetails = function(){
-      $state.go('app.detailshotels', {slug: this.hotels['slug'] });
+      console.log("entra a details");
+      console.log("slug");
+      $state.go('app.detailsHotels', {slug: this.hotel['slug'] });
+      console.log(this.hotel['slug']);
   };
   }
 }
