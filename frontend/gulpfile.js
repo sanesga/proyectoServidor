@@ -62,6 +62,11 @@ gulp.task('views', function() {
       .pipe(rename("app.templates.js"))
       .pipe(gulp.dest('./src/js/config/'));
 });
+gulp.task('img', function() {
+  return gulp.src("src/images/*.*")
+      .on('error', interceptErrors)
+      .pipe(gulp.dest('../backend/build/images'));
+  });
 
 // This task is used for building production ready
 // minified JS/CSS files into the dist/ folder
@@ -76,7 +81,7 @@ gulp.task('build', ['html', 'browserify'], function() {
   return merge(html,js);
 });
 
-gulp.task('default', ['html','css', 'browserify'], function() {
+gulp.task('default', ['html','css','img', 'browserify'], function() {
 
   browserSync.init(['../backend/build/**/**.**'], {
     server: "../backend/build",

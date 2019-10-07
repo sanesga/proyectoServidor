@@ -22,10 +22,9 @@ function HotelsConfig($stateProvider) {
       templateUrl: "hotels/detailshotels.html",
       title: "Details Hotels",
       resolve: {
-        hotel: function(Hotels, $stateParams) { //este nombre es el que recibe el controlador
-         // console.log("ESTOY EN EL RESOLVE DE HOTELS.CONFIG.JS"); 
+        hotel: function(Hotels, $stateParams) {
+          //este nombre es el que recibe el controlador
           return Hotels.getHotel($stateParams.slug).then(hotel => hotel); //recibo 1 hotel
-          //console.log(hotel));
         }
       }
     });

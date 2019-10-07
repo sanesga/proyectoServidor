@@ -7,10 +7,14 @@ let homeModule = angular.module('app.home', []);
 import HomeConfig from './home.config';
 homeModule.config(HomeConfig);
 
-
 // Controllers
 import HomeCtrl from './home.controller';
 homeModule.controller('HomeCtrl', HomeCtrl);
+
+// Component
+import homeSliderCmp from './homeSlider.component';
+homeModule.component('homeSliderCmp', homeSliderCmp);
+
 
 
 export default homeModule;

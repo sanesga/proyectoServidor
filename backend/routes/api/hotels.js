@@ -6,8 +6,6 @@ var Hotels = mongoose.model("Hotels");
 router.get("/", function(req, res, next) {
   Hotels.find()
     .then(function(hotels) {
-     // console.log("devuelve todos los hoteles");
-     // console.log(hotels);
       return res.json({ hotels: hotels });
     })
     .catch(next);
@@ -25,8 +23,6 @@ router.get("/", function(req, res, next) {
 
 //obtenim un hotel per el slug get(http://localhost:3001/api/hotels/vernissa)
 router.get("/:slug", function(req, res, next) {
- // console.log("esto es el slug");
-  //console.log(req.params.slug);
   Hotels.findOne({ slug: req.params.slug })
     .then(function(hotels) {
       if (!hotels) {

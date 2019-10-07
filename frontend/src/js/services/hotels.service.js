@@ -15,7 +15,6 @@ export default class Hotels {
   }
 
   getHotel(slug) {
-    //console.log("ESTOY DENTRO DE GET HOTEL");
     return this._$http({
       url: this._AppConstants.api + "/hotels/" + slug,
       method: "GET"
