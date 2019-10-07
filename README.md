@@ -9,6 +9,7 @@
 * **Node.js v10.16.3**
 * **MongoDB** - DB
 * **Jasmine testing**
+* **Swagger**
 
 ### Frontend
 
@@ -16,7 +17,6 @@
 * **Browserify** - Bundle Method.
 * **Babelify**
 * **Gulp**
-* **Swagger**
 * **Isomorphism**
 
 ## Libraries
