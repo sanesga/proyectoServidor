@@ -38,19 +38,19 @@ gulp.task('browserify', ['views'], function() {
       //Pass desired output filename to vinyl-source-stream
       .pipe(source('main.js'))
       // Start piping stream to tasks!
-      .pipe(gulp.dest('./build/'));
+      .pipe(gulp.dest('../backend/build/'));
 });
 
 gulp.task('html', function() {
   return gulp.src("src/index.html")
       .on('error', interceptErrors)
-      .pipe(gulp.dest('./build/'));
+      .pipe(gulp.dest('../backend/build/'));
 });
 
 gulp.task('css', function() {
   return gulp.src("src/css/*.css")
       .on('error', interceptErrors)
-      .pipe(gulp.dest('./build/css'));
+      .pipe(gulp.dest('../backend/build/css'));
 });
 
 gulp.task('views', function() {
@@ -78,8 +78,8 @@ gulp.task('build', ['html', 'browserify'], function() {
 
 gulp.task('default', ['html','css', 'browserify'], function() {
 
-  browserSync.init(['./build/**/**.**'], {
-    server: "./build",
+  browserSync.init(['../backend/build/**/**.**'], {
+    server: "../backend/build",
     port: 3000,
     notify: false,
     ui: {
