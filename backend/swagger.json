@@ -135,6 +135,36 @@
         }
       }
     },
+
+    "/hotels/hotel/category": {
+      "get": {
+        "summary": "Get the hotel's category",
+        "description": "Get the hotel's category",
+        "tags": [
+          "Hotels"
+        ],
+        "operationId": "GetCategoryHotel",
+       
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/CategoryHotelModel"
+            }
+          },
+          "422": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/GenericErrorModel"
+            }
+          }
+        }
+      }
+    },
+
     "/users/login": {
       "post": {
         "summary": "Existing user login",
@@ -917,6 +947,20 @@
         },
         "required": [
           "name",
+          "category"
+        ]
+      }
+    },
+    "CategoryHotelModel":{
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "required": [
           "category"
         ]
       }

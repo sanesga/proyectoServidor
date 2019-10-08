@@ -11,16 +11,6 @@ router.get("/", function(req, res, next) {
     .catch(next);
 });
 
-// //obtenim les categories
-// router.get('/:category', function(req, res, next) {
-//   Hotels.find().distinct('category').then(function(category){
-//     console.log("esto es la categoría");
-//     console.log(category);
-//     return res.json({category: category});
-    
-//   }).catch(next);
-//  });
-
 //obtenim un hotel per el slug get(http://localhost:3001/api/hotels/vernissa)
 router.get("/:slug", function(req, res, next) {
   Hotels.findOne({ slug: req.params.slug })
@@ -32,6 +22,13 @@ router.get("/:slug", function(req, res, next) {
     })
     .catch(next);
 });
+
+//obtenim les categories
+router.get('/:hotel/category', function(req, res, next) {
+  Hotels.find().distinct('category').then(function(category){
+    return res.json({category: category});
+  }).catch(next);
+ });
 
 //insertem un hotel
 router.post("/", function(req, res, next) {

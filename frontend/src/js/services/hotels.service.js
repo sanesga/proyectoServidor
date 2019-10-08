@@ -23,7 +23,7 @@ export default class Hotels {
   }
   getCategories() {
     return this._$http({
-      url: this._AppConstants.api + "/hotels/category",
+      url: this._AppConstants.api + "/hotels/hotel/category",
       method: 'GET',
     }).then(res => res.data.category);
   }
