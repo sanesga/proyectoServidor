@@ -20,6 +20,8 @@ var isProduction = process.env.NODE_ENV === 'production';
 var app = express();
 
 app.use(cors());
+app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
+
 
 // Normal express config defaults
 app.use(require('morgan')('dev'));
@@ -42,11 +44,16 @@ if(isProduction){
   mongoose.set('debug', true);
 }
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 require('./models/User');
 require('./models/Article');
 require('./models/Comment');
 require('./config/passport');
 require('./models/Hotels');
+
+
 
 app.use(require('./routes'));
 //// Swagger ////

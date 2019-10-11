@@ -1,8 +1,7 @@
 class ContactCtrl {
-  constructor(Contact,Toastr) {
+  constructor(Contact,Toastr,$timeout) {
     'ngInject';
 
-    console.log("estem en el controlador");
     //this._Contact = Contact;
 
   }
