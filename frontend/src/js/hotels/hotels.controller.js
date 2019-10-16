@@ -4,6 +4,8 @@ class HotelsCtrl {
 
     this._$scope = $scope;
     this.hotels = hotels;
+    console.log("estamos en el controlador de hoteles:");
+    console.log(this.hotels);
     this.filter = $stateParams.filter;
 
     var hotelesFiltrados = new Array();

@@ -27,4 +27,8 @@ componentsModule.component('articleList', ArticleList);
 import ListPagination from './article-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);
 
+import HotelsList from './hotels-helpers/hotels-list.component';
+componentsModule.component('hotelsList', HotelsList);
+
+
 export default componentsModule;
