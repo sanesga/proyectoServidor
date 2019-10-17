@@ -4,8 +4,6 @@ class HotelsCtrl {
 
     this._$scope = $scope;
     this.hotels = hotels;
-    console.log("estamos en el controlador de hoteles:");
-    console.log(this.hotels);
     this.filter = $stateParams.filter;
 
     var hotelesFiltrados = new Array();
@@ -16,7 +14,7 @@ class HotelsCtrl {
     });
     $scope.hotelesFiltrados = hotelesFiltrados;
 
-    this._$scope.openDetails = function() {
+    this._$scope.openDetails = function () {
       $state.go("app.detailsHotels", { slug: this.hotel["slug"] });
     };
   }

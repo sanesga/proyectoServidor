@@ -1,6 +1,20 @@
 var router = require("express").Router();
 var mongoose = require("mongoose");
 var Hotels = mongoose.model("Hotels");
+var auth = require('../auth');
+var User = mongoose.model('User');
+
+
+// Preload article objects on routes with ':article'
+router.param('hotels', function(req, res, next, slug) {
+  Hotels.findOne({ slug: slug})
+    .then(function (hotels) {
+      if (!hotels) { return res.sendStatus(404); }
+      req.hotels = hotels;
+      return next();
+    }).catch(next);
+});
+
 
 //obtenim tots el hotels
 router.get("/", function(req, res, next) {
@@ -71,5 +85,36 @@ router.delete("/:slug", function(req, res, next) { //search by slug
     })
     .catch(next);
 });*/
+
+// Agregar como favorito
+
+router.post('/:hotels/favorite', auth.required, function(req, res, next) {
+  var hotelId = req.hotels._id;
+  
+  User.findById(req.payload.id).then(function(user){
+    if (!user) { return res.sendStatus(401); }
+
+    return user.favorite(hotelId).then(function(){
+      return req.hotels.updateFavoriteCount().then(function(hotel){
+        return res.json({hotel: hotel.toJSONFor(user)});
+      });
+    });
+  }).catch(next);
+});
+
+// // Desagregar como favorito
+router.delete('/:hotels/favorite', auth.required, function(req, res, next) {
+  var hotelId = req.hotels._id;
+
+  User.findById(req.payload.id).then(function (user){
+    if (!user) { return res.sendStatus(401); }
+
+    return user.unfavorite(hotelId).then(function(){
+      return req.hotels.updateFavoriteCount().then(function(hotel){
+        return res.json({hotel: hotel.toJSONFor(user)});
+      });
+    });
+  }).catch(next);
+});
 
 module.exports = router;

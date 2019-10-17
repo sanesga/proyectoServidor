@@ -1,9 +1,9 @@
 class FavoriteBtnCtrl {
-  constructor(User, Articles, $state) {
+  constructor(User, Hotels, $state) {
     'ngInject';
 
     this._User = User;
-    this._Articles = Articles;
+    this._Hotels = Hotels;
     this._$state = $state;
 
   }
@@ -12,25 +12,25 @@ class FavoriteBtnCtrl {
     this.isSubmitting = true;
 
     if (!this._User.current) {
-      this._$state.go('app.register');
+      this._$state.go('app.login'); //redirigimos a login si no hay usuario logeado
       return;
     }
 
-    if (this.article.favorited) {
-      this._Articles.unfavorite(this.article.slug).then(
+    if (this.hotel.favorited) {
+      this._Hotels.unfavorite(this.hotel.slug).then(
         () => {
           this.isSubmitting = false;
-          this.article.favorited = false;
-          this.article.favoritesCount--;
+          this.hotel.favorited = false;
+          this.hotel.favoritesCount--;
         }
       )
 
     } else {
-      this._Articles.favorite(this.article.slug).then(
+      this._Hotels.favorite(this.hotel.slug).then(
         () => {
           this.isSubmitting = false;
-          this.article.favorited = true;
-          this.article.favoritesCount++;
+          this.hotel.favorited = true;
+          this.hotel.favoritesCount++;
         }
       )
     }
@@ -41,7 +41,7 @@ class FavoriteBtnCtrl {
 
 let FavoriteBtn= {
   bindings: {
-    article: '='
+    hotel: '='
   },
   transclude: true,
   controller: FavoriteBtnCtrl,

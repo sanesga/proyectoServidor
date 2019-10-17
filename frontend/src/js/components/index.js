@@ -30,5 +30,8 @@ componentsModule.component('listPagination', ListPagination);
 import HotelsList from './hotels-helpers/hotels-list.component';
 componentsModule.component('hotelsList', HotelsList);
 
+import HotelsPreview from './hotels-helpers/hotels-preview.component';
+componentsModule.component('hotelsPreview', HotelsPreview);
+
 
 export default componentsModule;

@@ -1,0 +1,10 @@
+<div>
+        <h2 ng-bind="$ctrl.hotel.name"> </h2>
+        <p ng-bind="$ctrl.hotel.description"> </p>
+        <p ng-bind="$ctrl.hotel.location"> </p>
+        <p ng-bind="$ctrl.hotel.category"> </p>
+
+        <favorite-btn hotel="$ctrl.hotel" class="pull-xs-right">
+                {{$ctrl.hotel.favoritesCount}}
+        </favorite-btn>
+</div>
