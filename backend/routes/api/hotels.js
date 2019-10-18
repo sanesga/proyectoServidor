@@ -17,12 +17,19 @@ router.param('hotels', function(req, res, next, slug) {
 
 
 //obtenim tots el hotels
-router.get("/", function(req, res, next) {
-  Hotels.find()
-    .then(function(hotels) {
-      return res.json({ hotels: hotels });
-    })
-    .catch(next);
+router.get("/",auth.optional, function(req, res, next) {
+  Promise.resolve(
+    req.payload ? User.findById(req.payload.id): null
+  ).then(
+  (user)=>{
+      Hotels.find()
+      .then(function(hotels) {
+        return res.json({ hotels: hotels.map(hotel=>hotel.toJSONFor(user)) });
+      })
+      .catch(next);
+    }
+  )
+ 
 });
 
 //obtenim un hotel per el slug get(http://localhost:3001/api/hotels/vernissa)

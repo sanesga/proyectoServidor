@@ -30,18 +30,20 @@ HotelsSchema.methods.updateFavoriteCount = function() {
 
   return User.count({favorites: {$in: [hotel._id]}}).then(function(count){
     hotel.favoritesCount = count;
-
+console.log(hotel.favoritesCount);
     return hotel.save();
   });
 };
 
-HotelsSchema.methods.toJSONFor = function() {
+HotelsSchema.methods.toJSONFor = function(user) {
   return {
     slug: this.slug,
     name: this.name,
     description: this.description,
     location: this.location,
-    category: this.category
+    category: this.category,
+    favorited: user ? user.isFavorite(this._id) : false,
+    favoritesCount: this.favoritesCount
   };
 };
 

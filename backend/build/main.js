@@ -43747,7 +43747,7 @@ var FavoriteBtnCtrl = function () {
         this._$state.go('app.login'); //redirigimos a login si no hay usuario logeado
         return;
       }
-
+      // console.log(hotel.favoritesCount);
       if (this.hotel.favorited) {
         this._Hotels.unfavorite(this.hotel.slug).then(function () {
           _this.isSubmitting = false;
@@ -43779,7 +43779,7 @@ var FavoriteBtn = {
 exports.default = FavoriteBtn;
 
 },{}],22:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -43792,7 +43792,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var FollowBtnCtrl = function () {
   FollowBtnCtrl.$inject = ["Profile", "User", "$state"];
   function FollowBtnCtrl(Profile, User, $state) {
-    'ngInject';
+    "ngInject";
 
     _classCallCheck(this, FollowBtnCtrl);
 
@@ -43803,14 +43803,14 @@ var FollowBtnCtrl = function () {
   }
 
   _createClass(FollowBtnCtrl, [{
-    key: 'submit',
+    key: "submit",
     value: function submit() {
       var _this = this;
 
       this.isSubmitting = true;
 
       if (!this._User.current) {
-        this._$state.go('app.register');
+        this._$state.go("app.register");
         return;
       }
 
@@ -43836,10 +43836,10 @@ var FollowBtnCtrl = function () {
 
 var FollowBtn = {
   bindings: {
-    user: '='
+    user: "="
   },
   controller: FollowBtnCtrl,
-  templateUrl: 'components/buttons/follow-btn.html'
+  templateUrl: "components/buttons/follow-btn.html"
 };
 
 exports.default = FollowBtn;
@@ -44103,11 +44103,11 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("components/list-errors.html", "<ul class=\"error-messages\" ng-show=\"$ctrl.errors\">\n  <div ng-repeat=\"(field, errors) in $ctrl.errors\">\n    <li ng-repeat=\"error in errors\">\n      {{field}} {{error}}\n    </li>\n  </div>\n</ul>\n");
   $templateCache.put("contact/contact.html", "<div class=\"alert alert-success\" style=\"text-align: center; font-size:34px; height: 100px\">\n    <strong>CONTACT FORM</strong>\n  </div>\n<contact-form></contact-form>\n");
   $templateCache.put("contact/contactForm.html", "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"well well-sm\">\n        <form id=\"contactForm\" name=\"contactForm\">\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              <div class=\"form-group\">\n                <label for=\"inputName\">Name</label>\n                <input\n                  required\n                  ng-model=\"$ctrl.contact.inputName\"\n                  id=\"inputName\"\n                  name=\"inputName\"\n                  type=\"text\"\n                  placeholder=\"Enter name\"\n                  class=\"form-control\"\n                  ng-minlength=\"3\"\n                  ng-maxlength=\"20\"\n                  ng-model-options=\"{  debounce: 500 }\"\n                />\n              </div>\n              <div class=\"form-group\">\n                <label for=\"inputEmail\">Email Address</label>\n                <div class=\"form-group\">\n                  <input\n                    required\n                    ng-model=\"$ctrl.contact.inputMail\"\n                    name=\"inputMail\"\n                    type=\"text\"\n                    id=\"inputMail\"\n                    class=\"form-control\"\n                    placeholder=\"Enter email\"\n                  />\n                </div>\n              </div>\n            </div>\n            <div class=\"col-md-12\">\n              <div class=\"form-group\">\n                <label for=\"inputMessage\">Message</label>\n                <textarea\n                  style=\"resize: none;\"\n                  required\n                  ng-model=\"$ctrl.contact.inputMessage\"\n                  name=\"inputMessage\"\n                  class=\"form-control\"\n                  rows=\"9\"\n                  cols=\"25\"\n                  id=\"inputMessage\"\n                  ng-minlength=\"20\"\n                  ng-maxlength=\"100\"\n                  ng-model-options=\"{  debounce: 500 }\"\n                  placeholder=\"Please enter your message here...\"\n                ></textarea>\n              </div>\n            </div>\n            <div class=\"col-md-12\">\n              <input\n                class=\"btn btn-primary pull-right\"\n                type=\"submit\"\n                id=\"inputSubmit\"\n                name=\"inputSubmit\"\n                value=\"Send\"\n                ng-click=\"$ctrl.submitForm()\"\n              />\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
-  $templateCache.put("editor/editor.html", "<div class=\"editor-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-10 offset-md-1 col-xs-12\">\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form>\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                ng-model=\"$ctrl.article.title\"\n                type=\"text\"\n                placeholder=\"Article Title\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                ng-model=\"$ctrl.article.description\"\n                type=\"text\"\n                placeholder=\"What\'s this article about?\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control\"\n                rows=\"8\"\n                ng-model=\"$ctrl.article.body\"\n                placeholder=\"Write your article (in markdown)\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Enter tags\"\n                ng-model=\"$ctrl.tagField\"\n                ng-keyup=\"$event.keyCode == 13 && $ctrl.addTag()\" />\n\n              <div class=\"tag-list\">\n                <span ng-repeat=\"tag in $ctrl.article.tagList\"\n                  class=\"tag-default tag-pill\">\n                  <i class=\"ion-close-round\" ng-click=\"$ctrl.removeTag(tag)\"></i>\n                  {{ tag }}\n                </span>\n              </div>\n            </fieldset>\n\n            <button class=\"btn btn-lg pull-xs-right btn-primary\" type=\"button\" ng-click=\"$ctrl.submit()\">\n              Publish Article\n            </button>\n\n          </fieldset>\n        </form>\n\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("home/home.html", "<div class=\"home-page\">\n  <!-- <home-slider-cmp></home-slider-cmp> -->\n  <h2>Categorías</h2>\n  <div class=\"col-sm-4\" ng-repeat=\"c in category\">\n    <button\n      style=\"padding:10px; margin:10px;width: 300px; height: 100px\"\n      type=\"button\"\n      class=\"btn btn-primary\"\n      ui-sref=\"app.hotels({filter:c})\"\n    >\n      {{ c }}\n    </button>\n  </div>\n  <p>ARTÍCULOS</p>\n  <article-list limit=\"10\" list-config=\"$ctrl.listConfig\"></article-list>\n</div>\n");
   $templateCache.put("home/homeSlider.html", "<div style=\"height: 400px\">\n        <div uib-carousel active=\"active\" interval=\"$ctrl.myInterval\" no-wrap=\"$ctrl.noWrapSlides\">\n            <div uib-slide ng-repeat=\"slide in $ctrl.slides track by slide.id\" index=\"slide.id\" style=\"height: 400px\">\n            <img ng-src=\"{{slide.image}}\" class=\"img-fluid\" style=\"filter: blur(2px);\">\n            <div class=\"carousel-caption\" style=\"padding-bottom:100px;\">\n            </div>\n            </div>\n        </div>\n    </div>\n     \n ");
   $templateCache.put("hotels/detailshotels.html", "<h2>DETALLE HOTEL</h2>\n<p>{{hotel.name}}</p>\n<p>{{hotel.description}}</p>\n<p>{{hotel.location}}</p>\n\n");
   $templateCache.put("hotels/hotels.html", "<!--List the current hotels-->\n<hotels-list hotels=\'$ctrl.hotels\'></hotels-list>\n\n<div class=\"col-sm-4\" ng-repeat=\"hotel in hotelesFiltrados\">\n        <!--card-->\n        <div class=\"card\" style=\"width: 18rem;\">\n          <img src=\"#\" class=\"card-img-top\" alt=\"imagen hotel\">\n          <div class=\"card-body\">\n            <h5 class=\"card-title\"> {{hotel.name}}</h5>\n            <p class=\"card-text\"> {{hotel.description}}</p>\n            <p class=\"card-text\">{{hotel.location}}</p>\n            <p class=\"card-text\">{{hotel.slug}}</p>\n            <a ng-click=\"openDetails()\" class=\"btn btn-primary\">Visit</a>\n          </div>\n        </div>\n      </div>");
+  $templateCache.put("editor/editor.html", "<div class=\"editor-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-10 offset-md-1 col-xs-12\">\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form>\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                ng-model=\"$ctrl.article.title\"\n                type=\"text\"\n                placeholder=\"Article Title\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                ng-model=\"$ctrl.article.description\"\n                type=\"text\"\n                placeholder=\"What\'s this article about?\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control\"\n                rows=\"8\"\n                ng-model=\"$ctrl.article.body\"\n                placeholder=\"Write your article (in markdown)\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Enter tags\"\n                ng-model=\"$ctrl.tagField\"\n                ng-keyup=\"$event.keyCode == 13 && $ctrl.addTag()\" />\n\n              <div class=\"tag-list\">\n                <span ng-repeat=\"tag in $ctrl.article.tagList\"\n                  class=\"tag-default tag-pill\">\n                  <i class=\"ion-close-round\" ng-click=\"$ctrl.removeTag(tag)\"></i>\n                  {{ tag }}\n                </span>\n              </div>\n            </fieldset>\n\n            <button class=\"btn btn-lg pull-xs-right btn-primary\" type=\"button\" ng-click=\"$ctrl.submit()\">\n              Publish Article\n            </button>\n\n          </fieldset>\n        </form>\n\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
   $templateCache.put("layout/footer.html", "<footer>\n \n</footer>\n");
   $templateCache.put("layout/header.html", "<nav show-authed=\"false\" class=\"navbar navbar-expand-sm bg-light\">\n  <!-- Links -->\n  <ul class=\"navbar-nav\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" ui-sref=\"app.home\">Home</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" ui-sref=\"app.login\">Sign in</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" ui-sref=\"app.register\">Register</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\"\n        ui-sref-active=\"active\"\n        ui-sref=\"app.hotels\">\n       Hotel List\n      </a>\n    </li>\n  </ul>\n</nav>\n\n<!--cuando estamos logeados mostrará este menú-->\n<nav show-authed=\"true\" class=\"navbar navbar-expand-sm bg-light\">\n  <!-- Links -->\n  <ul class=\"navbar-nav\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link\"\n       ui-sref=\"app.home\">Home</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\"\n       ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\"\n        ui-sref-active=\"active\"\n        ui-sref=\"app.settings\">\n        <i class=\"ion-gear-a\"></i>Settings\n      </a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\"\n        ui-sref-active=\"active\"\n        ui-sref=\"app.profile.main({ username: $ctrl.currentUser.username})\">\n        <img id=\"imagenMenuPerfil\" ng-src=\"{{$ctrl.currentUser.image}}\" class=\"user-pic\" />\n        {{ $ctrl.currentUser.username }}\n      </a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\"\n        ui-sref-active=\"active\"\n        ui-sref=\"app.editor\">\n        <i class=\"ion-compose\"></i>&nbsp;New Article\n      </a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\"\n        ui-sref-active=\"active\"\n        ui-sref=\"app.hotels\">\n        Hotel List\n      </a>\n    </li>\n  </ul>\n</nav>\n\n\n<!--TITLE-->\n<div id=\"title\">\n  <h1>HOTELS BOOKING</h1>\n</div>\n");
@@ -44118,10 +44118,10 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("components/article-helpers/article-meta.html", "<div class=\"article-meta\">\n  <a ui-sref=\"app.profile.main({ username:$ctrl.article.author.username })\">\n    <img id=\"imgArticlePreview\" ng-src=\"{{$ctrl.article.author.image}}\" />\n  </a>\n\n  <div class=\"info\">\n    <a class=\"author\"\n      ui-sref=\"app.profile.main({ username:$ctrl.article.author.username })\"\n      ng-bind=\"$ctrl.article.author.username\">\n    </a>\n    <span class=\"date\"\n      ng-bind=\"$ctrl.article.createdAt | date: \'longDate\' \">\n    </span>\n  </div>\n\n  <ng-transclude></ng-transclude>\n</div>");
   $templateCache.put("components/article-helpers/article-preview.html", "<div class=\"article-preview\">\n  <article-meta article=\"$ctrl.article\">\n    <favorite-btn\n      article=\"$ctrl.article\"\n      class=\"pull-xs-right\">\n      {{$ctrl.article.favoritesCount}}\n    </favorite-btn>\n  </article-meta>\n\n  <a ui-sref=\"app.article({ slug: $ctrl.article.slug })\" class=\"preview-link\">\n    <h1 ng-bind=\"$ctrl.article.title\"></h1>\n    <p ng-bind=\"$ctrl.article.description\"></p>\n    <span>Read more...</span>\n    <ul class=\"tag-list\">\n      <li class=\"tag-default tag-pill tag-outline\"\n        ng-repeat=\"tag in $ctrl.article.tagList\">\n        {{tag}}\n      </li>\n    </ul>\n  </a>\n</div>\n");
   $templateCache.put("components/article-helpers/list-pagination.html", "<nav>\n  <ul class=\"pagination\">\n\n    <li class=\"page-item\"\n      ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\"\n      ng-click=\"$ctrl.changePage(pageNumber)\">\n\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n\n    </li>\n\n  </ul>\n</nav>\n");
+  $templateCache.put("components/buttons/favorite-btn.html", "\n\n<button class=\"btn btn-sm\"\n  ng-class=\"{ \'disabled\' : $ctrl.isSubmitting,\n              \'btn-outline-primary\': !$ctrl.hotels.favorited,\n              \'btn-primary\': $ctrl.hotels.favorited }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-heart\"></i> <ng-transclude></ng-transclude>\n</button>\n\n");
+  $templateCache.put("components/buttons/follow-btn.html", "<button\n  class=\"btn btn-sm action-btn\"\n  ng-class=\"{ \'disabled\': $ctrl.isSubmitting,\n              \'btn-outline-secondary\': !$ctrl.user.following,\n              \'btn-secondary\': $ctrl.user.following }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-plus-round\"></i>\n  &nbsp;\n  {{ $ctrl.user.following ? \'Unfollow\' : \'Follow\' }} {{ $ctrl.user.username }}\n</button>\n");
   $templateCache.put("components/hotels-helpers/hotels-list.html", "<hotels-preview hotel=\"hotel\" ng-repeat=\"hotel in $ctrl.hotels\">\n</hotels-preview>");
   $templateCache.put("components/hotels-helpers/hotels-preview.html", "<div>\n        <h2 ng-bind=\"$ctrl.hotel.name\"> </h2>\n        <p ng-bind=\"$ctrl.hotel.description\"> </p>\n        <p ng-bind=\"$ctrl.hotel.location\"> </p>\n        <p ng-bind=\"$ctrl.hotel.category\"> </p>\n\n        <favorite-btn hotel=\"$ctrl.hotel\" class=\"pull-xs-right\">\n                {{$ctrl.hotel.favoritesCount}}\n        </favorite-btn>\n</div>");
-  $templateCache.put("components/buttons/favorite-btn.html", "<button class=\"btn btn-sm\"\n  ng-class=\"{ \'disabled\' : $ctrl.isSubmitting,\n              \'btn-outline-primary\': !$ctrl.hotels.favorited,\n              \'btn-primary\': $ctrl.hotels.favorited }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-heart\"></i> <ng-transclude></ng-transclude>\n</button>\n\n");
-  $templateCache.put("components/buttons/follow-btn.html", "<button\n  class=\"btn btn-sm action-btn\"\n  ng-class=\"{ \'disabled\': $ctrl.isSubmitting,\n              \'btn-outline-secondary\': !$ctrl.user.following,\n              \'btn-secondary\': $ctrl.user.following }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-plus-round\"></i>\n  &nbsp;\n  {{ $ctrl.user.following ? \'Unfollow\' : \'Follow\' }} {{ $ctrl.user.username }}\n</button>\n");
 }]);
 
 },{}],32:[function(require,module,exports){
@@ -45224,6 +45224,7 @@ var Hotels = function () {
         url: this._AppConstants.api + "/hotels/",
         method: "GET"
       }).then(function (res) {
+        console.log("estem en get hotles", res.data.hotels);
         return res.data.hotels;
       });
     }

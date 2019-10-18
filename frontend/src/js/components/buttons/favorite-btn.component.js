@@ -9,19 +9,21 @@ class FavoriteBtnCtrl {
   }
 
   submit() {
+ 
     this.isSubmitting = true;
 
     if (!this._User.current) {
       this._$state.go('app.login'); //redirigimos a login si no hay usuario logeado
       return;
     }
-
+   // console.log(hotel.favoritesCount);
     if (this.hotel.favorited) {
       this._Hotels.unfavorite(this.hotel.slug).then(
         () => {
           this.isSubmitting = false;
           this.hotel.favorited = false;
           this.hotel.favoritesCount--;
+    
         }
       )
 

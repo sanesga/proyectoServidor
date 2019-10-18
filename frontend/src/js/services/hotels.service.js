@@ -11,7 +11,11 @@ export default class Hotels {
     return this._$http({
       url: this._AppConstants.api + "/hotels/",
       method: "GET"
-    }).then(res => res.data.hotels);
+    }).then(res =>{
+      console.log("estem en get hotles",res.data.hotels);
+     return  res.data.hotels
+      
+    } );
   }
 
   getHotel(slug) {
