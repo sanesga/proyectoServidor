@@ -11,11 +11,9 @@ export default class Hotels {
     return this._$http({
       url: this._AppConstants.api + "/hotels/",
       method: "GET"
-    }).then(res =>{
-      console.log("estem en get hotles",res.data.hotels);
-     return  res.data.hotels
-      
-    } );
+    }).then(res => {
+      return res.data.hotels;
+    });
   }
 
   getHotel(slug) {
@@ -28,21 +26,21 @@ export default class Hotels {
   getCategories() {
     return this._$http({
       url: this._AppConstants.api + "/hotels/hotel/category",
-      method: 'GET',
+      method: "GET"
     }).then(res => res.data.category);
   }
   //botón favoritos
   favorite(slug) {
     return this._$http({
-      url: this._AppConstants.api + '/hotels/' + slug + '/favorite',
-      method: 'POST'
-    })
+      url: this._AppConstants.api + "/hotels/" + slug + "/favorite",
+      method: "POST"
+    });
   }
-//botón favoritos
+  //botón favoritos
   unfavorite(slug) {
     return this._$http({
-      url: this._AppConstants.api + '/hotels/' + slug + '/favorite',
-      method: 'DELETE'
-    })
+      url: this._AppConstants.api + "/hotels/" + slug + "/favorite",
+      method: "DELETE"
+    });
   }
 }

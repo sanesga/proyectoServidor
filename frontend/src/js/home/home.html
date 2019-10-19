@@ -1,16 +1,11 @@
-<div class="home-page">
-  <!-- <home-slider-cmp></home-slider-cmp> -->
-  <h2>Categorías</h2>
-  <div class="col-sm-4" ng-repeat="c in category">
-    <button
-      style="padding:10px; margin:10px;width: 300px; height: 100px"
-      type="button"
-      class="btn btn-primary"
-      ui-sref="app.hotels({filter:c})"
-    >
+<div id="home">
+  <!-- <home-slider-cmp></home-slider-cmp> componente creado para el slider de imagenes-->
+
+  <div ng-repeat="c in category"> <!--botón de categoría-->
+    <button type="button" ui-sref="app.hotels({filter:c})">
       {{ c }}
     </button>
   </div>
-  <p>ARTÍCULOS</p>
-  <article-list limit="10" list-config="$ctrl.listConfig"></article-list>
+  <!-- <p>ARTÍCULOS</p> componente que muestra los artículos del usuario logeado
+  <article-list limit="10" list-config="$ctrl.listConfig"></article-list> -->
 </div>

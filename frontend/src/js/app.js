@@ -22,8 +22,7 @@ import './auth';
 import './settings';
 import './editor';
 import './contact'; //afegim mòdul contact
-
-import './hotels'; 
+import './hotels';  //afegim mòdul hotels 
 
 // Create and bootstrap application
 const requires = [

@@ -11,5 +11,7 @@ hotelsModule.controller('HotelsCtrl', HotelsCtrl);
 import DetailsHotelsCtrl from './detailshotels.controller';
 hotelsModule.controller('DetailsHotelsCtrl', DetailsHotelsCtrl);
 
+import ListaHotelesCtrl from './listaHoteles.controller';
+hotelsModule.controller('ListaHotelesCtrl', ListaHotelesCtrl);
 
 export default hotelsModule;
