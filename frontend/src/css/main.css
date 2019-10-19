@@ -45,16 +45,46 @@
   /*tamaño del body (home)*/
   height: 82vh;
 }
-#home button{
-    margin: 30px;
-    width: 200px;
-    height: 100px;
-    background-color: grey;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 30px;
-    float: left;
-    
-
+#home button {
+  margin: 30px;
+  width: 200px;
+  height: 100px;
+  background-color: grey;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 30px;
+  float: left;
+}
+.hotel{
+  border: 1px solid lightgrey;
+  margin: 30px;
+padding: 10px;
+border-radius: 10px;
+position: relative;
+color: #348ef3;
+}
+.hotel h2{
+  font-weight: bold;
+}
+.hotel button{
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  border: 0px;
+  position: absolute;
+  top: 25%;
+  left: 85%;
+  color: white;
+  box-shadow: 0 0 0 2pt #348ef3;
+  background-color: #348ef3;
+  border: 2px solid white;
+font-size: 18px;
+}
+.hotel button:hover{
+  background-color: lightgrey;
+}
+.hotel a:hover{
+color: lightgrey;
+text-decoration: none;
 }

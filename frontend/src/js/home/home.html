@@ -2,7 +2,7 @@
   <!-- <home-slider-cmp></home-slider-cmp> componente creado para el slider de imagenes-->
 
   <div ng-repeat="c in category"> <!--botón de categoría-->
-    <button type="button" ui-sref="app.hotels({filter:c})">
+    <button ui-sref="app.hotels({filter:c})">
       {{ c }}
     </button>
   </div>

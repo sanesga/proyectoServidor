@@ -44,20 +44,6 @@ function HotelsConfig($stateProvider) {
         }
       }
     })
-
-    .state("app.hotelslist", {
-      url: "/hotelslist",
-      controller: "HotelsListCtrl",
-      controllerAs: "$ctrl",
-      templateUrl: "hotels/hotelslist.html",
-      title: "Hotels List",
-      resolve: {
-        hotels: function(Hotels) {
-          console.log("entra al config de hotelslist");
-          return Hotels.getHotels().then(hotels => hotels);
-        }
-      }
-    });
 };
 
 export default HotelsConfig;
