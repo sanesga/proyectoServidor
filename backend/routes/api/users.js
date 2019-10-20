@@ -4,8 +4,6 @@ var passport = require("passport");
 var User = mongoose.model("User");
 var auth = require("../auth");
 
-
-
 router.get("/user", auth.required, function(req, res, next) {
   User.findById(req.payload.id)
     .then(function(user) {
@@ -20,11 +18,14 @@ router.get("/user", auth.required, function(req, res, next) {
 
 //devolvemos el profile de todos los usuarios
 router.get("/users", function(req, res, next) {
-  User.find().then(function(users) {
+  User.find()
+    .then(function(users) {
       if (!users) {
-       return res.sendStatus(401);
+        return res.sendStatus(401);
       }
-      return res.json({ users: users.map(user=>user.toProfileJSONFor(user)) });
+      return res.json({
+        users: users.map(user => user.toProfileJSONFor(user))
+      });
     })
     .catch(next);
 });
@@ -98,47 +99,49 @@ router.post("/users", function(req, res, next) {
     .catch(next);
 });
 
-router.post('/users/register', function(req, res, next){
-  User.find({$or:[{email:req.body.user.email},{username:req.body.user.username}],idsocial:null}).then(function(user){
-    if(user[0]){
+router.post("/users/register", function(req, res, next) {
+  User.find({
+    $or: [{ email: req.body.user.email }, { username: req.body.user.username }],
+    idsocial: null
+  }).then(function(user) {
+    if (user[0]) {
       return res.status(422).json("The email or username are already created");
-    }else{
+    } else {
       var user = new User();
       user.username = req.body.user.username;
       user.email = req.body.user.email;
       user.type = "client";
       user.setPassword(req.body.user.password);
-      user.save().then(function(){
-        return res.json({user: user.toAuthJSON()});
-      }).catch(next);
+      user
+        .save()
+        .then(function() {
+          return res.json({ user: user.toAuthJSON() });
+        })
+        .catch(next);
     }
   });
-  
 });
 
-router.post('/users/sociallogin', function(req, res, next){
+router.post("/users/sociallogin", function(req, res, next) {
   let memorystore = req.sessionStore;
   let sessions = memorystore.sessions;
   let sessionUser;
-  for(var key in sessions){
-    sessionUser = (JSON.parse(sessions[key]).passport.user);
+  for (var key in sessions) {
+    sessionUser = JSON.parse(sessions[key]).passport.user;
   }
-  console.log(sessionUser)
-  User.find({ '_id' : sessionUser }, function(err, user) {
 
+  User.find({ _id: sessionUser }, function(err, user) {
     user = user[0];
-    console.log(user)
-    if (err)
-      return done(err);
+
+    if (err) return done(err);
     // if the user is found then log them in
     if (user) {
-        console.log(user);
-        user.token = user.generateJWT();
-        return res.json({user: user.toAuthJSON()});// user found, return that user
+      user.token = user.generateJWT();
+      return res.json({ user: user.toAuthJSON() }); // user found, return that user
     } else {
-        return res.status(422).json(err);
+      return res.status(422).json(err);
     }
-    });
+  });
 });
 router.get("/auth/github", passport.authenticate("github"));
 router.get(

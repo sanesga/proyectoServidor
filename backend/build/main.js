@@ -43676,6 +43676,253 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var FavoriteBtnCtrl = function () {
+  FavoriteBtnCtrl.$inject = ["User", "Hotels", "$state"];
+  function FavoriteBtnCtrl(User, Hotels, $state) {
+    'ngInject';
+
+    _classCallCheck(this, FavoriteBtnCtrl);
+
+    this._User = User;
+    this._Hotels = Hotels;
+    this._$state = $state;
+  }
+
+  _createClass(FavoriteBtnCtrl, [{
+    key: 'submit',
+    value: function submit() {
+      var _this = this;
+
+      this.isSubmitting = true;
+
+      if (!this._User.current) {
+        this._$state.go('app.login'); //redirigimos a login si no hay usuario logeado
+        return;
+      }
+      if (this.hotel.favorited) {
+        this._Hotels.unfavorite(this.hotel.slug).then(function () {
+          _this.isSubmitting = false;
+          _this.hotel.favorited = false;
+          _this.hotel.favoritesCount--;
+        });
+      } else {
+        this._Hotels.favorite(this.hotel.slug).then(function () {
+          _this.isSubmitting = false;
+          _this.hotel.favorited = true;
+          _this.hotel.favoritesCount++;
+        });
+      }
+    }
+  }]);
+
+  return FavoriteBtnCtrl;
+}();
+
+var FavoriteBtn = {
+  bindings: {
+    hotel: '='
+  },
+  transclude: true,
+  controller: FavoriteBtnCtrl,
+  templateUrl: 'components/buttons/favorite-btn.html'
+};
+
+exports.default = FavoriteBtn;
+
+},{}],21:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var FollowBtnCtrl = function () {
+  FollowBtnCtrl.$inject = ["Profile", "User", "$state"];
+  function FollowBtnCtrl(Profile, User, $state) {
+    "ngInject";
+
+    _classCallCheck(this, FollowBtnCtrl);
+
+    this._Profile = Profile;
+    this._User = User;
+    this._$state = $state;
+  }
+
+  _createClass(FollowBtnCtrl, [{
+    key: "submit",
+    value: function submit() {
+      var _this = this;
+
+      this.isSubmitting = true;
+
+      if (!this._User.current) {
+        this._$state.go("app.login");
+        return;
+      }
+      //console.log(user);
+      //If following already, unfollow
+      if (this.user.following) {
+
+        console.log(this.user);
+        this._Profile.unfollow(this.user.username).then(function () {
+          _this.isSubmitting = false;
+          _this.user.following = false;
+        });
+
+        // Otherwise, follow them
+      } else {
+        this._Profile.follow(this.user.username).then(function () {
+          _this.isSubmitting = false;
+          _this.user.following = true;
+        });
+      }
+    }
+  }]);
+
+  return FollowBtnCtrl;
+}();
+
+var FollowBtn = {
+  bindings: {
+    user: "="
+  },
+  controller: FollowBtnCtrl,
+  templateUrl: "components/buttons/follow-btn.html"
+};
+console.log();
+exports.default = FollowBtn;
+
+},{}],22:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var HotelsListCtrl = function () {
+  HotelsListCtrl.$inject = ["Hotels", "$scope"];
+  function HotelsListCtrl(Hotels, $scope) {
+    'ngInject';
+
+    var _this = this;
+
+    _classCallCheck(this, HotelsListCtrl);
+
+    this._Hotels = Hotels;
+    console.log("hoteles" + this._Hotels);
+
+    this.setListTo(this.listConfig);
+
+    $scope.$on('setListTo', function (ev, newList) {
+      _this.setListTo(newList);
+    });
+
+    $scope.$on('setPageTo', function (ev, pageNumber) {
+      _this.setPageTo(pageNumber);
+    });
+  }
+
+  _createClass(HotelsListCtrl, [{
+    key: 'setListTo',
+    value: function setListTo(newList) {
+      // Set the current list to an empty array
+      this.list = [];
+
+      // Set listConfig to the new list's config
+      this.hotels = newList;
+
+      this.runQuery();
+    }
+  }, {
+    key: 'setPageTo',
+    value: function setPageTo(pageNumber) {
+      this.hotels.currentPage = pageNumber;
+
+      this.runQuery();
+    }
+  }, {
+    key: 'runQuery',
+    value: function runQuery() {
+      var _this2 = this;
+
+      // Show the loading indicator
+      this.loading = true;
+      this.hotels = this.listConfig || {};
+
+      // Create an object for this query
+      var queryConfig = {
+        type: this.hotels.type || undefined,
+        filters: this.hotels.filters || {}
+      };
+
+      // Set the limit filter from the component's attribute
+      queryConfig.filters.limit = this.limit;
+
+      // If there is no page set, set page as 1
+      if (!this.hotels.currentPage) {
+        this.hotels.currentPage = 1;
+      }
+
+      // Add the offset filter
+      //queryConfig.filters.offset = (this.limit * (this.listConfig.currentPage - 1));
+      queryConfig.filters.offset = 0;
+
+      // Run the query
+      this._Hotels.query(queryConfig).then(function (res) {
+        _this2.loading = false;
+
+        // Update list and total pages
+        _this2.list = res.hotels;
+        _this2.hotels.totalPages = Math.ceil(res.articlesCount / _this2.limit);
+      });
+    }
+  }]);
+
+  return HotelsListCtrl;
+}();
+
+var HotelsList = {
+  bindings: {
+    hotels: '='
+  },
+  templateUrl: 'components/hotels-helpers/hotels-list.html'
+};
+exports.default = HotelsList;
+
+},{}],23:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var HotelsPreview = {
+  bindings: {
+    hotel: '='
+  },
+  templateUrl: 'components/hotels-helpers/hotels-preview.html'
+};
+
+exports.default = HotelsPreview;
+
+},{}],24:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var ListPaginationCtrl = function () {
   ListPaginationCtrl.$inject = ["$scope"];
   function ListPaginationCtrl($scope) {
@@ -43713,171 +43960,10 @@ var ListPagination = {
     currentPage: '='
   },
   controller: ListPaginationCtrl,
-  templateUrl: 'components/article-helpers/list-pagination.html'
+  templateUrl: 'components/hotels-helpers/list-pagination.html'
 };
 
 exports.default = ListPagination;
-
-},{}],21:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var FavoriteBtnCtrl = function () {
-  FavoriteBtnCtrl.$inject = ["User", "Hotels", "$state"];
-  function FavoriteBtnCtrl(User, Hotels, $state) {
-    'ngInject';
-
-    _classCallCheck(this, FavoriteBtnCtrl);
-
-    this._User = User;
-    this._Hotels = Hotels;
-    this._$state = $state;
-  }
-
-  _createClass(FavoriteBtnCtrl, [{
-    key: 'submit',
-    value: function submit() {
-      var _this = this;
-
-      this.isSubmitting = true;
-
-      if (!this._User.current) {
-        this._$state.go('app.login'); //redirigimos a login si no hay usuario logeado
-        return;
-      }
-      // console.log(hotel.favoritesCount);
-      if (this.hotel.favorited) {
-        this._Hotels.unfavorite(this.hotel.slug).then(function () {
-          _this.isSubmitting = false;
-          _this.hotel.favorited = false;
-          _this.hotel.favoritesCount--;
-        });
-      } else {
-        this._Hotels.favorite(this.hotel.slug).then(function () {
-          _this.isSubmitting = false;
-          _this.hotel.favorited = true;
-          _this.hotel.favoritesCount++;
-        });
-      }
-    }
-  }]);
-
-  return FavoriteBtnCtrl;
-}();
-
-var FavoriteBtn = {
-  bindings: {
-    hotel: '='
-  },
-  transclude: true,
-  controller: FavoriteBtnCtrl,
-  templateUrl: 'components/buttons/favorite-btn.html'
-};
-
-exports.default = FavoriteBtn;
-
-},{}],22:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var FollowBtnCtrl = function () {
-  FollowBtnCtrl.$inject = ["Profile", "User", "$state"];
-  function FollowBtnCtrl(Profile, User, $state) {
-    "ngInject";
-
-    _classCallCheck(this, FollowBtnCtrl);
-
-    this._Profile = Profile;
-    this._User = User;
-    this._$state = $state;
-  }
-
-  _createClass(FollowBtnCtrl, [{
-    key: "submit",
-    value: function submit() {
-      var _this = this;
-
-      this.isSubmitting = true;
-
-      if (!this._User.current) {
-        this._$state.go("app.login");
-        return;
-      }
-
-      // If following already, unfollow
-      if (this.user.following) {
-        this._Profile.unfollow(this.user.username).then(function () {
-          _this.isSubmitting = false;
-          _this.user.following = false;
-        });
-
-        // Otherwise, follow them
-      } else {
-        this._Profile.follow(this.user.username).then(function () {
-          _this.isSubmitting = false;
-          _this.user.following = true;
-        });
-      }
-    }
-  }]);
-
-  return FollowBtnCtrl;
-}();
-
-var FollowBtn = {
-  bindings: {
-    user: "="
-  },
-  controller: FollowBtnCtrl,
-  templateUrl: "components/buttons/follow-btn.html"
-
-};
-
-exports.default = FollowBtn;
-
-},{}],23:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var HotelsList = {
-  bindings: {
-    hotels: '='
-  },
-  templateUrl: 'components/hotels-helpers/hotels-list.html'
-};
-exports.default = HotelsList;
-
-},{}],24:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var HotelsPreview = {
-  bindings: {
-    hotel: '='
-  },
-  templateUrl: 'components/hotels-helpers/hotels-preview.html'
-};
-
-exports.default = HotelsPreview;
 
 },{}],25:[function(require,module,exports){
 'use strict';
@@ -43918,7 +44004,7 @@ var _articleList = require('./article-helpers/article-list.component');
 
 var _articleList2 = _interopRequireDefault(_articleList);
 
-var _listPagination = require('./article-helpers/list-pagination.component');
+var _listPagination = require('./hotels-helpers/list-pagination.component');
 
 var _listPagination2 = _interopRequireDefault(_listPagination);
 
@@ -43962,7 +44048,7 @@ componentsModule.component('usersList', _usersList2.default);
 
 exports.default = componentsModule;
 
-},{"./article-helpers/article-list.component":17,"./article-helpers/article-meta.component":18,"./article-helpers/article-preview.component":19,"./article-helpers/list-pagination.component":20,"./buttons/favorite-btn.component":21,"./buttons/follow-btn.component":22,"./hotels-helpers/hotels-list.component":23,"./hotels-helpers/hotels-preview.component":24,"./list-errors.component":26,"./show-authed.directive":27,"./users-helpers/users-list.component":28,"angular":5}],26:[function(require,module,exports){
+},{"./article-helpers/article-list.component":17,"./article-helpers/article-meta.component":18,"./article-helpers/article-preview.component":19,"./buttons/favorite-btn.component":20,"./buttons/follow-btn.component":21,"./hotels-helpers/hotels-list.component":22,"./hotels-helpers/hotels-preview.component":23,"./hotels-helpers/list-pagination.component":24,"./list-errors.component":26,"./show-authed.directive":27,"./users-helpers/users-list.component":28,"angular":5}],26:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44130,7 +44216,7 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("contact/contact.html", "<div class=\"alert alert-success\" style=\"text-align: center; font-size:34px; height: 100px\">\n    <strong>CONTACT FORM</strong>\n  </div>\n<contact-form></contact-form>\n");
   $templateCache.put("contact/contactForm.html", "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"well well-sm\">\n        <form id=\"contactForm\" name=\"contactForm\">\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              <div class=\"form-group\">\n                <label for=\"inputName\">Name</label>\n                <input\n                  required\n                  ng-model=\"$ctrl.contact.inputName\"\n                  id=\"inputName\"\n                  name=\"inputName\"\n                  type=\"text\"\n                  placeholder=\"Enter name\"\n                  class=\"form-control\"\n                  ng-minlength=\"3\"\n                  ng-maxlength=\"20\"\n                  ng-model-options=\"{  debounce: 500 }\"\n                />\n              </div>\n              <div class=\"form-group\">\n                <label for=\"inputEmail\">Email Address</label>\n                <div class=\"form-group\">\n                  <input\n                    required\n                    ng-model=\"$ctrl.contact.inputMail\"\n                    name=\"inputMail\"\n                    type=\"text\"\n                    id=\"inputMail\"\n                    class=\"form-control\"\n                    placeholder=\"Enter email\"\n                  />\n                </div>\n              </div>\n            </div>\n            <div class=\"col-md-12\">\n              <div class=\"form-group\">\n                <label for=\"inputMessage\">Message</label>\n                <textarea\n                  style=\"resize: none;\"\n                  required\n                  ng-model=\"$ctrl.contact.inputMessage\"\n                  name=\"inputMessage\"\n                  class=\"form-control\"\n                  rows=\"9\"\n                  cols=\"25\"\n                  id=\"inputMessage\"\n                  ng-minlength=\"20\"\n                  ng-maxlength=\"100\"\n                  ng-model-options=\"{  debounce: 500 }\"\n                  placeholder=\"Please enter your message here...\"\n                ></textarea>\n              </div>\n            </div>\n            <div class=\"col-md-12\">\n              <input\n                class=\"btn btn-primary pull-right\"\n                type=\"submit\"\n                id=\"inputSubmit\"\n                name=\"inputSubmit\"\n                value=\"Send\"\n                ng-click=\"$ctrl.submitForm()\"\n              />\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("editor/editor.html", "<div class=\"editor-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-10 offset-md-1 col-xs-12\">\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form>\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                ng-model=\"$ctrl.article.title\"\n                type=\"text\"\n                placeholder=\"Article Title\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                ng-model=\"$ctrl.article.description\"\n                type=\"text\"\n                placeholder=\"What\'s this article about?\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control\"\n                rows=\"8\"\n                ng-model=\"$ctrl.article.body\"\n                placeholder=\"Write your article (in markdown)\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Enter tags\"\n                ng-model=\"$ctrl.tagField\"\n                ng-keyup=\"$event.keyCode == 13 && $ctrl.addTag()\" />\n\n              <div class=\"tag-list\">\n                <span ng-repeat=\"tag in $ctrl.article.tagList\"\n                  class=\"tag-default tag-pill\">\n                  <i class=\"ion-close-round\" ng-click=\"$ctrl.removeTag(tag)\"></i>\n                  {{ tag }}\n                </span>\n              </div>\n            </fieldset>\n\n            <button class=\"btn btn-lg pull-xs-right btn-primary\" type=\"button\" ng-click=\"$ctrl.submit()\">\n              Publish Article\n            </button>\n\n          </fieldset>\n        </form>\n\n      </div>\n    </div>\n  </div>\n</div>\n");
-  $templateCache.put("home/home.html", "<div id=\"home\">\n  <!-- <home-slider-cmp></home-slider-cmp> componente creado para el slider de imagenes-->\n\n  <div ng-repeat=\"c in category\"> <!--botón de categoría-->\n    <button ui-sref=\"app.hotels({filter:c})\">\n      {{ c }}\n    </button>\n  </div>\n  <!-- <p>ARTÍCULOS</p> componente que muestra los artículos del usuario logeado\n  <article-list limit=\"10\" list-config=\"$ctrl.listConfig\"></article-list> -->\n</div>");
+  $templateCache.put("home/home.html", "<div id=\"home\">\n  <!-- <home-slider-cmp></home-slider-cmp> componente creado para el slider de imagenes-->\n\n  <div ng-repeat=\"c in category\"> <!--botón de categoría-->\n    <button ui-sref=\"app.hotels({filter:c})\">\n      {{ c }}\n    </button>\n  </div>\n  <!-- <p>ARTÍCULOS</p> componente que muestra los artículos del usuario logeado\n  <article-list limit=\"10\" list-config=\"$ctrl.listConfig\"></article-list> -->\n\n</div>");
   $templateCache.put("home/homeSlider.html", "<div style=\"height: 400px\">\n        <div uib-carousel active=\"active\" interval=\"$ctrl.myInterval\" no-wrap=\"$ctrl.noWrapSlides\">\n            <div uib-slide ng-repeat=\"slide in $ctrl.slides track by slide.id\" index=\"slide.id\" style=\"height: 400px\">\n            <img ng-src=\"{{slide.image}}\" class=\"img-fluid\" style=\"filter: blur(2px);\">\n            <div class=\"carousel-caption\" style=\"padding-bottom:100px;\">\n            </div>\n            </div>\n        </div>\n    </div>\n     \n ");
   $templateCache.put("hotels/detailshotels.html", "<div class=\"hotel\">\n<h2>{{hotel.name}}</h2>\n<p>{{hotel.description}}</p>\n<p>{{hotel.location}}</p>\n<!-- <button ui-sref=\"app.hotels({filter:hotel.category})\">Atrás </button> -->\n</div>\n\n\n\n");
   $templateCache.put("hotels/hotels.html", "<div class=\"hotel\" ng-repeat=\"hotel in hotelesFiltrados\">\n    <h2 > {{hotel.name}}</h2>\n    <p id=\"location\">{{hotel.location}}</p>\n   <button ng-click=\"openDetails()\">Visit</button> \n</div>");
@@ -44142,15 +44228,16 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("profile/profile.html", "<div class=\"profile-page\">\n\n  <!-- User\'s basic info & action buttons -->\n  <div class=\"user-info\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n          <img  ng-src=\"{{::$ctrl.profile.image}}\" class=\"user-img\" />\n          <h4 ng-bind=\"::$ctrl.profile.username\"></h4>\n          <p ng-bind=\"::$ctrl.profile.bio\"></p>\n\n          <a ui-sref=\"app.settings\"\n            class=\"btn btn-sm btn-outline-secondary action-btn\"\n            ng-show=\"$ctrl.isUser\">\n            <i class=\"ion-gear-a\"></i> Edit Profile Settings\n          </a>\n\n          <follow-btn user=\"$ctrl.profile\" ng-hide=\"$ctrl.isUser\"></follow-btn>\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Container where User\'s posts & favs are list w/ toggle tabs -->\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n        <!-- Tabs for switching between author articles & favorites -->\n        <!-- <div class=\"articles-toggle\">\n          <ul class=\"nav nav-pills outline-active\">\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link active\"\n                ui-sref-active=\"active\"\n                ui-sref=\"app.profile.main({username: $ctrl.profile.username})\">\n                My Articles\n              </a>\n            </li>\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link\"\n                ui-sref-active=\"active\"\n                ui-sref=\"app.profile.favorites({username: $ctrl.profile.username})\">\n                Favorited Articles\n              </a>\n            </li>\n\n          </ul>\n        </div> -->\n\n        <!-- List of articles -->\n        <!-- <div ui-view></div> -->\n\n\n      </div>\n\n    <!-- End row & container divs -->\n    </div>\n  </div>\n\n</div>\n");
   $templateCache.put("settings/settings.html", "<div class=\"settings-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n\n        <h1 class=\"text-xs-center\">Your Settings</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"URL of profile picture\"\n                ng-model=\"$ctrl.formData.image\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"text\"\n                placeholder=\"Username\"\n                ng-model=\"$ctrl.formData.username\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Short bio about you\"\n                ng-model=\"$ctrl.formData.bio\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"email\"\n                placeholder=\"Email\"\n                ng-model=\"$ctrl.formData.email\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"password\"\n                placeholder=\"New Password\"\n                ng-model=\"$ctrl.formData.password\" />\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n              type=\"submit\">\n              Actualizar settings\n            </button>\n\n          </fieldset>\n        </form>\n\n        <!-- Line break for logout button -->\n        <hr />\n\n       <button class=\"btn btn-outline-danger\"\n          ng-click=\"$ctrl.logout()\">\n         Log out\n        </button>\n\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("users/users.html", "\n<!-- <div ng-repeat=\"user in users\">\n    <p>{{user.username}}</p>\n</div> -->\n<users-list users=\"users\"></users-list>");
-  $templateCache.put("components/buttons/favorite-btn.html", "\n\n<button class=\"btn btn-sm\"\n  ng-class=\"{ \'disabled\' : $ctrl.isSubmitting,\n              \'btn-outline-primary\': !$ctrl.hotels.favorited,\n              \'btn-primary\': $ctrl.hotels.favorited }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-heart\"></i> <ng-transclude></ng-transclude>\n</button>\n\n");
-  $templateCache.put("components/buttons/follow-btn.html", "<button\n  class=\"btn btn-sm action-btn\"\n  ng-class=\"{ \'disabled\': $ctrl.isSubmitting,\n              \'btn-outline-secondary\': !$ctrl.user.following,\n              \'btn-secondary\': $ctrl.user.following }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-plus-round\"></i>\n  &nbsp;\n  {{ $ctrl.user.following ? \'Unfollow\' : \'Follow\' }} {{ $ctrl.user.username }}\n</button>\n");
   $templateCache.put("components/article-helpers/article-list.html", "<article-preview\n  article=\"article\"\n  ng-repeat=\"article in $ctrl.list\">\n</article-preview>\n\n<div class=\"article-preview\"\n  ng-hide=\"!$ctrl.loading\">\n  Loading articles...\n</div>\n\n<div class=\"article-preview\"\n  ng-show=\"!$ctrl.loading && !$ctrl.list.length\">\n  No articles are here... yet.\n</div>\n\n<list-pagination\n total-pages=\"$ctrl.listConfig.totalPages\"\n current-page=\"$ctrl.listConfig.currentPage\"\n ng-hide=\"$ctrl.listConfig.totalPages <= 1\">\n</list-pagination>\n");
   $templateCache.put("components/article-helpers/article-meta.html", "<div class=\"article-meta\">\n  <a ui-sref=\"app.profile.main({ username:$ctrl.article.author.username })\">\n    <img id=\"imgArticlePreview\" ng-src=\"{{$ctrl.article.author.image}}\" />\n  </a>\n\n  <div class=\"info\">\n    <a class=\"author\"\n      ui-sref=\"app.profile.main({ username:$ctrl.article.author.username })\"\n      ng-bind=\"$ctrl.article.author.username\">\n    </a>\n    <span class=\"date\"\n      ng-bind=\"$ctrl.article.createdAt | date: \'longDate\' \">\n    </span>\n  </div>\n\n  <ng-transclude></ng-transclude>\n</div>");
   $templateCache.put("components/article-helpers/article-preview.html", "<div class=\"article-preview\">\n  <article-meta article=\"$ctrl.article\">\n    <favorite-btn\n      article=\"$ctrl.article\"\n      class=\"pull-xs-right\">\n      {{$ctrl.article.favoritesCount}}\n    </favorite-btn>\n  </article-meta>\n\n  <a ui-sref=\"app.article({ slug: $ctrl.article.slug })\" class=\"preview-link\">\n    <h1 ng-bind=\"$ctrl.article.title\"></h1>\n    <p ng-bind=\"$ctrl.article.description\"></p>\n    <span>Read more...</span>\n    <ul class=\"tag-list\">\n      <li class=\"tag-default tag-pill tag-outline\"\n        ng-repeat=\"tag in $ctrl.article.tagList\">\n        {{tag}}\n      </li>\n    </ul>\n  </a>\n</div>\n");
   $templateCache.put("components/article-helpers/list-pagination.html", "<nav>\n  <ul class=\"pagination\">\n\n    <li class=\"page-item\"\n      ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\"\n      ng-click=\"$ctrl.changePage(pageNumber)\">\n\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n\n    </li>\n\n  </ul>\n</nav>\n");
-  $templateCache.put("components/users-helpers/users-list.html", "<div id=\"usuarios\" ng-repeat=\"user in $ctrl.users\">\n    <img src=\"{{user.image}}\"></img>\n    <h3>{{user.username}}</h3>\n    <p>{{user.bio}}</p>\n    <follow-btn user=\"$ctrl.user\"></follow-btn>\n</div>");
-  $templateCache.put("components/hotels-helpers/hotels-list.html", "<hotels-preview hotel=\"hotel\" ng-repeat=\"hotel in $ctrl.hotels\">\n</hotels-preview>");
+  $templateCache.put("components/buttons/favorite-btn.html", "\n\n<button class=\"btn btn-sm\"\n  ng-class=\"{ \'disabled\' : $ctrl.isSubmitting,\n              \'btn-outline-primary\': !$ctrl.hotels.favorited,\n              \'btn-primary\': $ctrl.hotels.favorited }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-heart\"></i> <ng-transclude></ng-transclude>\n</button>\n\n");
+  $templateCache.put("components/buttons/follow-btn.html", "\n<button\n  class=\"btn btn-sm action-btn\"\n  ng-class=\"{ \'disabled\': $ctrl.isSubmitting,\n              \'btn-outline-secondary\': !$ctrl.user.following,\n              \'btn-secondary\': $ctrl.user.following }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-plus-round\"></i>\n  &nbsp;\n  {{$ctrl.user.following}}\n  {{ $ctrl.user.following ? \'Unfollow\' : \'Follow\' }} {{ $ctrl.user.username }}\n</button>\n\n\n");
+  $templateCache.put("components/users-helpers/users-list.html", "<div id=\"usuarios\" ng-repeat=\"user in $ctrl.users\">\n    <img src=\"{{user.image}}\"></img>\n    <h3>{{user.username}}</h3>\n    <p>{{user.bio}}</p>\n    <follow-btn user=\"user\"></follow-btn>\n</div>");
+  $templateCache.put("components/hotels-helpers/hotels-list.html", "<hotels-preview hotel=\"hotel\" ng-repeat=\"hotel in $ctrl.hotels\">\n</hotels-preview>\n\n<list-pagination\n total-pages=\"$ctrl.listConfig.totalPages\"\n current-page=\"$ctrl.listConfig.currentPage\"\n ng-hide=\"$ctrl.listConfig.totalPages <= 1\">\n</list-pagination>\n");
   $templateCache.put("components/hotels-helpers/hotels-preview.html", "<div class=\"hotel\">\n        <a ui-sref=\"app.detailsHotels({slug:$ctrl.hotel.slug})\">\n                <h2 ng-bind=\"$ctrl.hotel.name\"> </h2>\n        </a>\n        <p ng-bind=\"$ctrl.hotel.location\"> </p>\n        <favorite-btn hotel=\"$ctrl.hotel\" class=\"pull-xs-right\">\n                {{$ctrl.hotel.favoritesCount}}\n        </favorite-btn>\n</div>");
+  $templateCache.put("components/hotels-helpers/list-pagination.html", "<p>Estamos en list pagination</p>\n<nav>\n  <ul class=\"pagination\">\n    <li class=\"page-item\" ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\" ng-click=\"$ctrl.changePage(pageNumber)\">\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n    </li>\n  </ul>\n</nav>");
 }]);
 
 },{}],33:[function(require,module,exports){
@@ -45647,6 +45734,8 @@ var User = function () {
         return res;
       });
     }
+    //obtenemos todos los usuarios
+
   }, {
     key: "getAllProfiles",
     value: function getAllProfiles() {

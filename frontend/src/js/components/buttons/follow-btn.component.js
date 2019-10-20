@@ -15,9 +15,11 @@ class FollowBtnCtrl {
       this._$state.go("app.login");
       return;
     }
-
-    // If following already, unfollow
+    //console.log(user);
+    //If following already, unfollow
     if (this.user.following) {
+     
+     console.log(this.user);
       this._Profile.unfollow(this.user.username).then(() => {
         this.isSubmitting = false;
         this.user.following = false;
@@ -39,7 +41,6 @@ let FollowBtn = {
   },
   controller: FollowBtnCtrl,
   templateUrl: "components/buttons/follow-btn.html"
-  
 };
-
+console.log();
 export default FollowBtn;

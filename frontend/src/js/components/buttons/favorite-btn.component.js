@@ -16,7 +16,6 @@ class FavoriteBtnCtrl {
       this._$state.go('app.login'); //redirigimos a login si no hay usuario logeado
       return;
     }
-   // console.log(hotel.favoritesCount);
     if (this.hotel.favorited) {
       this._Hotels.unfavorite(this.hotel.slug).then(
         () => {

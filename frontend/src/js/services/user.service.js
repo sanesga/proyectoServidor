@@ -26,6 +26,7 @@ export default class User {
       return res;
     });
   }
+  //obtenemos todos los usuarios
   getAllProfiles() {
     return this._$http({
       url: this._AppConstants.api + "/users/",
