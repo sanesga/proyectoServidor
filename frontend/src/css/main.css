@@ -56,18 +56,18 @@
   font-size: 30px;
   float: left;
 }
-.hotel{
+.hotel {
   border: 1px solid lightgrey;
   margin: 30px;
-padding: 10px;
-border-radius: 10px;
-position: relative;
-color: #348ef3;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  color: #348ef3;
 }
-.hotel h2{
+.hotel h2 {
   font-weight: bold;
 }
-.hotel button{
+.hotel button {
   width: 130px;
   height: 50px;
   border-radius: 10px;
@@ -79,12 +79,46 @@ color: #348ef3;
   box-shadow: 0 0 0 2pt #348ef3;
   background-color: #348ef3;
   border: 2px solid white;
-font-size: 18px;
+  font-size: 18px;
 }
-.hotel button:hover{
+.hotel button:hover {
   background-color: lightgrey;
 }
-.hotel a:hover{
-color: lightgrey;
-text-decoration: none;
+.hotel a:hover {
+  color: lightgrey;
+  text-decoration: none;
 }
+#usuarios {
+  /*formato del listado de usuarios*/
+  margin: 30px;
+  border: 1px solid lightgrey;
+  height: 80px;
+  padding: 10px;
+  border-radius: 10px;
+}
+#usuarios h3 /*nombre de cada usuario*/
+ {
+  padding-left: 10px;
+  color: #348ef3;
+  display: inline-block;
+  right: 30px;
+}
+#usuarios p {
+  /*bio de cada usuario*/
+  color: #348ef3;
+  display: inline-block;
+  position: relative;
+  right: 90px;
+  top: 30px;
+}
+#usuarios img {
+  /*imagen de cada usuario*/
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+#usuarios follow-btn{
+float: right;
+margin-top: 15px;
+}
+

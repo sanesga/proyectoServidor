@@ -1,5 +1,5 @@
 class HotelsCtrl {
-  constructor(hotels, $state, $scope, $stateParams, $filter) {
+  constructor(hotels, $state, $scope, $stateParams) {
     "ngInject";
 
     this._$scope = $scope;

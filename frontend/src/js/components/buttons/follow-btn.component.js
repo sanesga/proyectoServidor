@@ -4,15 +4,15 @@ class FollowBtnCtrl {
 
     this._Profile = Profile;
     this._User = User;
-
     this._$state = $state;
+   
   }
 
   submit() {
     this.isSubmitting = true;
 
     if (!this._User.current) {
-      this._$state.go("app.register");
+      this._$state.go("app.login");
       return;
     }
 
@@ -39,6 +39,7 @@ let FollowBtn = {
   },
   controller: FollowBtnCtrl,
   templateUrl: "components/buttons/follow-btn.html"
+  
 };
 
 export default FollowBtn;

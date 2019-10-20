@@ -1,0 +1,6 @@
+<div id="usuarios" ng-repeat="user in $ctrl.users">
+    <img src="{{user.image}}"></img>
+    <h3>{{user.username}}</h3>
+    <p>{{user.bio}}</p>
+    <follow-btn user="$ctrl.user"></follow-btn>
+</div>

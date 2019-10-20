@@ -5,7 +5,7 @@ var auth = require('../auth');
 var User = mongoose.model('User');
 
 
-// Preload article objects on routes with ':article'
+// Preload hotels objects on routes with ':hotels'
 router.param('hotels', function(req, res, next, slug) {
   Hotels.findOne({ slug: slug})
     .then(function (hotels) {

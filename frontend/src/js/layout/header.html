@@ -17,6 +17,10 @@
       <a ui-sref="app.listaHoteles"> Lista Hoteles
       </a>
     </li>
+    <li>
+      <a ui-sref="app.users"> Usuarios
+      </a>
+    </li>
   </ul>
 </nav>
 
@@ -31,25 +35,29 @@
       <a ui-sref="app.contact">Contact</a>
     </li>
     <li>
-      <a  ui-sref="app.settings">
+      <a ui-sref="app.settings">
         <i class="ion-gear-a"></i>Settings
       </a>
     </li>
     <li>
-      <a  ui-sref="app.profile.main({ username: $ctrl.currentUser.username})">
+      <a ui-sref="app.profile.main({ username: $ctrl.currentUser.username})">
         <img id="imagenMenuPerfil" ng-src="{{$ctrl.currentUser.image}}" class="user-pic" />
         {{ $ctrl.currentUser.username }}
       </a>
     </li>
     <li>
-      <a  ui-sref="app.editor">
+      <a ui-sref="app.editor">
         <i class="ion-compose"></i>&nbsp;New Article
       </a>
     </li>
     <li>
-        <a ui-sref="app.listaHoteles"> Lista Hoteles
-        </a>
-      </li>
+      <a ui-sref="app.listaHoteles"> Lista Hoteles
+      </a>
+    </li>
+    <li>
+      <a ui-sref="app.users"> Usuarios
+      </a>
+    </li>
   </ul>
 </nav>
 

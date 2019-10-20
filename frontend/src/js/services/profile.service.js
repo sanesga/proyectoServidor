@@ -6,7 +6,7 @@ export default class Profile {
     this._$http = $http;
 
   }
-
+ 
   get(username) {
     return this._$http({
       url: this._AppConstants.api + '/profiles/' + username,

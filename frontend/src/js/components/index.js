@@ -33,5 +33,8 @@ componentsModule.component('hotelsList', HotelsList);
 import HotelsPreview from './hotels-helpers/hotels-preview.component';
 componentsModule.component('hotelsPreview', HotelsPreview);
 
+import UsersList from './users-helpers/users-list.component';
+componentsModule.component('usersList', UsersList);
+
 
 export default componentsModule;

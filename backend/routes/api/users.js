@@ -4,6 +4,8 @@ var passport = require("passport");
 var User = mongoose.model("User");
 var auth = require("../auth");
 
+
+
 router.get("/user", auth.required, function(req, res, next) {
   User.findById(req.payload.id)
     .then(function(user) {
@@ -12,6 +14,17 @@ router.get("/user", auth.required, function(req, res, next) {
       }
 
       return res.json({ user: user.toAuthJSON() });
+    })
+    .catch(next);
+});
+
+//devolvemos el profile de todos los usuarios
+router.get("/users", function(req, res, next) {
+  User.find().then(function(users) {
+      if (!users) {
+       return res.sendStatus(401);
+      }
+      return res.json({ users: users.map(user=>user.toProfileJSONFor(user)) });
     })
     .catch(next);
 });
@@ -76,8 +89,6 @@ router.post("/users", function(req, res, next) {
   user.username = req.body.user.username;
   user.email = req.body.user.email;
   user.setPassword(req.body.user.password);
-
-  console.log(user);
 
   user
     .save()

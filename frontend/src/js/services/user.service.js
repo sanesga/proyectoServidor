@@ -26,6 +26,15 @@ export default class User {
       return res;
     });
   }
+  getAllProfiles() {
+    return this._$http({
+      url: this._AppConstants.api + "/users/",
+      method: "GET"
+    }).then(res => {
+      return res.data.users;
+    });
+  }
+
 
   update(fields) {
     return this._$http({
