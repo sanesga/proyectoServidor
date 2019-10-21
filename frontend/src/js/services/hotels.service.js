@@ -7,6 +7,20 @@ export default class Hotels {
     this._$q = $q;
   }
 
+  query(config) { //esta query se usa en el hotels-list component para obtener todos los hoteles
+    console.log("estamos en la query");
+    // Create the $http object for this request
+    let request = {
+      //url: this._AppConstants.api + '/hotels' + ((config.type === 'feed') ? '/feed' : ''),
+      url: this._AppConstants.api + '/hotels/',
+      method: 'GET',
+      params: config.filters ? config.filters : null
+    };
+    return this._$http(request).then((res) => res.data); //nos devuelve el array de hoteles
+  }
+ 
+
+
   getHotels() {
     return this._$http({
       url: this._AppConstants.api + "/hotels/",

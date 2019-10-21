@@ -1,7 +1,7 @@
 class ListPaginationCtrl {
   constructor($scope) {
     'ngInject';
-
+console.log("entra en el controlador de list pagination component");
     this._$scope = $scope;
   }
 

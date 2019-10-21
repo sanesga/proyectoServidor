@@ -30,7 +30,6 @@ HotelsSchema.methods.updateFavoriteCount = function() {
 
   return User.count({favorites: {$in: [hotel._id]}}).then(function(count){
     hotel.favoritesCount = count;
-console.log(hotel.favoritesCount);
     return hotel.save();
   });
 };
@@ -46,5 +45,7 @@ HotelsSchema.methods.toJSONFor = function(user) {
     favoritesCount: this.favoritesCount
   };
 };
+
+
 
 mongoose.model("Hotels", HotelsSchema);

@@ -1,9 +1,8 @@
-class HotelsListCtrl{
+class HotelsListCtrl {
   constructor(Hotels, $scope) {
     'ngInject';
 
     this._Hotels = Hotels;
-    console.log("hoteles" + this._Hotels);
 
     this.setListTo(this.listConfig);
 
@@ -17,19 +16,19 @@ class HotelsListCtrl{
     });
 
   }
+
   setListTo(newList) {
     // Set the current list to an empty array
     this.list = [];
 
     // Set listConfig to the new list's config
-    this.hotels = newList;
+    this.listConfig = newList;
 
     this.runQuery();
   }
 
   setPageTo(pageNumber) {
-    this.hotels.currentPage = pageNumber;
-
+    this.listConfig.currentPage = pageNumber;
     this.runQuery();
   }
 
@@ -37,20 +36,20 @@ class HotelsListCtrl{
  runQuery() {
     // Show the loading indicator
     this.loading = true;
-    this.hotels = this.listConfig || {};
+    this.listConfig = this.listConfig || {};
 
     // Create an object for this query
     let queryConfig = {
-      type: this.hotels.type || undefined,
-      filters: this.hotels.filters || {}
+      type: this.listConfig.type || undefined,
+      filters: this.listConfig.filters || {}
     };
 
     // Set the limit filter from the component's attribute
     queryConfig.filters.limit = this.limit;
 
     // If there is no page set, set page as 1
-    if (!this.hotels.currentPage) {
-      this.hotels.currentPage = 1;
+    if (!this.listConfig.currentPage) {
+      this.listConfig.currentPage = 1;
     }
 
     // Add the offset filter
@@ -65,18 +64,24 @@ class HotelsListCtrl{
           this.loading = false;
 
           // Update list and total pages
-          this.list = res.hotels;
-          this.hotels.totalPages = Math.ceil(res.articlesCount / this.limit);
+          this.list = res.hotels; //nos devuelve todos los hoteles
+
+          this.listConfig.totalPages = Math.ceil(res.hotelsCount / this.limit);
+          console.log(this.listConfig.totalPages); //UNDEFINED
+          /////////////////////////////////
         }
       );
   }
-}
 
+}
 
 let HotelsList = {
   bindings: {
-    hotels: '='
+    limit: '=',
+    listConfig: '='
   },
+  controller: HotelsListCtrl,
   templateUrl: 'components/hotels-helpers/hotels-list.html'
 };
+
 export default HotelsList;
