@@ -6,10 +6,11 @@ const QueryResolvers = {
   }
 }
 
-import HotelResolvers from "../../graphql/resolvers/hotels/hotel.resolver";
+import HotelResolvers from "../../src/resolvers/hotels/hotels.resolver";
 
 const resolvers = merge(
   HotelResolvers,
+
 );
 
 export default resolvers;
