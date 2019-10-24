@@ -8,7 +8,6 @@ export default class Hotels {
   }
 
   query(config) { //esta query se usa en el hotels-list component para obtener todos los hoteles
-    console.log("estamos en la query");
     // Create the $http object for this request
     let request = {
       //url: this._AppConstants.api + '/hotels' + ((config.type === 'feed') ? '/feed' : ''),
@@ -18,17 +17,25 @@ export default class Hotels {
     };
     return this._$http(request).then((res) => res.data); //nos devuelve el array de hoteles
   }
+
+  //GRAPHQL
+getHotels() {
+  return this._$http({
+    url: this._AppConstants.api + '/graphql/graphql?query={hotel{ name }}',
+    method: 'GET',
+  }).then((res) => res.data.data.hotel); //obtiene los nombres de los hoteles
+}
  
 
-
-  getHotels() {
-    return this._$http({
-      url: this._AppConstants.api + "/hotels/",
-      method: "GET"
-    }).then(res => {
-      return res.data.hotels;
-    });
-  }
+//API REST
+  // getHotels() {
+  //   return this._$http({
+  //     url: this._AppConstants.api + "/hotels/",
+  //     method: "GET"
+  //   }).then(res => {
+  //     return res.data.hotels;
+  //   });
+  // }
 
   getHotel(slug) {
     return this._$http({

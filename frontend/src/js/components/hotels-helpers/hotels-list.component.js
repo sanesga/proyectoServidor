@@ -67,7 +67,7 @@ class HotelsListCtrl {
           this.list = res.hotels; //nos devuelve todos los hoteles
 
           this.listConfig.totalPages = Math.ceil(res.hotelsCount / this.limit);
-          console.log(this.listConfig.totalPages); //UNDEFINED
+          this.listConfig.totalPages; //UNDEFINED
           /////////////////////////////////
         }
       );
