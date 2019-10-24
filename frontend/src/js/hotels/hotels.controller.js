@@ -4,6 +4,7 @@ class HotelsCtrl {
 
     this._$scope = $scope;
     this.hotels = hotels;
+   
     this.filter = $stateParams.filter;
 
     var hotelesFiltrados = new Array();

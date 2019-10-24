@@ -35,6 +35,13 @@
     "ng-file-upload": "^12.2.13",
     "ng-infinite-scroll": "^1.3.0",
     "require-dir": "^1.1.0",
-    "stripe": "^6.12.1"
+    "stripe": "^6.12.1",
+    "angularjs-toaster": "^3.0.0",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-client": "^2.6.4",
+    "apollo-link-http": "^1.5.16",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
+    "request": "^2.88.0"
   }
 }

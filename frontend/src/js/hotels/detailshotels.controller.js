@@ -1,7 +1,7 @@
 class DetailsHotelsCtrl {
   constructor(hotel, $scope) {
     //esto se llama desde hotels.config (resolve)
-
+    
     "ngInject";
     this._$scope = $scope;
     $scope.hotel = hotel;

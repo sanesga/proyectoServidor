@@ -21,7 +21,7 @@ export default class Hotels {
   //GRAPHQL
 getHotels() {
   return this._$http({
-    url: this._AppConstants.api + '/graphql/graphql?query={hotel{ name }}',
+    url: this._AppConstants.api + '/graphql/graphql?query={hotel{ name slug description location category }}',
     method: 'GET',
   }).then((res) => res.data.data.hotel); //obtiene los nombres de los hoteles
 }
@@ -41,8 +41,8 @@ getHotels() {
     return this._$http({
       url: this._AppConstants.api + "/hotels/" + slug,
       method: "GET"
-    }).then(res => res.data.hotel); //recibo 1 hotel
-    //.then(res => console.log(res.data.hotel));
+    })//.then(res => res.data.hotel); //recibo 1 hotel
+    .then(res => res.data.hotel);
   }
   getCategories() {
     return this._$http({
