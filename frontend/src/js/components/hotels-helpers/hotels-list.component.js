@@ -65,10 +65,9 @@ class HotelsListCtrl {
 
           // Update list and total pages
           this.list = res.hotels; //nos devuelve todos los hoteles
-
+          
           this.listConfig.totalPages = Math.ceil(res.hotelsCount / this.limit);
           this.listConfig.totalPages; //UNDEFINED
-          /////////////////////////////////
         }
       );
   }

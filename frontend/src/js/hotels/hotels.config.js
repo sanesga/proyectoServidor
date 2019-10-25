@@ -13,7 +13,7 @@ function HotelsConfig($stateProvider) {
       title: "Hotels",
       resolve: {
         hotels: function(Hotels) {
-          return Hotels.getHotels().then(hotels => hotels);
+          return Hotels.getHotels().then(hotels =>hotels);
         }
       }
     })

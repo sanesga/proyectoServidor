@@ -3,8 +3,8 @@ class HotelsCtrl {
     "ngInject";
 
     this._$scope = $scope;
-    this.hotels = hotels;
-   
+    this.hotels = hotels.hotel;
+
     this.filter = $stateParams.filter;
 
     var hotelesFiltrados = new Array();
