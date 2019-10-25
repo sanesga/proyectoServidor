@@ -8,19 +8,10 @@ export default class Hotels {
     this._GQL = GraphQLClient;
   }
 
-  //API REST
-  query() { //esta query se usa en el hotels-list component para obtener todos los hoteles
-    // Create the $http object for this request
-    let request = {
-      //url: this._AppConstants.api + '/hotels' + ((config.type === 'feed') ? '/feed' : ''),
-      url: this._AppConstants.api + '/hotels/',
-      method: 'GET',
-    };
-    return this._$http(request).then((res) => res.data); //nos devuelve el array de hoteles
-  }
+ ////////////////////////////////////////////PETICIONES POR GRAPHQL//////////////////////////////////////////////
 
-
-  // //GRAPHQL SIN APOLLO-CLIENT (FUNCIONA!!!!)
+  //GRAPHQL SIN APOLLO-CLIENT
+  
   // getHotels() {
   //   return this._$http({
   //     url: this._AppConstants.api + '/graphql/graphql?query={hotel{ name slug description location category }}',
@@ -28,7 +19,10 @@ export default class Hotels {
   //   }).then((res) => res.data.data.hotel); //obtiene todos los hoteles
   // }
 
-  // //GRAPHQL CON APOLLO-CLIENT
+
+
+  //GRAPHQL CON APOLLO-CLIENT
+
   getHotels() {
     let query = `
       query getHotels {
@@ -44,6 +38,9 @@ export default class Hotels {
     return this._GQL.get(query);
   }
 
+
+//////////////////////////////////////////PETICIONES POR API REST//////////////////////////////////////////////////
+
   // //API REST
   // getHotels() {
   //   return this._$http({
@@ -53,6 +50,17 @@ export default class Hotels {
   //     return res.data.hotels;
   //   });
   // }
+   
+   query() { //esta query se usa en el hotels-list component para obtener todos los hoteles
+    // Create the $http object for this request
+    let request = {
+      //url: this._AppConstants.api + '/hotels' + ((config.type === 'feed') ? '/feed' : ''),
+      url: this._AppConstants.api + '/hotels/',
+      method: 'GET',
+    };
+    return this._$http(request).then((res) => res.data); //nos devuelve el array de hoteles
+  }
+
 
   getHotel(slug) {
     return this._$http({

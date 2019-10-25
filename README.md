@@ -7,9 +7,11 @@
 * **Express**
 * **Mongoose** 
 * **Node.js v10.16.3**
-* **MongoDB** - DB
+* **MongoDB**
 * **Jasmine testing**
 * **Swagger**
+* **GraphQL with Apollo Server**
+
 
 ### Frontend
 
@@ -18,6 +20,7 @@
 * **Babelify**
 * **Gulp**
 * **Isomorphism**
+* **GraphQL with Apollo Client**
 
 ## Libraries
 * **Bootstrap**
@@ -50,7 +53,9 @@
 
 ## Run Swagger
 
-- http://localhost:3001/api-docs/
+- http://localhost:3002/api-docs/
 
+## Run GraphiQL
 
+- http://localhost:3002/api/graphql
 

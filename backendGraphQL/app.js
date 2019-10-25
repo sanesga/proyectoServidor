@@ -51,7 +51,7 @@ require('./models/User');
 require('./models/Article');
 require('./models/Comment');
 require('./config/passport');
-require('./models/Hotels');
+require('./models/Restaurants');
 
 
 
@@ -94,6 +94,6 @@ app.use(function(err, req, res, next) {
 });
 
 // finally, let's start our server...
-var server = app.listen( 3002, function(){
-  console.log('Listening on port ' + 3002);
+var server = app.listen( 3003, function(){
+  console.log('Listening on port ' + 3003);
 });

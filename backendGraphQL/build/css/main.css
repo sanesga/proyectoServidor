@@ -1,0 +1,124 @@
+* {
+  list-style: none;
+  padding: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#imagenMenuPerfil {
+  /*tamaño imagen del usuario en el perfil*/
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}
+#imgArticlePreview {
+  width: 100px;
+  height: 100px;
+}
+#title {
+  /*título del header.html*/
+  color: white;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #348ef3;
+}
+.user-img {
+  /*tamaño de la imagen del usuario*/
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+.menu li a {
+  /*menu principal en header.html*/
+  float: left;
+  padding: 20px;
+  color: grey;
+}
+.menu li a:hover {
+  /*hover del menú principal en header.html*/
+  color: #348ef3;
+  text-decoration: none;
+}
+#home {
+  /*tamaño del body (home)*/
+  height: 82vh;
+}
+#home button {
+  margin: 30px;
+  width: 200px;
+  height: 100px;
+  background-color: grey;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 30px;
+  float: left;
+}
+.hotel {
+  border: 1px solid lightgrey;
+  margin: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  color: #348ef3;
+}
+.hotel h2 {
+  font-weight: bold;
+}
+.hotel button {
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  border: 0px;
+  position: absolute;
+  top: 25%;
+  left: 85%;
+  color: white;
+  box-shadow: 0 0 0 2pt #348ef3;
+  background-color: #348ef3;
+  border: 2px solid white;
+  font-size: 18px;
+}
+.hotel button:hover {
+  background-color: lightgrey;
+}
+.hotel a:hover {
+  color: lightgrey;
+  text-decoration: none;
+}
+#usuarios {
+  /*formato del listado de usuarios*/
+  margin: 30px;
+  border: 1px solid lightgrey;
+  height: 80px;
+  padding: 10px;
+  border-radius: 10px;
+}
+#usuarios h3 /*nombre de cada usuario*/
+ {
+  padding-left: 10px;
+  color: #348ef3;
+  display: inline-block;
+  right: 30px;
+}
+#usuarios p {
+  /*bio de cada usuario*/
+  color: #348ef3;
+  display: inline-block;
+  position: relative;
+  right: 90px;
+  top: 30px;
+}
+#usuarios img {
+  /*imagen de cada usuario*/
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+#usuarios follow-btn{
+float: right;
+margin-top: 15px;
+}
+
