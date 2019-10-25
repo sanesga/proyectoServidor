@@ -18,24 +18,41 @@ export default class Hotels {
     return this._$http(request).then((res) => res.data); //nos devuelve el array de hoteles
   }
 
-  //GRAPHQL
-getHotels() {
-  return this._$http({
-    url: this._AppConstants.api + '/graphql/graphql?query={hotel{ name slug description location category }}',
-    method: 'GET',
-  }).then((res) => res.data.data.hotel); //obtiene los nombres de los hoteles
-}
- 
+  //GRAPHQL SIN APOLLO-CLIENT
+// getHotels() {
+//   return this._$http({
+//     url: this._AppConstants.api + '/graphql/graphql?query={hotel{ name slug description location category }}',
+//     method: 'GET',
+//   }).then((res) => res.data.data.hotel); //obtiene los nombres de los hoteles
+// }
+
+//GRAPHQL CON APOLLO-CLIENT
+// getHotels() {
+//   let query = `
+//     query getHotels {
+//       hotels() {
+//         name
+//         slug
+//         description
+//         location
+//         category
+//       }
+//     }
+//   `;
+//   return this._GQL.get("consulta"+query);
+// }
+
 
 //API REST
-  // getHotels() {
-  //   return this._$http({
-  //     url: this._AppConstants.api + "/hotels/",
-  //     method: "GET"
-  //   }).then(res => {
-  //     return res.data.hotels;
-  //   });
-  // }
+  getHotels() {
+    return this._$http({
+      url: this._AppConstants.api + "/hotels/",
+      method: "GET"
+    }).then(res => {
+      return res.data.hotels;
+    });
+  }
+
 
   getHotel(slug) {
     return this._$http({

@@ -85,7 +85,7 @@ gulp.task('default', ['html','css','img', 'browserify'], function() {
 
   browserSync.init(['../backend/build/**/**.**'], {
     server: "../backend/build",
-    port: 3000,
+    port: 3001, //aquest és el port de frontend
     notify: false,
     ui: {
       port: 4001
