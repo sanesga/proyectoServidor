@@ -57,5 +57,5 @@
 
 ## Run GraphiQL
 
-- http://localhost:3002/api/graphql
+- http://localhost:3003/api/graphql
 

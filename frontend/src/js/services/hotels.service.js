@@ -20,36 +20,35 @@ export default class Hotels {
   // }
 
 
-
   //GRAPHQL CON APOLLO-CLIENT
 
-  getHotels() {
-    let query = `
-      query getHotels {
-        hotel {
-          name
-          slug
-          description
-          location
-          category
-        }
-      }
-    `;
-    return this._GQL.get(query);
-  }
+  // getHotels() {
+  //   let query = `
+  //     query getHotels {
+  //       hotel {
+  //         name
+  //         slug
+  //         description
+  //         location
+  //         category
+  //       }
+  //     }
+  //   `;
+  //   return this._GQL.get(query);
+  // }
 
 
 //////////////////////////////////////////PETICIONES POR API REST//////////////////////////////////////////////////
 
-  // //API REST
-  // getHotels() {
-  //   return this._$http({
-  //     url: this._AppConstants.api + "/hotels/",
-  //     method: "GET"
-  //   }).then(res => {
-  //     return res.data.hotels;
-  //   });
-  // }
+  
+  getHotels() {
+    return this._$http({
+      url: this._AppConstants.api + "/hotels/",
+      method: "GET"
+    }).then(res => {
+      return res.data.hotels;
+    });
+  }
    
    query() { //esta query se usa en el hotels-list component para obtener todos los hoteles
     // Create the $http object for this request

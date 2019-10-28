@@ -1,5 +1,7 @@
-<div class="restaurant" ng-repeat="restaurant in restaurants">
+<div class="restaurants" ng-repeat="restaurant in restaurants">
     <h2 > {{restaurant.name}}</h2>
+    <p id="description">{{restaurant.description}}</p>
     <p id="location">{{restaurant.location}}</p>
+    <p id="category">{{restaurant.category}}</p>
    <!-- <button ng-click="openDetails()">Visit</button>  -->
 </div>

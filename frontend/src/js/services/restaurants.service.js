@@ -26,9 +26,8 @@ export default class Restaurants {
   getRestaurants() {
     let query = `
       query getRestaurants {
-        hotel {
+        restaurant {
           name
-          slug
           description
           location
           category
@@ -75,18 +74,18 @@ export default class Restaurants {
 //       method: "GET"
 //     }).then(res => res.data.category);
 //   }
-//   //botón favoritos
-//   favorite(slug) {
-//     return this._$http({
-//       url: this._AppConstants.api + "/hotels/" + slug + "/favorite",
-//       method: "POST"
-//     });
-//   }
-//   //botón favoritos
-//   unfavorite(slug) {
-//     return this._$http({
-//       url: this._AppConstants.api + "/hotels/" + slug + "/favorite",
-//       method: "DELETE"
-//     });
-//   }
+  //botón favoritos
+  favorite(slug) {
+    return this._$http({
+      url: this._AppConstants.api + "/hotels/" + slug + "/favorite",
+      method: "POST"
+    });
+  }
+  //botón favoritos
+  unfavorite(slug) {
+    return this._$http({
+      url: this._AppConstants.api + "/hotels/" + slug + "/favorite",
+      method: "DELETE"
+    });
+  }
  }

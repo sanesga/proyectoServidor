@@ -4,15 +4,15 @@ function RestaurantsConfig($stateProvider) {
 
   $stateProvider
 
-    .state("app.listaHoteles", {
-      url: "/listaHoteles",
-      controller: "ListaHotelesCtrl",
+    .state("app.restaurants", {
+      url: "/restaurants",
+      controller: "RestaurantsCtrl",
       controllerAs: "$ctrl",
-      templateUrl: "hotels/listaHoteles.html",
-      title: "Lista de hoteles",
+      templateUrl: "restaurants/restaurants.html",
+      title: "Restaurants",
       resolve: {
-        hotels: function(Hotels) {
-          return Hotels.getHotels().then(hotels => hotels);
+        restaurants: function(Restaurants) {
+          return Restaurants.getRestaurants().then(restaurants =>restaurants);
         }
       }
     })

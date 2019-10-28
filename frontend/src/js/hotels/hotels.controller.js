@@ -3,7 +3,9 @@ class HotelsCtrl {
     "ngInject";
 
     this._$scope = $scope;
-    this.hotels = hotels.hotel;
+    //this.hotels = hotels.hotel; SI VAMOS POR GRAPHQL
+
+    this.hotels=hotels;
 
     this.filter = $stateParams.filter;
 

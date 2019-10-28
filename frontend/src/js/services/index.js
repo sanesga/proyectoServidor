@@ -33,5 +33,8 @@ servicesModule.service('Toastr', ToastrService);
 import HotelsService from './hotels.service';
 servicesModule.service('Hotels', HotelsService);
 
+import RestaurantsService from './restaurants.service';
+servicesModule.service('Restaurants', RestaurantsService);
+
 
 export default servicesModule;

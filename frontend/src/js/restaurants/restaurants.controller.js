@@ -1,9 +1,11 @@
 class HotelsCtrl {
-  constructor(hotels, $state, $scope, $stateParams) {
+  constructor(restaurants, $state, $scope, $stateParams) {
     "ngInject";
 
     this._$scope = $scope;
-    this.hotels = hotels.hotel;
+    this.restaurants = restaurants.restaurant;
+    //console.log(this.restaurants);
+    
 
     this.filter = $stateParams.filter;
 
@@ -14,7 +16,7 @@ class HotelsCtrl {
     //   }
     // });
     //$scope.hotelesFiltrados = hotelesFiltrados;
-    $scope.restaurants = restaurants;
+    $scope.restaurants = this.restaurants;
 
     // this._$scope.openDetails = function () {
     //   $state.go("app.detailsHotels", { slug: this.hotel["slug"] });

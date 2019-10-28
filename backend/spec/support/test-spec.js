@@ -23,8 +23,6 @@ var base_url = "http://localhost:3002/"
 
 
 /*
-//Vos dixe el meu test en la peticio get TE QUE SER UN COMENTARI DE HTML QUE ESTEM EN HTML!!!!!!
-
 var request = require("request");
 var server = require("../../app.js");
 var base_url = "http://localhost:3002";

@@ -56,7 +56,7 @@
   font-size: 30px;
   float: left;
 }
-.hotel {
+.hotel, .restaurants {
   border: 1px solid lightgrey;
   margin: 30px;
   padding: 10px;

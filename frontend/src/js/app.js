@@ -24,6 +24,7 @@ import './editor';
 import './contact'; //afegim mòdul contact
 import './hotels';  //afegim mòdul hotels 
 import './users'; //afegim mòdul users
+import './restaurants'; //afegim mòdul restaurants
 
 // Create and bootstrap application
 const requires = [
@@ -41,6 +42,7 @@ const requires = [
   'app.contact',
   'app.hotels',
   'app.users',
+  'app.restaurants',
   toastr
 ];
 
