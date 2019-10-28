@@ -3,6 +3,8 @@ class UsersCtrl {
     "ngInject";
     this._$scope = $scope;
     this._$scope.users = users;
+
+    
     
   }
 }

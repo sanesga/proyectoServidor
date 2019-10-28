@@ -20,16 +20,19 @@ router.get("/user", auth.required, function(req, res, next) {
 
 /////////////////TENIM QUE COMPROVAR SI HI HA USUARI LOGUEJAT, I SI NO HI HA PASSARLI AL JSONFOR FALSE I SI HI HA, PASAR-LI L'USUARI!!!!
 router.get("/users", auth.optional, function(req, res, next) {
-  User.find()
-    .then(function(users) {
+ 
+  Promise.resolve(req.payload ? User.findById(req.payload.id) : null).then(function(currentUser){
+
+    User.find().then(function(users) {
       if (!users) {
         return res.sendStatus(401);
       }
       return res.json({
-        users:users.map(user => user.toProfileJSONFor(user))
+        users:users.map(user => user.toProfileJSONFor(currentUser))
       });
-    })
-    .catch(next);
+    }).catch(next);
+  }).catch(next);
+  
 });
 
 router.put("/user", auth.required, function(req, res, next) {
