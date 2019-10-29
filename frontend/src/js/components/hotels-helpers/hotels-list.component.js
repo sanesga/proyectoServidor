@@ -1,20 +1,18 @@
 class HotelsListCtrl {
   constructor(Hotels, $scope) {
-    'ngInject';
+    "ngInject";
 
     this._Hotels = Hotels;
 
     this.setListTo(this.listConfig);
 
-
-    $scope.$on('setListTo', (ev, newList) => {
+    $scope.$on("setListTo", (ev, newList) => {
       this.setListTo(newList);
     });
 
-    $scope.$on('setPageTo', (ev, pageNumber) => {
+    $scope.$on("setPageTo", (ev, pageNumber) => {
       this.setPageTo(pageNumber);
     });
-
   }
 
   setListTo(newList) {
@@ -32,8 +30,7 @@ class HotelsListCtrl {
     this.runQuery();
   }
 
-
- runQuery() {
+  runQuery() {
     // Show the loading indicator
     this.loading = true;
     this.listConfig = this.listConfig || {};
@@ -57,30 +54,27 @@ class HotelsListCtrl {
     queryConfig.filters.offset = 0;
 
     // Run the query
-    this._Hotels
-      .query(queryConfig)
-      .then(
-        (res) => {
-          this.loading = false;
+    this._Hotels.query(queryConfig).then(res => {
+      this.loading = false;
 
-          // Update list and total pages
-          this.list = res.hotels; //nos devuelve todos los hoteles
-          
-          this.listConfig.totalPages = Math.ceil(res.hotelsCount / this.limit);
-          this.listConfig.totalPages; //UNDEFINED
-        }
-      );
+      // Update list and total pages
+      this.list = new Array();
+      this.list = res.hotels; //nos devuelve todos los hoteles
+      //console.log(this.list);
+
+      this.listConfig.totalPages = Math.ceil(res.hotelsCount / this.limit); //FALTA AÑADIR HOTELSCOUNT AL BACKEND en hotels.js
+      this.listConfig.totalPages;
+    });
   }
-
 }
 
 let HotelsList = {
   bindings: {
-    limit: '=',
-    listConfig: '='
+    limit: "=",
+    listConfig: "="
   },
   controller: HotelsListCtrl,
-  templateUrl: 'components/hotels-helpers/hotels-list.html'
+  templateUrl: "components/hotels-helpers/hotels-list.html"
 };
 
 export default HotelsList;

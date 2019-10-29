@@ -29,7 +29,6 @@ router.get("/",auth.optional, function(req, res, next) {
       .catch(next);
     }
   )
- 
 });
 
 //obtenim un restaurant per el slug get(http://localhost:3001/api/restaurants/manolo)
