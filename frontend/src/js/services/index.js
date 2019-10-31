@@ -6,6 +6,9 @@ let servicesModule = angular.module('app.services', []);
 import GraphQLClientService from './graphql.service';
 servicesModule.service('GraphQLClient', GraphQLClientService);
 
+import PrismaService from './prisma.service';
+servicesModule.service('Prisma', PrismaService);
+
 import UserService from './user.service';
 servicesModule.service('User', UserService);
 
@@ -35,6 +38,9 @@ servicesModule.service('Hotels', HotelsService);
 
 import RestaurantsService from './restaurants.service';
 servicesModule.service('Restaurants', RestaurantsService);
+
+import EventsService from './events.service';
+servicesModule.service('Events', EventsService);
 
 
 export default servicesModule;

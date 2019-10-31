@@ -40,11 +40,19 @@
 - mongo
 - use conduit_nodejs
 
-## Run Server
+## Run Server Node (Hotels, Users)
 
 - cd backend
 - sudo npm install
 - npm run dev
+
+## Run Server GraphQl (Restaurants)
+
+
+
+## Run Server Prisma (Events)
+
+- npm run start
 
 ## Run test (Jasmine)
 
