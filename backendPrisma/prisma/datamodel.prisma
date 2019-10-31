@@ -1,8 +1,8 @@
-
 type Event {
   id: ID! @id
   title: String!
-  date: DateTime! @createdAt
-  content: String
-  location: String
+  pricePerPerson: Int!
+  popularity: Int!
+  address: String!
+  activities: String!
 }

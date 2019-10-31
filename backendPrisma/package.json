@@ -6,10 +6,7 @@
     "start": "node src/index.js"
   },
   "dependencies": {
-    "bcrypt": "3.0.6",
-    "graphql-shield": "5.7.3",
     "graphql-yoga": "1.17.4",
-    "jsonwebtoken": "8.5.1",
     "prisma-client-lib": "1.30.1"
   }
 }

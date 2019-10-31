@@ -1,49 +1,17 @@
-scalar DateTime
-
 type Query {
-  me: User
-  feed: [Post!]!
-  filterPosts(searchString: String): [Post!]!
-  post(id: ID!): Post
+  event(id: ID!): Event
+  events: [Event!]!
+}
+
+type Event {
+  id: ID!
+  title: String!
+  pricePerPerson: Int!
+  popularity: Int!
+  address: String!
+  activities: String!
 }
 
 type Mutation {
-  createDraft(title: String!, content: String): Post!
-  deletePost(id: ID!): Post
-  publish(id: ID!): Post
-  signup(email: String!, password: String!, name: String): AuthPayload!
-  login(email: String!, password: String!): AuthPayload!
-  writeComment(text: String!, postId: ID!): Comment
-}
-
-type AuthPayload {
-  token: String!
-  user: User!
-}
-
-type Post {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  published: Boolean!
-  title: String!
-  content: String
-  author: User!
-  comments: [Comment!]!
-}
-
-type User {
-  id: ID!
-  email: String!
-  password: String!
-  name: String
-  posts: [Post!]!
-  comments: [Comment!]!
-}
-
-type Comment {
-  id: ID!
-  text: String!
-  writtenBy: User!
-  post: Post!
+  create_event(title: String!, pricePerPerson: Int, popularity: Int, address: String!, activities: String!): Event!
 }

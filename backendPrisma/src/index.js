@@ -1,12 +1,16 @@
 const { GraphQLServer } = require('graphql-yoga')
 const { prisma } = require('./generated/prisma-client')
-const { resolvers } = require('./resolvers')
-const { permissions } = require('./permissions')
+const Query = require('./resolvers/Query')
+const Mutation = require('./resolvers/Mutation')
+
+const resolvers = {
+  Query,
+  Mutation,
+}
 
 const server = new GraphQLServer({
-  typeDefs: 'src/schema.graphql',
+  typeDefs: './src/schema.graphql',
   resolvers,
-  middlewares: [permissions],
   context: request => {
     return {
       ...request,
@@ -14,5 +18,4 @@ const server = new GraphQLServer({
     }
   },
 })
-
-server.start(() => console.log('Server is running on http://localhost:4000'))
+server.start(() => console.log(`Server is running on http://localhost:4000`))

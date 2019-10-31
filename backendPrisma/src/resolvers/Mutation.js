@@ -1,65 +1,13 @@
-const { hash, compare } = require('bcrypt')
-const { sign } = require('jsonwebtoken')
-const { APP_SECRET, getUserId } = require('../utils')
-
-const Mutation = {
-  signup: async (parent, { name, email, password }, context) => {
-    const hashedPassword = await hash(password, 10)
-    const user = await context.prisma.createUser({
-      name,
-      email,
-      password: hashedPassword,
-    })
-    return {
-      token: sign({ userId: user.id }, APP_SECRET),
-      user,
-    }
-  },
-  login: async (parent, { email, password }, context) => {
-    const user = await context.prisma.user({ email })
-    if (!user) {
-      throw new Error(`No user found for email: ${email}`)
-    }
-    const passwordValid = await compare(password, user.password)
-    if (!passwordValid) {
-      throw new Error('Invalid password')
-    }
-    return {
-      token: sign({ userId: user.id }, APP_SECRET),
-      user,
-    }
-  },
-  createDraft: async (parent, { title, content }, context) => {
-    userId = getUserId(context)
-    return context.prisma.createPost({
-      title,
-      content,
-      author: { connect: { id: userId } },
-    })
-  },
-  deletePost: async (parent, { id }, context) => {
-    return context.prisma.deletePost({ id })
-  },
-  publish: async (parent, { id }, context) => {
-    return context.prisma.updatePost({
-      where: { id },
-      data: { published: true },
-    })
-  },
-  writeComment: async (parent, { text, postId, userId }, context) => {
-    userId = getUserId(context)
-    return context.prisma.createComment({
-      text,
-      post: {
-        connect: { id: postId }
-      },
-      writtenBy: {
-        connect: { id: userId }
-      }
-    })
-  }
+function create_event(parent, args, context, info) {
+  return context.prisma.createEvent({
+    title: args.title,
+    pricePerPerson: args.pricePerPerson,
+    popularity: args.popularity,
+    address: args.address,
+    activities: args.activities,
+  })
 }
 
 module.exports = {
-  Mutation,
+  create_event,
 }
