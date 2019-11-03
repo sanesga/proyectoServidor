@@ -27,6 +27,22 @@ export default class Events {
     let query = `
     {
     events{
+      id
+      title
+      description
+      price
+      category
+  		location
+    }
+  }
+    `;
+    return this._GQL.get(query);
+  }
+
+  getEvent(id) {
+    let query = `
+    {
+    event(id:"${id}"){
       title
       description
       price

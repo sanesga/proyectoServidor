@@ -55044,7 +55044,7 @@ _angular2.default.bootstrap(document, ['app'], {
   strictDi: true
 });
 
-},{"./article":55,"./auth":58,"./components":68,"./config/app.config":72,"./config/app.constants":73,"./config/app.run":74,"./config/app.templates":75,"./contact":80,"./editor":83,"./events":86,"./home":90,"./hotels":94,"./layout":98,"./profile":99,"./restaurants":103,"./services":112,"./settings":120,"./users":123,"angular":7,"angular-toastr":4,"angular-ui-router":5}],51:[function(require,module,exports){
+},{"./article":55,"./auth":58,"./components":70,"./config/app.config":74,"./config/app.constants":75,"./config/app.run":76,"./config/app.templates":77,"./contact":82,"./editor":85,"./events":89,"./home":93,"./hotels":97,"./layout":101,"./profile":102,"./restaurants":106,"./services":115,"./settings":123,"./users":126,"angular":7,"angular-toastr":4,"angular-ui-router":5}],51:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55727,6 +55727,53 @@ var FollowBtn = {
 exports.default = FollowBtn;
 
 },{}],65:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var EventsDetail = {
+  bindings: {
+    event: '='
+  },
+  templateUrl: 'components/events-helpers/events-detail.html'
+};
+
+exports.default = EventsDetail;
+
+},{}],66:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var EventsListCtrl = function EventsListCtrl($scope, $state) {
+  "ngInject";
+
+  _classCallCheck(this, EventsListCtrl);
+
+  this._$scope = $scope;
+
+  // this._$scope.openDetails = function (id) {
+  //   this.id=id;
+  //   $state.go("app.eventDetails", { id: this.id});
+  // };
+};
+EventsListCtrl.$inject = ["$scope", "$state"];
+
+var EventsList = {
+  bindings: {
+    events: '='
+  },
+  controller: EventsListCtrl,
+  templateUrl: 'components/events-helpers/events-list.html'
+};
+exports.default = EventsList;
+
+},{}],67:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -55832,7 +55879,7 @@ var HotelsList = {
 
 exports.default = HotelsList;
 
-},{}],66:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55847,7 +55894,7 @@ var HotelsPreview = {
 
 exports.default = HotelsPreview;
 
-},{}],67:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55901,7 +55948,7 @@ var ListPagination = {
 
 exports.default = ListPagination;
 
-},{}],68:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55956,6 +56003,14 @@ var _usersList = require('./users-helpers/users-list.component');
 
 var _usersList2 = _interopRequireDefault(_usersList);
 
+var _eventsList = require('./events-helpers/events-list.component');
+
+var _eventsList2 = _interopRequireDefault(_eventsList);
+
+var _eventsDetail = require('./events-helpers/events-detail.component');
+
+var _eventsDetail2 = _interopRequireDefault(_eventsDetail);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var componentsModule = _angular2.default.module('app.components', []);
@@ -55982,9 +56037,13 @@ componentsModule.component('hotelsPreview', _hotelsPreview2.default);
 
 componentsModule.component('usersList', _usersList2.default);
 
+componentsModule.component('eventsList', _eventsList2.default);
+
+componentsModule.component('eventsDetail', _eventsDetail2.default);
+
 exports.default = componentsModule;
 
-},{"./article-helpers/article-list.component":60,"./article-helpers/article-meta.component":61,"./article-helpers/article-preview.component":62,"./buttons/favorite-btn.component":63,"./buttons/follow-btn.component":64,"./hotels-helpers/hotels-list.component":65,"./hotels-helpers/hotels-preview.component":66,"./hotels-helpers/list-pagination.component":67,"./list-errors.component":69,"./show-authed.directive":70,"./users-helpers/users-list.component":71,"angular":7}],69:[function(require,module,exports){
+},{"./article-helpers/article-list.component":60,"./article-helpers/article-meta.component":61,"./article-helpers/article-preview.component":62,"./buttons/favorite-btn.component":63,"./buttons/follow-btn.component":64,"./events-helpers/events-detail.component":65,"./events-helpers/events-list.component":66,"./hotels-helpers/hotels-list.component":67,"./hotels-helpers/hotels-preview.component":68,"./hotels-helpers/list-pagination.component":69,"./list-errors.component":71,"./show-authed.directive":72,"./users-helpers/users-list.component":73,"angular":7}],71:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55999,7 +56058,7 @@ var ListErrors = {
 
 exports.default = ListErrors;
 
-},{}],70:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
 ShowAuthed.$inject = ["User"];
@@ -56038,7 +56097,7 @@ function ShowAuthed(User) {
 
 exports.default = ShowAuthed;
 
-},{}],71:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56053,7 +56112,7 @@ var UsersList = {
 };
 exports.default = UsersList;
 
-},{}],72:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 AppConfig.$inject = ["$httpProvider", "$stateProvider", "$locationProvider", "$urlRouterProvider"];
@@ -56093,7 +56152,7 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
 
 exports.default = AppConfig;
 
-},{"./auth.interceptor":76}],73:[function(require,module,exports){
+},{"./auth.interceptor":78}],75:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56111,7 +56170,7 @@ var AppConstants = {
 
 exports.default = AppConstants;
 
-},{}],74:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 AppRun.$inject = ["AppConstants", "$rootScope"];
@@ -56140,7 +56199,7 @@ function AppRun(AppConstants, $rootScope) {
 
 exports.default = AppRun;
 
-},{}],75:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 "use strict";
 
 angular.module("templates", []).run(["$templateCache", function ($templateCache) {
@@ -56148,12 +56207,13 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("article/article.html", "<div class=\"article-page\">\n\n  <!-- Banner for article title, action buttons -->\n  <div class=\"banner\">\n    <div class=\"container\">\n\n      <h1 ng-bind=\"::$ctrl.article.title\"></h1>\n\n      <div class=\"article-meta\">\n        <!-- Show author info + favorite & follow buttons -->\n        <article-actions article=\"$ctrl.article\"></article-actions>\n\n      </div>\n\n    </div>\n  </div>\n\n\n\n  <!-- Main view. Contains article html and comments -->\n  <div class=\"container page\">\n\n    <!-- Article\'s HTML & tags rendered here -->\n    <div class=\"row article-content\">\n      <div class=\"col-xs-12\">\n\n        <div ng-bind-html=\"::$ctrl.article.body\"></div>\n\n        <ul class=\"tag-list\">\n          <li class=\"tag-default tag-pill tag-outline\"\n            ng-repeat=\"tag in ::$ctrl.article.tagList\">\n            {{ tag }}\n          </li>\n        </ul>\n\n      </div>\n    </div>\n\n    <hr />\n\n    <div class=\"article-actions\">\n\n      <!-- Show author info + favorite & follow buttons -->\n      <article-actions article=\"$ctrl.article\"></article-actions>\n\n    </div>\n\n    <!-- Comments section -->\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-md-8 offset-md-2\">\n\n        <div show-authed=\"true\">\n          <list-errors from=\"$crl.commentForm.errors\"></list-errors>\n          <form class=\"card comment-form\" ng-submit=\"$ctrl.addComment()\">\n            <fieldset ng-disabled=\"$ctrl.commentForm.isSubmitting\">\n              <div class=\"card-block\">\n                <textarea class=\"form-control\"\n                  placeholder=\"Write a comment...\"\n                  rows=\"3\"\n                  ng-model=\"$ctrl.commentForm.body\"></textarea>\n              </div>\n              <div class=\"card-footer\">\n                <img ng-src=\"{{::$ctrl.currentUser.image}}\" class=\"comment-author-img\" />\n                <button class=\"btn btn-sm btn-primary\" type=\"submit\">\n                 Post Comment\n                </button>\n              </div>\n            </fieldset>\n          </form>\n        </div>\n\n        <div show-authed=\"false\">\n          <a ui-sref=\"app.login\">Sign in</a> or <a ui-sref=\"app.register\">sign up</a> to add comments on this article.\n        </div>\n\n        <comment ng-repeat=\"cmt in $ctrl.comments\"\n          data=\"cmt\"\n          delete-cb=\"$ctrl.deleteComment(cmt.id, $index)\">\n        </comment>\n\n\n      </div>\n    </div>\n\n  </div>\n\n\n\n</div>\n");
   $templateCache.put("article/comment.html", "<div class=\"card\">\n  <div class=\"card-block\">\n    <p class=\"card-text\" ng-bind=\"::$ctrl.data.body\"></p>\n  </div>\n  <div class=\"card-footer\">\n    <a class=\"comment-author\" ui-sref=\"app.profile.main({ username: $ctrl.data.author.username })\">\n      <img ng-src=\"{{::$ctrl.data.author.image}}\" class=\"comment-author-img\" />\n    </a>\n    &nbsp;\n    <a class=\"comment-author\" ui-sref=\"app.profile.main({ username: $ctrl.data.author.username })\" ng-bind=\"::$ctrl.data.author.username\">\n    </a>\n    <span class=\"date-posted\"\n      ng-bind=\"::$ctrl.data.createdAt | date: \'longDate\'\">\n    </span>\n    <span class=\"mod-options\" ng-show=\"$ctrl.canModify\">\n      <i class=\"ion-trash-a\" ng-click=\"$ctrl.deleteCb()\"></i>\n    </span>\n  </div>\n</div>\n");
   $templateCache.put("auth/auth.html", "<div class=\"auth-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n        <h1 class=\"text-xs-center\" ng-bind=\"::$ctrl.title\"></h1>\n        <p class=\"text-xs-center\">\n          <a ui-sref=\"app.login\"\n            ng-show=\"$ctrl.authType === \'register\'\">\n            ¿Ya posees una cuenta?\n          </a>\n          <a ui-sref=\"app.register\"\n            ng-show=\"$ctrl.authType === \'login\'\">\n            Need an account?\n          </a>\n        </p>\n        <a href=\"http://localhost:3002/api/auth/github\" style=\"font-size: 25px; color:black\"><i class=\"ion-social-github\"></i>&nbsp;Github</a>\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\"> <!--llama a submitForm-->\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\" ng-show=\"$ctrl.authType === \'register\'\">\n              <input class=\"form-control form-control-lg\"\n                type=\"text\"\n                placeholder=\"Username\"\n                ng-model=\"$ctrl.formData.username\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"email\"\n                placeholder=\"Email\"\n                ng-model=\"$ctrl.formData.email\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"password\"\n                placeholder=\"Password\"\n                ng-model=\"$ctrl.formData.password\" />\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n              type=\"submit\"\n              ng-bind=\"::$ctrl.title\">\n            </button>\n\n          </fieldset>\n        </form>\n      </div>\n\n    </div>\n  </div>\n</div>\n");
-  $templateCache.put("components/list-errors.html", "<ul class=\"error-messages\" ng-show=\"$ctrl.errors\">\n  <div ng-repeat=\"(field, errors) in $ctrl.errors\">\n    <li ng-repeat=\"error in errors\">\n      {{field}} {{error}}\n    </li>\n  </div>\n</ul>\n");
   $templateCache.put("contact/contact.html", "<div class=\"alert alert-success\" style=\"text-align: center; font-size:34px; height: 100px\">\n    <strong>CONTACT FORM</strong>\n  </div>\n<contact-form></contact-form>\n");
   $templateCache.put("contact/contactForm.html", "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"well well-sm\">\n        <form id=\"contactForm\" name=\"contactForm\">\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              <div class=\"form-group\">\n                <label for=\"inputName\">Name</label>\n                <input\n                  required\n                  ng-model=\"$ctrl.contact.inputName\"\n                  id=\"inputName\"\n                  name=\"inputName\"\n                  type=\"text\"\n                  placeholder=\"Enter name\"\n                  class=\"form-control\"\n                  ng-minlength=\"3\"\n                  ng-maxlength=\"20\"\n                  ng-model-options=\"{  debounce: 500 }\"\n                />\n              </div>\n              <div class=\"form-group\">\n                <label for=\"inputEmail\">Email Address</label>\n                <div class=\"form-group\">\n                  <input\n                    required\n                    ng-model=\"$ctrl.contact.inputMail\"\n                    name=\"inputMail\"\n                    type=\"text\"\n                    id=\"inputMail\"\n                    class=\"form-control\"\n                    placeholder=\"Enter email\"\n                  />\n                </div>\n              </div>\n            </div>\n            <div class=\"col-md-12\">\n              <div class=\"form-group\">\n                <label for=\"inputMessage\">Message</label>\n                <textarea\n                  style=\"resize: none;\"\n                  required\n                  ng-model=\"$ctrl.contact.inputMessage\"\n                  name=\"inputMessage\"\n                  class=\"form-control\"\n                  rows=\"9\"\n                  cols=\"25\"\n                  id=\"inputMessage\"\n                  ng-minlength=\"20\"\n                  ng-maxlength=\"100\"\n                  ng-model-options=\"{  debounce: 500 }\"\n                  placeholder=\"Please enter your message here...\"\n                ></textarea>\n              </div>\n            </div>\n            <div class=\"col-md-12\">\n              <input\n                class=\"btn btn-primary pull-right\"\n                type=\"submit\"\n                id=\"inputSubmit\"\n                name=\"inputSubmit\"\n                value=\"Send\"\n                ng-click=\"$ctrl.submitForm()\"\n              />\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
+  $templateCache.put("components/list-errors.html", "<ul class=\"error-messages\" ng-show=\"$ctrl.errors\">\n  <div ng-repeat=\"(field, errors) in $ctrl.errors\">\n    <li ng-repeat=\"error in errors\">\n      {{field}} {{error}}\n    </li>\n  </div>\n</ul>\n");
   $templateCache.put("editor/editor.html", "<div class=\"editor-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-10 offset-md-1 col-xs-12\">\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form>\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                ng-model=\"$ctrl.article.title\"\n                type=\"text\"\n                placeholder=\"Article Title\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                ng-model=\"$ctrl.article.description\"\n                type=\"text\"\n                placeholder=\"What\'s this article about?\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control\"\n                rows=\"8\"\n                ng-model=\"$ctrl.article.body\"\n                placeholder=\"Write your article (in markdown)\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Enter tags\"\n                ng-model=\"$ctrl.tagField\"\n                ng-keyup=\"$event.keyCode == 13 && $ctrl.addTag()\" />\n\n              <div class=\"tag-list\">\n                <span ng-repeat=\"tag in $ctrl.article.tagList\"\n                  class=\"tag-default tag-pill\">\n                  <i class=\"ion-close-round\" ng-click=\"$ctrl.removeTag(tag)\"></i>\n                  {{ tag }}\n                </span>\n              </div>\n            </fieldset>\n\n            <button class=\"btn btn-lg pull-xs-right btn-primary\" type=\"button\" ng-click=\"$ctrl.submit()\">\n              Publish Article\n            </button>\n\n          </fieldset>\n        </form>\n\n      </div>\n    </div>\n  </div>\n</div>\n");
-  $templateCache.put("events/events.html", "\n<div class=\"event\" ng-repeat=\"event in events\">\n    <h2 > {{event.title}}</h2>\n    <p id=\"location\">{{event.address}}</p>\n   <!--<button ng-click=\"openDetails()\">Visit</button>  -->\n</div>");
-  $templateCache.put("home/home.html", "<div id=\"home\">\n  <!-- <home-slider-cmp></home-slider-cmp> componente creado para el slider de imagenes-->\n\n  <div ng-repeat=\"c in category\"> <!--botón de categoría-->\n    <button ui-sref=\"app.hotels({filter:c})\">\n      {{ c }}\n    </button>\n  </div>\n  <!-- <p>ARTÍCULOS</p> componente que muestra los artículos del usuario logeado\n  <article-list limit=\"10\" list-config=\"$ctrl.listConfig\"></article-list> -->\n\n</div>");
+  $templateCache.put("events/events.html", "<events-list events=\"$ctrl.events\"></events-list>\n");
+  $templateCache.put("events/eventsDetails.html", "<events-detail event=\"$ctrl.event\"></events-detail>");
+  $templateCache.put("home/home.html", "<div id=\"home\">\n  <!-- <home-slider-cmp></home-slider-cmp> componente creado para el slider de imagenes-->\n\n  <div ng-repeat=\"c in category\"> <!--botón de categoría-->\n    <button ui-sref=\"app.hotels({filter:c})\">\n      {{ c }}\n    </button>\n  </div>\n  <!-- <p>ARTÍCULOS</p> componente que muestra los artículos del usuario logeado\n  <article-list limit=\"10\" list-config=\"$ctrl.listConfig\"></article-list> -->\n</div>");
   $templateCache.put("home/homeSlider.html", "<div style=\"height: 400px\">\n        <div uib-carousel active=\"active\" interval=\"$ctrl.myInterval\" no-wrap=\"$ctrl.noWrapSlides\">\n            <div uib-slide ng-repeat=\"slide in $ctrl.slides track by slide.id\" index=\"slide.id\" style=\"height: 400px\">\n            <img ng-src=\"{{slide.image}}\" class=\"img-fluid\" style=\"filter: blur(2px);\">\n            <div class=\"carousel-caption\" style=\"padding-bottom:100px;\">\n            </div>\n            </div>\n        </div>\n    </div>\n     \n ");
   $templateCache.put("hotels/detailshotels.html", "<div class=\"hotel\">\n<h2>{{hotel.name}}</h2>\n<p>{{hotel.description}}</p>\n<p>{{hotel.location}}</p>\n<!-- <button ui-sref=\"app.hotels({filter:hotel.category})\">Atrás </button> -->\n</div>\n\n\n\n");
   $templateCache.put("hotels/hotels.html", "<div class=\"hotel\" ng-repeat=\"hotel in hotelesFiltrados\">\n    <h2 > {{hotel.name}}</h2>\n    <p id=\"location\">{{hotel.location}}</p>\n   <button ng-click=\"openDetails()\">Visit</button> \n</div>");
@@ -56172,13 +56232,15 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("components/article-helpers/list-pagination.html", "<nav>\n  <ul class=\"pagination\">\n\n    <li class=\"page-item\"\n      ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\"\n      ng-click=\"$ctrl.changePage(pageNumber)\">\n\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n\n    </li>\n\n  </ul>\n</nav>\n");
   $templateCache.put("components/buttons/favorite-btn.html", "\n\n<button class=\"btn btn-sm\"\n  ng-class=\"{ \'disabled\' : $ctrl.isSubmitting,\n              \'btn-outline-primary\': !$ctrl.hotels.favorited,\n              \'btn-primary\': $ctrl.hotels.favorited }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-heart\"></i> <ng-transclude></ng-transclude>\n</button>\n\n");
   $templateCache.put("components/buttons/follow-btn.html", "\n\n\n<button\n  class=\"btn btn-sm action-btn\"\n  ng-class=\"{ \'disabled\': $ctrl.isSubmitting,\n              \'btn-outline-secondary\': !$ctrl.user.following,\n              \'btn-secondary\': $ctrl.user.following }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-plus-round\"></i>\n  &nbsp;\n  {{ $ctrl.user.following ? \'Unfollow\' : \'Follow\' }} {{ $ctrl.user.username }}\n\n</button>\n\n\n");
+  $templateCache.put("components/events-helpers/events-detail.html", "\n<div class=\"event\">\n        <h2 ng-bind=\"$ctrl.event.title\"> </h2>\n        <p ng-bind=\"$ctrl.event.description\"> </p>\n        <p ng-bind=\"$ctrl.event.price + \'€\'\"></p>\n        <p ng-bind=\"$ctrl.event.category\"> </p>\n        <p ng-bind=\"$ctrl.event.location\"> </p>\n    </div>\n");
+  $templateCache.put("components/events-helpers/events-list.html", "<div class=\"event\" ng-repeat=\"event in $ctrl.events\">\n    <h3>{{event.title}}</h3>\n    <p>{{event.location}}</p>\n     <button ui-sref=\"app.eventsDetails({id:event.id})\">See more </button>\n</div>\n");
   $templateCache.put("components/hotels-helpers/hotels-list.html", " <hotels-preview hotel=\"hotel\" ng-repeat=\"hotel in $ctrl.list\">\n</hotels-preview> \n\n\n<list-pagination\n total-pages=\"$ctrl.listConfig.totalPages\"\n current-page=\"$ctrl.listConfig.currentPage\"\n ng-hide=\"$ctrl.listConfig.totalPages <= 1\">\n</list-pagination> \n");
   $templateCache.put("components/hotels-helpers/hotels-preview.html", "<div class=\"hotel\">\n        <a ui-sref=\"app.detailsHotels({slug:$ctrl.hotel.slug})\">\n                <h2 ng-bind=\"$ctrl.hotel.name\"> </h2>\n        </a>\n        <p ng-bind=\"$ctrl.hotel.location\"> </p>\n        <favorite-btn hotel=\"$ctrl.hotel\" class=\"pull-xs-right\">\n                {{$ctrl.hotel.favoritesCount}}\n        </favorite-btn>\n</div>");
   $templateCache.put("components/hotels-helpers/list-pagination.html", "<p>Estamos en list pagination</p>\n<nav>\n  <ul class=\"pagination\">\n    <li class=\"page-item\" ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\" ng-click=\"$ctrl.changePage(pageNumber)\">\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n    </li>\n  </ul>\n</nav>");
   $templateCache.put("components/users-helpers/users-list.html", "<div id=\"usuarios\" ng-repeat=\"user in $ctrl.users\">\n    <img src=\"{{user.image}}\"></img>\n    <h3>{{user.username}}</h3>\n    <p>{{user.bio}}</p>\n    <follow-btn user=\"user\"></follow-btn>\n</div>");
 }]);
 
-},{}],76:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 authInterceptor.$inject = ["JWT", "AppConstants", "$window", "$q"];
@@ -56213,7 +56275,7 @@ function authInterceptor(JWT, AppConstants, $window, $q) {
 
 exports.default = authInterceptor;
 
-},{}],77:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 'use strict';
 
 ContactConfig.$inject = ["$stateProvider"];
@@ -56234,7 +56296,7 @@ function ContactConfig($stateProvider) {
 
 exports.default = ContactConfig;
 
-},{}],78:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56273,7 +56335,7 @@ ContactCtrl.$inject = ["Contact", "Toastr", "$timeout"];
 
 exports.default = ContactCtrl;
 
-},{}],79:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -56319,7 +56381,7 @@ var contactForm = {
 
 exports.default = contactForm;
 
-},{}],80:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56359,7 +56421,7 @@ contactModule.component('contactForm', _contactForm2.default);
 
 exports.default = contactModule;
 
-},{"./contact.config":77,"./contact.controller":78,"./contactForm.component":79,"angular":7}],81:[function(require,module,exports){
+},{"./contact.config":79,"./contact.controller":80,"./contactForm.component":81,"angular":7}],83:[function(require,module,exports){
 'use strict';
 
 EditorConfig.$inject = ["$stateProvider"];
@@ -56402,7 +56464,7 @@ function EditorConfig($stateProvider) {
 
 exports.default = EditorConfig;
 
-},{}],82:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56471,7 +56533,7 @@ var EditorCtrl = function () {
 
 exports.default = EditorCtrl;
 
-},{}],83:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56505,7 +56567,7 @@ editorModule.controller('EditorCtrl', _editor4.default);
 
 exports.default = editorModule;
 
-},{"./editor.config":81,"./editor.controller":82,"angular":7}],84:[function(require,module,exports){
+},{"./editor.config":83,"./editor.controller":84,"angular":7}],86:[function(require,module,exports){
 "use strict";
 
 EventsConfig.$inject = ["$stateProvider"];
@@ -56529,12 +56591,28 @@ function EventsConfig($stateProvider) {
         });
       }]
     }
+  }).state('app.eventsDetails', {
+    url: "/events/:id",
+    controller: 'EventsDetailsCtrl',
+    controllerAs: '$ctrl',
+    templateUrl: 'events/eventsDetails.html',
+    title: 'Events Details',
+    resolve: {
+      event: ["Events", "$state", "$stateParams", function event(Events, $state, $stateParams) {
+        // console.log(Events);
+        // console.log($state);
+        // console.log($stateParams.id);
+        return Events.getEvent($stateParams.id).then(function (data) {
+          return data.event;
+        });
+      }]
+    }
   });
 };
 
 exports.default = EventsConfig;
 
-},{}],85:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -56557,7 +56635,28 @@ EventsCtrl.$inject = ["events", "$state", "$scope", "$stateParams"];
 
 exports.default = EventsCtrl;
 
-},{}],86:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var EventsDetailsCtrl = function EventsDetailsCtrl(event) {
+  "ngInject";
+
+  _classCallCheck(this, EventsDetailsCtrl);
+
+  this.event = event;
+  //console.log(event);
+};
+EventsDetailsCtrl.$inject = ["event"];
+
+exports.default = EventsDetailsCtrl;
+
+},{}],89:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56576,6 +56675,10 @@ var _events3 = require('./events.controller');
 
 var _events4 = _interopRequireDefault(_events3);
 
+var _eventsDetails = require('./eventsDetails.controller');
+
+var _eventsDetails2 = _interopRequireDefault(_eventsDetails);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var eventsModule = _angular2.default.module('app.events', []);
@@ -56584,9 +56687,11 @@ eventsModule.config(_events2.default);
 
 eventsModule.controller('EventsCtrl', _events4.default);
 
+eventsModule.controller('EventsDetailsCtrl', _eventsDetails2.default);
+
 exports.default = eventsModule;
 
-},{"./events.config":84,"./events.controller":85,"angular":7}],87:[function(require,module,exports){
+},{"./events.config":86,"./events.controller":87,"./eventsDetails.controller":88,"angular":7}],90:[function(require,module,exports){
 'use strict';
 
 HomeConfig.$inject = ["$stateProvider"];
@@ -56614,7 +56719,7 @@ function HomeConfig($stateProvider) {
 
 exports.default = HomeConfig;
 
-},{}],88:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -56657,7 +56762,7 @@ HomeCtrl.$inject = ["AppConstants", "$scope", "category"];
 
 exports.default = HomeCtrl;
 
-},{}],89:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56682,7 +56787,7 @@ var homeSlider = {
 
 exports.default = homeSlider;
 
-},{}],90:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56724,7 +56829,7 @@ homeModule.component('homeSliderCmp', _homeSlider2.default);
 
 exports.default = homeModule;
 
-},{"./home.config":87,"./home.controller":88,"./homeSlider.component":89,"angular":7}],91:[function(require,module,exports){
+},{"./home.config":90,"./home.controller":91,"./homeSlider.component":92,"angular":7}],94:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -56751,7 +56856,7 @@ DetailsHotelsCtrl.$inject = ["hotel", "$scope"];
 
 exports.default = DetailsHotelsCtrl;
 
-},{}],92:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 "use strict";
 
 HotelsConfig.$inject = ["$stateProvider"];
@@ -56807,7 +56912,7 @@ function HotelsConfig($stateProvider) {
 
 exports.default = HotelsConfig;
 
-},{}],93:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -56846,7 +56951,7 @@ HotelsCtrl.$inject = ["hotels", "$state", "$scope", "$stateParams"];
 
 exports.default = HotelsCtrl;
 
-},{}],94:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56887,7 +56992,7 @@ hotelsModule.controller('ListaHotelesCtrl', _listaHoteles2.default);
 
 exports.default = hotelsModule;
 
-},{"./detailshotels.controller":91,"./hotels.config":92,"./hotels.controller":93,"./listaHoteles.controller":95,"angular":7}],95:[function(require,module,exports){
+},{"./detailshotels.controller":94,"./hotels.config":95,"./hotels.controller":96,"./listaHoteles.controller":98,"angular":7}],98:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56929,7 +57034,7 @@ var ListaHotelesCtrl = function () {
 
 exports.default = ListaHotelesCtrl;
 
-},{}],96:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56957,7 +57062,7 @@ var AppFooter = {
 
 exports.default = AppFooter;
 
-},{}],97:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56989,7 +57094,7 @@ var AppHeader = {
 
 exports.default = AppHeader;
 
-},{}],98:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57021,7 +57126,7 @@ layoutModule.component('appFooter', _footer2.default);
 
 exports.default = layoutModule;
 
-},{"./footer.component":96,"./header.component":97,"angular":7}],99:[function(require,module,exports){
+},{"./footer.component":99,"./header.component":100,"angular":7}],102:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57061,7 +57166,7 @@ profileModule.controller('ProfileArticlesCtrl', _profileArticles2.default);
 
 exports.default = profileModule;
 
-},{"./profile-articles.controller":100,"./profile.config":101,"./profile.controller":102,"angular":7}],100:[function(require,module,exports){
+},{"./profile-articles.controller":103,"./profile.config":104,"./profile.controller":105,"angular":7}],103:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57099,7 +57204,7 @@ ProfileArticlesCtrl.$inject = ["profile", "$state", "$rootScope"];
 
 exports.default = ProfileArticlesCtrl;
 
-},{}],101:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 'use strict';
 
 ProfileConfig.$inject = ["$stateProvider"];
@@ -57142,7 +57247,7 @@ function ProfileConfig($stateProvider) {
 
 exports.default = ProfileConfig;
 
-},{}],102:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57169,7 +57274,7 @@ ProfileCtrl.$inject = ["profile", "User"];
 
 exports.default = ProfileCtrl;
 
-},{}],103:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57196,15 +57301,9 @@ restaurantsModule.config(_restaurants2.default);
 
 restaurantsModule.controller('RestaurantsCtrl', _restaurants4.default);
 
-// import DetailsHotelsCtrl from './detailshotels.controller';
-// restaurantsModule.controller('DetailsHotelsCtrl', DetailsHotelsCtrl);
-
-// import ListaHotelesCtrl from './listaHoteles.controller';
-// restaurantsModule.controller('ListaHotelesCtrl', ListaHotelesCtrl);
-
 exports.default = restaurantsModule;
 
-},{"./restaurants.config":104,"./restaurants.controller":105,"angular":7}],104:[function(require,module,exports){
+},{"./restaurants.config":107,"./restaurants.controller":108,"angular":7}],107:[function(require,module,exports){
 "use strict";
 
 RestaurantsConfig.$inject = ["$stateProvider"];
@@ -57232,7 +57331,7 @@ function RestaurantsConfig($stateProvider) {
 };
 exports.default = RestaurantsConfig;
 
-},{}],105:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57270,7 +57369,7 @@ HotelsCtrl.$inject = ["restaurants", "$state", "$scope", "$stateParams"];
 
 exports.default = HotelsCtrl;
 
-},{}],106:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57388,7 +57487,7 @@ var Articles = function () {
 
 exports.default = Articles;
 
-},{}],107:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57449,7 +57548,7 @@ var Comments = function () {
 
 exports.default = Comments;
 
-},{}],108:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57496,7 +57595,7 @@ var Contact = function () {
 
 exports.default = Contact;
 
-},{}],109:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57537,7 +57636,13 @@ var Events = function () {
   _createClass(Events, [{
     key: "getEvents",
     value: function getEvents() {
-      var query = "\n    {\n    events{\n      title\n      description\n      price\n      category\n  \t\tlocation\n    }\n  }\n    ";
+      var query = "\n    {\n    events{\n      id\n      title\n      description\n      price\n      category\n  \t\tlocation\n    }\n  }\n    ";
+      return this._GQL.get(query);
+    }
+  }, {
+    key: "getEvent",
+    value: function getEvent(id) {
+      var query = "\n    {\n    event(id:\"" + id + "\"){\n      title\n      description\n      price\n      category\n  \t\tlocation\n    }\n  }\n    ";
       return this._GQL.get(query);
     }
   }]);
@@ -57547,7 +57652,7 @@ var Events = function () {
 
 exports.default = Events;
 
-},{}],110:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57588,7 +57693,7 @@ var GraphQL = function () {
     _createClass(GraphQL, [{
         key: 'get',
         value: function get(query) {
-            // console.log("entra en graphql service y recibe la query" + query); //LA RECIBIMOS BIEN
+            console.log("entra en graphql service y recibe la query" + query); //LA RECIBIMOS BIEN
             var deferred = this._$q.defer();
 
             this._client.query({ query: (0, _graphqlTag2.default)(query) }).then(function (res) {
@@ -57607,7 +57712,7 @@ var GraphQL = function () {
 exports.default = GraphQL;
 ;
 
-},{"apollo-cache-inmemory":8,"apollo-client":10,"apollo-link-http":13,"graphql-tag":19}],111:[function(require,module,exports){
+},{"apollo-cache-inmemory":8,"apollo-client":10,"apollo-link-http":13,"graphql-tag":19}],114:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57736,7 +57841,7 @@ var Hotels = function () {
 
 exports.default = Hotels;
 
-},{}],112:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57832,7 +57937,7 @@ servicesModule.service('Events', _events2.default);
 
 exports.default = servicesModule;
 
-},{"./articles.service":106,"./comments.service":107,"./contact.service":108,"./events.service":109,"./graphql.service":110,"./hotels.service":111,"./jwt.service":113,"./prisma.service":114,"./profile.service":115,"./restaurants.service":116,"./tags.service":117,"./toastr.service":118,"./user.service":119,"angular":7}],113:[function(require,module,exports){
+},{"./articles.service":109,"./comments.service":110,"./contact.service":111,"./events.service":112,"./graphql.service":113,"./hotels.service":114,"./jwt.service":116,"./prisma.service":117,"./profile.service":118,"./restaurants.service":119,"./tags.service":120,"./toastr.service":121,"./user.service":122,"angular":7}],116:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57876,7 +57981,7 @@ var JWT = function () {
 
 exports.default = JWT;
 
-},{}],114:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57936,7 +58041,7 @@ var Prisma = function () {
 exports.default = Prisma;
 ;
 
-},{"apollo-cache-inmemory":8,"apollo-client":10,"apollo-link-http":13,"graphql-tag":19}],115:[function(require,module,exports){
+},{"apollo-cache-inmemory":8,"apollo-client":10,"apollo-link-http":13,"graphql-tag":19}],118:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57995,7 +58100,7 @@ var Profile = function () {
 
 exports.default = Profile;
 
-},{}],116:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58103,7 +58208,7 @@ var Restaurants = function () {
 
 exports.default = Restaurants;
 
-},{}],117:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58143,7 +58248,7 @@ var Tags = function () {
 
 exports.default = Tags;
 
-},{}],118:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58184,7 +58289,7 @@ var Toastr = function () {
 
 exports.default = Toastr;
 
-},{}],119:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58321,7 +58426,7 @@ var User = function () {
 
 exports.default = User;
 
-},{}],120:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58354,7 +58459,7 @@ settingsModule.controller('SettingsCtrl', _settings4.default);
 
 exports.default = settingsModule;
 
-},{"./settings.config":121,"./settings.controller":122,"angular":7}],121:[function(require,module,exports){
+},{"./settings.config":124,"./settings.controller":125,"angular":7}],124:[function(require,module,exports){
 'use strict';
 
 SettingsConfig.$inject = ["$stateProvider"];
@@ -58380,7 +58485,7 @@ function SettingsConfig($stateProvider) {
 
 exports.default = SettingsConfig;
 
-},{}],122:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58431,7 +58536,7 @@ var SettingsCtrl = function () {
 
 exports.default = SettingsCtrl;
 
-},{}],123:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58460,7 +58565,7 @@ usersModule.controller('UsersCtrl', _users4.default);
 
 exports.default = usersModule;
 
-},{"./users.config":124,"./users.controller":125,"angular":7}],124:[function(require,module,exports){
+},{"./users.config":127,"./users.controller":128,"angular":7}],127:[function(require,module,exports){
 "use strict";
 
 UsersConfig.$inject = ["$stateProvider"];
@@ -58489,7 +58594,7 @@ function UsersConfig($stateProvider) {
 
 exports.default = UsersConfig;
 
-},{}],125:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

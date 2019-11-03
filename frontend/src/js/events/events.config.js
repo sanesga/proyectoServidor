@@ -1,6 +1,7 @@
 
 function EventsConfig($stateProvider) {
   "ngInject";
+
   $stateProvider
 
   .state("app.events", {
@@ -15,6 +16,28 @@ function EventsConfig($stateProvider) {
       }
     }
   })
+
+  .state('app.eventsDetails', {
+    url: "/events/:id",
+    controller: 'EventsDetailsCtrl',
+    controllerAs: '$ctrl',
+    templateUrl: 'events/eventsDetails.html',
+    title: 'Events Details',
+    resolve: {
+      event: function(Events, $state, $stateParams) {
+        // console.log(Events);
+        // console.log($state);
+        // console.log($stateParams.id);
+        return Events.getEvent($stateParams.id).then(
+         (data) => data.event
+        )
+      }
+    }
+  })
+
+
 };
+
+
 
 export default EventsConfig;

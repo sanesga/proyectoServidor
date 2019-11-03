@@ -8,4 +8,7 @@ eventsModule.config(EventsConfig);
 import EventsCtrl from './events.controller';
 eventsModule.controller('EventsCtrl', EventsCtrl);
 
+import EventsDetailsCtrl from './eventsDetails.controller';
+eventsModule.controller('EventsDetailsCtrl', EventsDetailsCtrl);
+
 export default eventsModule;

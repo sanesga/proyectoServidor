@@ -1,0 +1,5 @@
+<div class="event" ng-repeat="event in $ctrl.events">
+    <h3>{{event.title}}</h3>
+    <p>{{event.location}}</p>
+     <button ui-sref="app.eventsDetails({id:event.id})">See more </button>
+</div>
