@@ -7,11 +7,19 @@
 * **Express**
 * **Mongoose** 
 * **Node.js v10.16.3**
-* **MongoDB**
 * **Jasmine testing**
 * **Swagger**
-* **GraphQL with Apollo Server**
+* **Connected to Mongo DB**
 
+### Backend GraphQL
+* **GraphQL with Apollo Server**
+* **Connected to Mongo DB**
+
+
+### Backend Prisma
+* **Prisma**
+* **GraphQL with Apollo Server**
+* **Connected to Mongo DB**
 
 ### Frontend
 
@@ -29,41 +37,77 @@
 ## Services
 * **SendGrid**
 
+***
+
 ## Run Client
 - cd frontend
-- sudo npm install
+- Install dependencies: sudo npm install
 - gulp
 
-## Run DB (mongodb)
+***
+
+## Run Server Node (Hotels, Users)
+
+- cd backend
+- Install dependencies: sudo npm install
+- npm run dev
+
+### Run DB (mongodb)
 
 - sudo service mongod start
 - mongo
 - use conduit_nodejs
 
-## Run Server Node (Hotels, Users)
-
-- cd backend
-- sudo npm install
-- npm run dev
-
-## Run Server GraphQl (Restaurants)
-
-
-
-## Run Server Prisma (Events)
-
-- npm run start
-
-## Run test (Jasmine)
+### Run test (Jasmine)
 
 - cd backend
 - jasmine
 
-## Run Swagger
+### Run Swagger
 
 - http://localhost:3002/api-docs/
 
-## Run GraphiQL
+***
+
+## Run Server GraphQl (Restaurants)
+
+- Install dependencies: sudo npm install
+- npm run dev
+
+### Run GraphiQL
 
 - http://localhost:3003/api/graphql
+
+***
+
+## Run Server Prisma (Events)
+
+- Install Prima CLI: npm install -g prisma
+- Install dependencies: sudo npm install
+- npm run start
+
+###  For changes
+
+- delete dependencies
+- sudo docker-compose up -d
+- prisma deploy
+- install dependencies
+- run
+
+### Portainer
+
+- sudo docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+### Prisma deploy
+
+- http://localhost:4466/_admin
+
+### Playground
+
+- http://localhost:4000
+
+***
+
+
+
 

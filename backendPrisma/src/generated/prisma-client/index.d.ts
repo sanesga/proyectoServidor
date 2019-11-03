@@ -106,32 +106,32 @@ export type EventOrderByInput =
   | "id_DESC"
   | "title_ASC"
   | "title_DESC"
-  | "pricePerPerson_ASC"
-  | "pricePerPerson_DESC"
-  | "popularity_ASC"
-  | "popularity_DESC"
-  | "address_ASC"
-  | "address_DESC"
-  | "activities_ASC"
-  | "activities_DESC";
+  | "description_ASC"
+  | "description_DESC"
+  | "price_ASC"
+  | "price_DESC"
+  | "category_ASC"
+  | "category_DESC"
+  | "location_ASC"
+  | "location_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface EventCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
-  pricePerPerson: Int;
-  popularity: Int;
-  address: String;
-  activities: String;
+  description: String;
+  price: Int;
+  category: String;
+  location: String;
 }
 
 export interface EventUpdateInput {
   title?: Maybe<String>;
-  pricePerPerson?: Maybe<Int>;
-  popularity?: Maybe<Int>;
-  address?: Maybe<String>;
-  activities?: Maybe<String>;
+  description?: Maybe<String>;
+  price?: Maybe<Int>;
+  category?: Maybe<String>;
+  location?: Maybe<String>;
 }
 
 export interface EventWhereInput {
@@ -163,50 +163,56 @@ export interface EventWhereInput {
   title_not_starts_with?: Maybe<String>;
   title_ends_with?: Maybe<String>;
   title_not_ends_with?: Maybe<String>;
-  pricePerPerson?: Maybe<Int>;
-  pricePerPerson_not?: Maybe<Int>;
-  pricePerPerson_in?: Maybe<Int[] | Int>;
-  pricePerPerson_not_in?: Maybe<Int[] | Int>;
-  pricePerPerson_lt?: Maybe<Int>;
-  pricePerPerson_lte?: Maybe<Int>;
-  pricePerPerson_gt?: Maybe<Int>;
-  pricePerPerson_gte?: Maybe<Int>;
-  popularity?: Maybe<Int>;
-  popularity_not?: Maybe<Int>;
-  popularity_in?: Maybe<Int[] | Int>;
-  popularity_not_in?: Maybe<Int[] | Int>;
-  popularity_lt?: Maybe<Int>;
-  popularity_lte?: Maybe<Int>;
-  popularity_gt?: Maybe<Int>;
-  popularity_gte?: Maybe<Int>;
-  address?: Maybe<String>;
-  address_not?: Maybe<String>;
-  address_in?: Maybe<String[] | String>;
-  address_not_in?: Maybe<String[] | String>;
-  address_lt?: Maybe<String>;
-  address_lte?: Maybe<String>;
-  address_gt?: Maybe<String>;
-  address_gte?: Maybe<String>;
-  address_contains?: Maybe<String>;
-  address_not_contains?: Maybe<String>;
-  address_starts_with?: Maybe<String>;
-  address_not_starts_with?: Maybe<String>;
-  address_ends_with?: Maybe<String>;
-  address_not_ends_with?: Maybe<String>;
-  activities?: Maybe<String>;
-  activities_not?: Maybe<String>;
-  activities_in?: Maybe<String[] | String>;
-  activities_not_in?: Maybe<String[] | String>;
-  activities_lt?: Maybe<String>;
-  activities_lte?: Maybe<String>;
-  activities_gt?: Maybe<String>;
-  activities_gte?: Maybe<String>;
-  activities_contains?: Maybe<String>;
-  activities_not_contains?: Maybe<String>;
-  activities_starts_with?: Maybe<String>;
-  activities_not_starts_with?: Maybe<String>;
-  activities_ends_with?: Maybe<String>;
-  activities_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  price?: Maybe<Int>;
+  price_not?: Maybe<Int>;
+  price_in?: Maybe<Int[] | Int>;
+  price_not_in?: Maybe<Int[] | Int>;
+  price_lt?: Maybe<Int>;
+  price_lte?: Maybe<Int>;
+  price_gt?: Maybe<Int>;
+  price_gte?: Maybe<Int>;
+  category?: Maybe<String>;
+  category_not?: Maybe<String>;
+  category_in?: Maybe<String[] | String>;
+  category_not_in?: Maybe<String[] | String>;
+  category_lt?: Maybe<String>;
+  category_lte?: Maybe<String>;
+  category_gt?: Maybe<String>;
+  category_gte?: Maybe<String>;
+  category_contains?: Maybe<String>;
+  category_not_contains?: Maybe<String>;
+  category_starts_with?: Maybe<String>;
+  category_not_starts_with?: Maybe<String>;
+  category_ends_with?: Maybe<String>;
+  category_not_ends_with?: Maybe<String>;
+  location?: Maybe<String>;
+  location_not?: Maybe<String>;
+  location_in?: Maybe<String[] | String>;
+  location_not_in?: Maybe<String[] | String>;
+  location_lt?: Maybe<String>;
+  location_lte?: Maybe<String>;
+  location_gt?: Maybe<String>;
+  location_gte?: Maybe<String>;
+  location_contains?: Maybe<String>;
+  location_not_contains?: Maybe<String>;
+  location_starts_with?: Maybe<String>;
+  location_not_starts_with?: Maybe<String>;
+  location_ends_with?: Maybe<String>;
+  location_not_ends_with?: Maybe<String>;
   AND?: Maybe<EventWhereInput[] | EventWhereInput>;
   OR?: Maybe<EventWhereInput[] | EventWhereInput>;
   NOT?: Maybe<EventWhereInput[] | EventWhereInput>;
@@ -214,10 +220,10 @@ export interface EventWhereInput {
 
 export interface EventUpdateManyMutationInput {
   title?: Maybe<String>;
-  pricePerPerson?: Maybe<Int>;
-  popularity?: Maybe<Int>;
-  address?: Maybe<String>;
-  activities?: Maybe<String>;
+  description?: Maybe<String>;
+  price?: Maybe<Int>;
+  category?: Maybe<String>;
+  location?: Maybe<String>;
 }
 
 export interface EventSubscriptionWhereInput {
@@ -274,10 +280,10 @@ export interface BatchPayloadSubscription
 export interface EventPreviousValues {
   id: ID_Output;
   title: String;
-  pricePerPerson: Int;
-  popularity: Int;
-  address: String;
-  activities: String;
+  description: String;
+  price: Int;
+  category: String;
+  location: String;
 }
 
 export interface EventPreviousValuesPromise
@@ -285,10 +291,10 @@ export interface EventPreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   title: () => Promise<String>;
-  pricePerPerson: () => Promise<Int>;
-  popularity: () => Promise<Int>;
-  address: () => Promise<String>;
-  activities: () => Promise<String>;
+  description: () => Promise<String>;
+  price: () => Promise<Int>;
+  category: () => Promise<String>;
+  location: () => Promise<String>;
 }
 
 export interface EventPreviousValuesSubscription
@@ -296,10 +302,10 @@ export interface EventPreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   title: () => Promise<AsyncIterator<String>>;
-  pricePerPerson: () => Promise<AsyncIterator<Int>>;
-  popularity: () => Promise<AsyncIterator<Int>>;
-  address: () => Promise<AsyncIterator<String>>;
-  activities: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  price: () => Promise<AsyncIterator<Int>>;
+  category: () => Promise<AsyncIterator<String>>;
+  location: () => Promise<AsyncIterator<String>>;
 }
 
 export interface EventEdge {
@@ -347,19 +353,19 @@ export interface EventSubscriptionPayloadSubscription
 export interface Event {
   id: ID_Output;
   title: String;
-  pricePerPerson: Int;
-  popularity: Int;
-  address: String;
-  activities: String;
+  description: String;
+  price: Int;
+  category: String;
+  location: String;
 }
 
 export interface EventPromise extends Promise<Event>, Fragmentable {
   id: () => Promise<ID_Output>;
   title: () => Promise<String>;
-  pricePerPerson: () => Promise<Int>;
-  popularity: () => Promise<Int>;
-  address: () => Promise<String>;
-  activities: () => Promise<String>;
+  description: () => Promise<String>;
+  price: () => Promise<Int>;
+  category: () => Promise<String>;
+  location: () => Promise<String>;
 }
 
 export interface EventSubscription
@@ -367,10 +373,10 @@ export interface EventSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   title: () => Promise<AsyncIterator<String>>;
-  pricePerPerson: () => Promise<AsyncIterator<Int>>;
-  popularity: () => Promise<AsyncIterator<Int>>;
-  address: () => Promise<AsyncIterator<String>>;
-  activities: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  price: () => Promise<AsyncIterator<Int>>;
+  category: () => Promise<AsyncIterator<String>>;
+  location: () => Promise<AsyncIterator<String>>;
 }
 
 export interface EventNullablePromise
@@ -378,10 +384,10 @@ export interface EventNullablePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   title: () => Promise<String>;
-  pricePerPerson: () => Promise<Int>;
-  popularity: () => Promise<Int>;
-  address: () => Promise<String>;
-  activities: () => Promise<String>;
+  description: () => Promise<String>;
+  price: () => Promise<Int>;
+  category: () => Promise<String>;
+  location: () => Promise<String>;
 }
 
 export interface EventConnection {

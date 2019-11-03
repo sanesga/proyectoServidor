@@ -28,10 +28,10 @@ export default class Events {
     {
     events{
       title
-      pricePerPerson
-      popularity
-      address
-      activities
+      description
+      price
+      category
+  		location
     }
   }
     `;

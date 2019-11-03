@@ -14,10 +14,10 @@ type BatchPayload {
 type Event {
   id: ID!
   title: String!
-  pricePerPerson: Int!
-  popularity: Int!
-  address: String!
-  activities: String!
+  description: String!
+  price: Int!
+  category: String!
+  location: String!
 }
 
 type EventConnection {
@@ -29,10 +29,10 @@ type EventConnection {
 input EventCreateInput {
   id: ID
   title: String!
-  pricePerPerson: Int!
-  popularity: Int!
-  address: String!
-  activities: String!
+  description: String!
+  price: Int!
+  category: String!
+  location: String!
 }
 
 type EventEdge {
@@ -45,23 +45,23 @@ enum EventOrderByInput {
   id_DESC
   title_ASC
   title_DESC
-  pricePerPerson_ASC
-  pricePerPerson_DESC
-  popularity_ASC
-  popularity_DESC
-  address_ASC
-  address_DESC
-  activities_ASC
-  activities_DESC
+  description_ASC
+  description_DESC
+  price_ASC
+  price_DESC
+  category_ASC
+  category_DESC
+  location_ASC
+  location_DESC
 }
 
 type EventPreviousValues {
   id: ID!
   title: String!
-  pricePerPerson: Int!
-  popularity: Int!
-  address: String!
-  activities: String!
+  description: String!
+  price: Int!
+  category: String!
+  location: String!
 }
 
 type EventSubscriptionPayload {
@@ -84,18 +84,18 @@ input EventSubscriptionWhereInput {
 
 input EventUpdateInput {
   title: String
-  pricePerPerson: Int
-  popularity: Int
-  address: String
-  activities: String
+  description: String
+  price: Int
+  category: String
+  location: String
 }
 
 input EventUpdateManyMutationInput {
   title: String
-  pricePerPerson: Int
-  popularity: Int
-  address: String
-  activities: String
+  description: String
+  price: Int
+  category: String
+  location: String
 }
 
 input EventWhereInput {
@@ -127,50 +127,56 @@ input EventWhereInput {
   title_not_starts_with: String
   title_ends_with: String
   title_not_ends_with: String
-  pricePerPerson: Int
-  pricePerPerson_not: Int
-  pricePerPerson_in: [Int!]
-  pricePerPerson_not_in: [Int!]
-  pricePerPerson_lt: Int
-  pricePerPerson_lte: Int
-  pricePerPerson_gt: Int
-  pricePerPerson_gte: Int
-  popularity: Int
-  popularity_not: Int
-  popularity_in: [Int!]
-  popularity_not_in: [Int!]
-  popularity_lt: Int
-  popularity_lte: Int
-  popularity_gt: Int
-  popularity_gte: Int
-  address: String
-  address_not: String
-  address_in: [String!]
-  address_not_in: [String!]
-  address_lt: String
-  address_lte: String
-  address_gt: String
-  address_gte: String
-  address_contains: String
-  address_not_contains: String
-  address_starts_with: String
-  address_not_starts_with: String
-  address_ends_with: String
-  address_not_ends_with: String
-  activities: String
-  activities_not: String
-  activities_in: [String!]
-  activities_not_in: [String!]
-  activities_lt: String
-  activities_lte: String
-  activities_gt: String
-  activities_gte: String
-  activities_contains: String
-  activities_not_contains: String
-  activities_starts_with: String
-  activities_not_starts_with: String
-  activities_ends_with: String
-  activities_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  price: Int
+  price_not: Int
+  price_in: [Int!]
+  price_not_in: [Int!]
+  price_lt: Int
+  price_lte: Int
+  price_gt: Int
+  price_gte: Int
+  category: String
+  category_not: String
+  category_in: [String!]
+  category_not_in: [String!]
+  category_lt: String
+  category_lte: String
+  category_gt: String
+  category_gte: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
+  location: String
+  location_not: String
+  location_in: [String!]
+  location_not_in: [String!]
+  location_lt: String
+  location_lte: String
+  location_gt: String
+  location_gte: String
+  location_contains: String
+  location_not_contains: String
+  location_starts_with: String
+  location_not_starts_with: String
+  location_ends_with: String
+  location_not_ends_with: String
   AND: [EventWhereInput!]
   OR: [EventWhereInput!]
   NOT: [EventWhereInput!]

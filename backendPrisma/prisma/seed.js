@@ -2,19 +2,27 @@ const { prisma } = require('../src/generated/prisma-client')
 
 async function main() {
   await prisma.createEvent({
-    title: 'Event_pilates',
-    pricePerPerson: 75,
-    popularity: 4,
-    address: 'Salamanca',
-    activities: 'Pilates restauratiu',
+    title: 'Teatro',
+    description: 'Teatro al aire libre',
+    price: 3,
+    category: 'Artes escénicas',
+    location: 'Valencia',
   })
   await prisma.createEvent({
-    title: 'Event_ioga',
-    pricePerPerson: 80,
-    popularity: 5,
-    address: 'Salamanca',
-    activities: 'Ioga restauratiu',
+    title: 'Exposición',
+    description: 'Fotografía en blanco y negro',
+    price: 0,
+    category: 'Fotografía',
+    location: 'Massanassa',
+  })
+  await prisma.createEvent({
+    title: 'Maratón',
+    description: 'Subida al castillo',
+    price: 5,
+    category: 'Deportes',
+    location: 'Xàtiva',
   })
 }
-
 main()
+
+

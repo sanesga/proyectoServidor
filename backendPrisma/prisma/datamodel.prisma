@@ -1,8 +1,8 @@
 type Event {
   id: ID! @id
   title: String!
-  pricePerPerson: Int!
-  popularity: Int!
-  address: String!
-  activities: String!
+  description: String!
+  price: Int!
+  category: String!
+  location: String!
 }

@@ -6,12 +6,14 @@ type Query {
 type Event {
   id: ID!
   title: String!
-  pricePerPerson: Int!
-  popularity: Int!
-  address: String!
-  activities: String!
+  description: String!
+  price: Int!
+  category: String!
+  location: String!
 }
 
 type Mutation {
-  create_event(title: String!, pricePerPerson: Int, popularity: Int, address: String!, activities: String!): Event!
+  create_event(title: String!, description: String!, price: Int!, category: String!, location: String!): Event!
 }
+
+

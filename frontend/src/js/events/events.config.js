@@ -1,7 +1,6 @@
 
 function EventsConfig($stateProvider) {
   "ngInject";
-console.log("estamos en el config de eventos");
   $stateProvider
 
   .state("app.events", {
