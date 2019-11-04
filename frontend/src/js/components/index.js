@@ -42,5 +42,11 @@ componentsModule.component('eventsList', EventsList);
 import EventsDetail from './events-helpers/events-detail.component';
 componentsModule.component('eventsDetail', EventsDetail);
 
+import RestaurantsList from './restaurants-helpers/restaurants-list.component';
+componentsModule.component('restaurantsList', RestaurantsList);
+
+import RestaurantsDetail from './restaurants-helpers/restaurants-detail.component';
+componentsModule.component('restaurantsDetail', RestaurantsDetail);
+
 
 export default componentsModule;

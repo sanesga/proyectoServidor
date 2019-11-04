@@ -1,31 +1,27 @@
+import EventsConfig from "../events/events.config";
+
 class HomeCtrl {
-  constructor(AppConstants, $scope, category) {
+  constructor(AppConstants, $scope, category, events, restaurants) {
     "ngInject";
-  
+
     this.appName = AppConstants.appName;
     this._$scope = $scope;
-    //this.hotels = hotels;
+    this.category = category;
+    this.events = events.events;
+    this.restaurants = restaurants.restaurant;
 
-    // if (this.hotels) {
-    //   var categories = new Array();
-    //   var existe= false;
-    //   this.hotels.forEach(hotel => {
-    //     categories.forEach(category => {
-    //       if (hotel.category == category) {
-    //         existe=true;
-    //       }
-    //     });
-    //     if(!existe){
-    //       categories.push(hotel.category);
-    //       console.log(categories);
-    //     }
-    //     existe=false;
-    //   });
-    //   $scope.categories = categories;
-    // } else {
-    //   $scope.hotels = "No hay hoteles";
-    // }
-    $scope.category=category;
+    
+    //ordenamos de menor a mayor precio, para mostrarlo en el home
+    var k=0;
+    for(var i=1;i<this.events.length;i++){
+			for(var j=0;j<(this.events.length-i);j++){
+				if(this.events[j].price>this.events[j+1].price){
+					k=this.events[j+1];
+					this.events[j+1]=this.events[j];
+					this.events[j]=k;
+				}
+			}
+    }
   }
 }
 

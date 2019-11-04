@@ -13,9 +13,19 @@ function HomeConfig($stateProvider) {
         return Hotels.getCategories().then(
           (category) => category
         )
+      },
+      events: function(Events) {
+        return Events.getEvents().then(
+          (event) => event
+        )
+      },
+      restaurants: function(Restaurants) {
+        return Restaurants.getRestaurants().then(
+          (restaurant) => restaurant
+        )
       }
     }
-  });
+  })
 
 };
 

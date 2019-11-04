@@ -45,18 +45,21 @@
   /*tamaño del body (home)*/
   height: 82vh;
 }
-#home button {
+#home h2, .homeP{ /*texto de cabecera*/
+  text-align: center;
+}
+#categoryButton { /*boton categoria del home*/
   margin: 30px;
-  width: 200px;
-  height: 100px;
+  width: 150px;
+  height: 80px;
   background-color: grey;
   border: none;
   border-radius: 10px;
   color: white;
-  font-size: 30px;
+  font-size: 25px;
   float: left;
 }
-.hotel, .restaurants, .event {
+.hotel, .restaurant, .event {
   border: 1px solid lightgrey;
   margin: 30px;
   padding: 10px;
