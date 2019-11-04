@@ -17,7 +17,7 @@ export default class GraphQL {
     }
 
     get(query) {
-       // console.log("entra en graphql service y recibe la query" + query); //LA RECIBIMOS BIEN
+        //console.log("entra en graphql service y recibe la query" + query); //LA RECIBIMOS BIEN
         let deferred = this._$q.defer();
         
         this._client.query({query: gql(query),}).then(

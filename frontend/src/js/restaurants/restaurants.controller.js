@@ -3,7 +3,7 @@ class HotelsCtrl {
     "ngInject";
 
     this._$scope = $scope;
-    this.restaurants = restaurants.restaurant;
+    this.restaurants = restaurants.restaurants;
     $scope.restaurants = this.restaurants;
 
   }

@@ -1,9 +1,9 @@
-let EventsDetail = {
+let RestaurantsDetail = {
   bindings: {
-    event: '='
+    restaurant: '='
   },
-  templateUrl: 'components/events-helpers/events-detail.html'
+  templateUrl: 'components/restaurants-helpers/restaurants-detail.html'
 };
 
-export default EventsDetail;
+export default RestaurantsDetail;
 

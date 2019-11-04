@@ -8,7 +8,7 @@ class HomeCtrl {
     this._$scope = $scope;
     this.category = category;
     this.events = events.events;
-    this.restaurants = restaurants.restaurant;
+    this.restaurants = restaurants.restaurants;
 
     
     //ordenamos de menor a mayor precio, para mostrarlo en el home

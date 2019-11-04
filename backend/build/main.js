@@ -56076,14 +56076,14 @@ exports.default = ListErrors;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var EventsDetail = {
+var RestaurantsDetail = {
   bindings: {
-    event: '='
+    restaurant: '='
   },
-  templateUrl: 'components/events-helpers/events-detail.html'
+  templateUrl: 'components/restaurants-helpers/restaurants-detail.html'
 };
 
-exports.default = EventsDetail;
+exports.default = RestaurantsDetail;
 
 },{}],73:[function(require,module,exports){
 "use strict";
@@ -56809,7 +56809,7 @@ var HomeCtrl = function HomeCtrl(AppConstants, $scope, category, events, restaur
   this._$scope = $scope;
   this.category = category;
   this.events = events.events;
-  this.restaurants = restaurants.restaurant;
+  this.restaurants = restaurants.restaurants;
 
   //ordenamos de menor a mayor precio, para mostrarlo en el home
   var k = 0;
@@ -57411,7 +57411,7 @@ var HotelsCtrl = function HotelsCtrl(restaurants, $state, $scope, $stateParams) 
   _classCallCheck(this, HotelsCtrl);
 
   this._$scope = $scope;
-  this.restaurants = restaurants.restaurant;
+  this.restaurants = restaurants.restaurants;
   $scope.restaurants = this.restaurants;
 };
 HotelsCtrl.$inject = ["restaurants", "$state", "$scope", "$stateParams"];
@@ -57742,7 +57742,7 @@ var GraphQL = function () {
     _createClass(GraphQL, [{
         key: 'get',
         value: function get(query) {
-            // console.log("entra en graphql service y recibe la query" + query); //LA RECIBIMOS BIEN
+            //console.log("entra en graphql service y recibe la query" + query); //LA RECIBIMOS BIEN
             var deferred = this._$q.defer();
 
             this._client.query({ query: (0, _graphqlTag2.default)(query) }).then(function (res) {
@@ -58190,9 +58190,25 @@ var Restaurants = function () {
   _createClass(Restaurants, [{
     key: "getRestaurants",
     value: function getRestaurants() {
-      var query = "\n      query getRestaurants {\n        restaurant {\n          name\n          description\n          location\n          category\n        }\n      }\n    ";
+      var query = "\n      query getRestaurants {\n        restaurants {\n          name\n          description\n          location\n          category\n        }\n      }\n    ";
       return this._GQL.get(query);
     }
+
+    // getRestaurant(id) {
+    //   let query = `
+    //   {
+    //   restaurant(id:"${id}"){
+    //     title
+    //     description
+    //     price
+    //     category
+    // 		location
+    //   }
+    // }
+    //   `;
+    //   return this._GQL.get(query);
+    // }
+
   }]);
 
   return Restaurants;

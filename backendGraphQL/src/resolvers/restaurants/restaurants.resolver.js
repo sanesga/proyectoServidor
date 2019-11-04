@@ -3,7 +3,7 @@ const Restaurants = mongoose.model('Restaurants');
 
 const resolvers = {
     Query: {
-        restaurant: (root, {limit, offset}) => {
+        restaurants: (root, {limit, offset}) => {
             return Restaurants.find().skip(offset).limit(limit).exec();
           },
        
