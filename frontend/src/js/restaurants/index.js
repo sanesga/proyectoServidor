@@ -8,4 +8,7 @@ restaurantsModule.config(RestaurantsConfig);
 import RestaurantsCtrl from './restaurants.controller';
 restaurantsModule.controller('RestaurantsCtrl', RestaurantsCtrl);
 
+import RestaurantsDetailsCtrl from './restaurantsDetails.controller';
+restaurantsModule.controller('RestaurantsDetailsCtrl', RestaurantsDetailsCtrl);
+
 export default restaurantsModule;

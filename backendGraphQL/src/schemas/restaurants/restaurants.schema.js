@@ -3,6 +3,7 @@ import { gql } from 'apollo-server-express';
 const typeDefs = gql`
     extend type Query {
         restaurants(limit: Int, offset: Int): [Restaurants]
+        restaurant(slug: String!): Restaurants
     }
    
     type Restaurants {
@@ -16,3 +17,4 @@ const typeDefs = gql`
 `;
 
 export default typeDefs;
+// restaurant(slug: String!): Restaurant

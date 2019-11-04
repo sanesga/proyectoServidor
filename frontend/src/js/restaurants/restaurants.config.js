@@ -1,7 +1,7 @@
 
 function RestaurantsConfig($stateProvider) {
   "ngInject";
-
+console.log("entra al config de restaurants");
   $stateProvider
 
     .state("app.restaurants", {
@@ -16,5 +16,21 @@ function RestaurantsConfig($stateProvider) {
         }
       }
     })
+
+    .state('app.restaurantsDetails', {
+      url: "/restaurants/:slug",
+      controller: 'RestaurantsDetailsCtrl',
+      controllerAs: '$ctrl',
+      templateUrl: 'restaurants/restaurantsDetails.html',
+      title: 'Restaurants Details',
+      resolve: {
+        restaurant: function(Restaurants, $state, $stateParams) {
+          return Restaurants.getRestaurant($stateParams.slug).then(
+           (data) => data.restaurant
+          )
+        }
+      }
+    })
+
 };
 export default RestaurantsConfig;

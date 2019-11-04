@@ -27,6 +27,7 @@ export default class Restaurants {
     let query = `
       query getRestaurants {
         restaurants {
+          slug
           name
           description
           location
@@ -37,18 +38,18 @@ export default class Restaurants {
     return this._GQL.get(query);
   }
 
-  // getRestaurant(id) {
-  //   let query = `
-  //   {
-  //   restaurant(id:"${id}"){
-  //     title
-  //     description
-  //     price
-  //     category
-  // 		location
-  //   }
-  // }
-  //   `;
-  //   return this._GQL.get(query);
-  // }
+  getRestaurant(id) {
+    let query = `
+    {
+    restaurant(slug:"${slug}"){
+      title
+      description
+      price
+      category
+  		location
+    }
+  }
+    `;
+    return this._GQL.get(query);
+  }
  }

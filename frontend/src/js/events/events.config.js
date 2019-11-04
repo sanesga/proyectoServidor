@@ -25,9 +25,6 @@ function EventsConfig($stateProvider) {
     title: 'Events Details',
     resolve: {
       event: function(Events, $state, $stateParams) {
-        // console.log(Events);
-        // console.log($state);
-        // console.log($stateParams.id);
         return Events.getEvent($stateParams.id).then(
          (data) => data.event
         )
