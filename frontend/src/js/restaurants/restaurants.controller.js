@@ -5,6 +5,8 @@ class HotelsCtrl {
     this._$scope = $scope;
     this.restaurants = restaurants.restaurants;
     $scope.restaurants = this.restaurants;
+   
+    
 
   }
 }

@@ -48,7 +48,7 @@
 #home h2, .homeP{ /*texto de cabecera*/
   text-align: center;
 }
-#categoryButton { /*boton categoria del home*/
+.categoryButton { /*boton categoria del home*/
   margin: 30px;
   width: 150px;
   height: 80px;
@@ -58,6 +58,7 @@
   color: white;
   font-size: 25px;
   float: left;
+
 }
 .hotel, .restaurant, .event {
   border: 1px solid lightgrey;
