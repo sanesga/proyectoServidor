@@ -1,7 +1,5 @@
 <div class="restaurant" ng-repeat="restaurant in $ctrl.restaurants">
     <h3>{{restaurant.name}}</h3>
-    <p>{{restaurant.description}}</p>
     <p>Ubicación: {{restaurant.location}}</p>
-    <p>Categoría: {{restaurant.category}}</p>
      <button ui-sref="app.restaurantsDetails({slug:restaurant.slug})">See more </button>
 </div>

@@ -1,7 +1,7 @@
 class RestaurantsDetailsCtrl {
-  constructor() {
+  constructor(restaurant) {
     "ngInject";
-    console.log("entra al controller de restaurants details");
+    this.restaurant=restaurant;
 
   }
 }

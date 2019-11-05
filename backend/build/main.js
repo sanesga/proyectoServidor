@@ -56285,15 +56285,15 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("components/article-helpers/article-meta.html", "<div class=\"article-meta\">\n  <a ui-sref=\"app.profile.main({ username:$ctrl.article.author.username })\">\n    <img id=\"imgArticlePreview\" ng-src=\"{{$ctrl.article.author.image}}\" />\n  </a>\n\n  <div class=\"info\">\n    <a class=\"author\"\n      ui-sref=\"app.profile.main({ username:$ctrl.article.author.username })\"\n      ng-bind=\"$ctrl.article.author.username\">\n    </a>\n    <span class=\"date\"\n      ng-bind=\"$ctrl.article.createdAt | date: \'longDate\' \">\n    </span>\n  </div>\n\n  <ng-transclude></ng-transclude>\n</div>");
   $templateCache.put("components/article-helpers/article-preview.html", "<div class=\"article-preview\">\n  <article-meta article=\"$ctrl.article\">\n    <favorite-btn\n      article=\"$ctrl.article\"\n      class=\"pull-xs-right\">\n      {{$ctrl.article.favoritesCount}}\n    </favorite-btn>\n  </article-meta>\n\n  <a ui-sref=\"app.article({ slug: $ctrl.article.slug })\" class=\"preview-link\">\n    <h1 ng-bind=\"$ctrl.article.title\"></h1>\n    <p ng-bind=\"$ctrl.article.description\"></p>\n    <span>Read more...</span>\n    <ul class=\"tag-list\">\n      <li class=\"tag-default tag-pill tag-outline\"\n        ng-repeat=\"tag in $ctrl.article.tagList\">\n        {{tag}}\n      </li>\n    </ul>\n  </a>\n</div>\n");
   $templateCache.put("components/article-helpers/list-pagination.html", "<nav>\n  <ul class=\"pagination\">\n\n    <li class=\"page-item\"\n      ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\"\n      ng-click=\"$ctrl.changePage(pageNumber)\">\n\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n\n    </li>\n\n  </ul>\n</nav>\n");
+  $templateCache.put("components/events-helpers/events-detail.html", "\n<div class=\"event\">\n        <h2 ng-bind=\"$ctrl.event.title\"> </h2>\n        <p ng-bind=\"$ctrl.event.description\"> </p>\n        <p ng-bind=\"\'Precio: \'+$ctrl.event.price + \'€\'\"></p>\n        <p ng-bind=\"\'Categoría: \'+$ctrl.event.category\"> </p>\n        <p ng-bind=\"\'Lugar: \'+$ctrl.event.location\"> </p>\n    </div>\n");
+  $templateCache.put("components/events-helpers/events-list.html", "<div class=\"event\" ng-repeat=\"event in $ctrl.events\">\n    <h3>{{event.title}}</h3>\n    <p>Precio: {{event.price}} €</p>\n     <button ui-sref=\"app.eventsDetails({id:event.id})\">See more </button>\n</div>\n");
   $templateCache.put("components/buttons/favorite-btn.html", "\n\n<button class=\"btn btn-sm\"\n  ng-class=\"{ \'disabled\' : $ctrl.isSubmitting,\n              \'btn-outline-primary\': !$ctrl.hotels.favorited,\n              \'btn-primary\': $ctrl.hotels.favorited }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-heart\"></i> <ng-transclude></ng-transclude>\n</button>\n\n");
   $templateCache.put("components/buttons/follow-btn.html", "\n\n\n<button\n  class=\"btn btn-sm action-btn\"\n  ng-class=\"{ \'disabled\': $ctrl.isSubmitting,\n              \'btn-outline-secondary\': !$ctrl.user.following,\n              \'btn-secondary\': $ctrl.user.following }\"\n  ng-click=\"$ctrl.submit()\">\n  <i class=\"ion-plus-round\"></i>\n  &nbsp;\n  {{ $ctrl.user.following ? \'Unfollow\' : \'Follow\' }} {{ $ctrl.user.username }}\n\n</button>\n\n\n");
   $templateCache.put("components/hotels-helpers/hotels-list.html", " <hotels-preview hotel=\"hotel\" ng-repeat=\"hotel in $ctrl.list\">\n</hotels-preview> \n\n\n<list-pagination\n total-pages=\"$ctrl.listConfig.totalPages\"\n current-page=\"$ctrl.listConfig.currentPage\"\n ng-hide=\"$ctrl.listConfig.totalPages <= 1\">\n</list-pagination> \n");
   $templateCache.put("components/hotels-helpers/hotels-preview.html", "<div class=\"hotel\">\n        <a ui-sref=\"app.detailsHotels({slug:$ctrl.hotel.slug})\">\n                <h2 ng-bind=\"$ctrl.hotel.name\"> </h2>\n        </a>\n        <p ng-bind=\"$ctrl.hotel.location\"> </p>\n        <favorite-btn hotel=\"$ctrl.hotel\" class=\"pull-xs-right\">\n                {{$ctrl.hotel.favoritesCount}}\n        </favorite-btn>\n</div>");
   $templateCache.put("components/hotels-helpers/list-pagination.html", "<p>Estamos en list pagination</p>\n<nav>\n  <ul class=\"pagination\">\n    <li class=\"page-item\" ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\" ng-click=\"$ctrl.changePage(pageNumber)\">\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n    </li>\n  </ul>\n</nav>");
-  $templateCache.put("components/events-helpers/events-detail.html", "\n<div class=\"event\">\n        <h2 ng-bind=\"$ctrl.event.title\"> </h2>\n        <p ng-bind=\"$ctrl.event.description\"> </p>\n        <p ng-bind=\"\'Precio: \'+$ctrl.event.price + \'€\'\"></p>\n        <p ng-bind=\"\'Categoría: \'+$ctrl.event.category\"> </p>\n        <p ng-bind=\"\'Lugar: \'+$ctrl.event.location\"> </p>\n    </div>\n");
-  $templateCache.put("components/events-helpers/events-list.html", "<div class=\"event\" ng-repeat=\"event in $ctrl.events\">\n    <h3>{{event.title}}</h3>\n    <p>Precio: {{event.price}} €</p>\n     <button ui-sref=\"app.eventsDetails({id:event.id})\">See more </button>\n</div>\n");
-  $templateCache.put("components/restaurants-helpers/restaurants-detail.html", "<!-- \n<div class=\"restaurant\">\n        <h2 ng-bind=\"$ctrl.restaurant.name\"> </h2>\n        <p ng-bind=\"$ctrl.restaurant.description\"> </p>\n        <p ng-bind=\"\'Lugar: \'+$ctrl.restaurant.location\"> </p>\n        <p ng-bind=\"\'Categoría: \'+$ctrl.restaurant.category\"> </p>\n    </div> -->\n\n    <p>Estamos en el detalle de restaurant</p>\n");
-  $templateCache.put("components/restaurants-helpers/restaurants-list.html", "<div class=\"restaurant\" ng-repeat=\"restaurant in $ctrl.restaurants\">\n    <h3>{{restaurant.name}}</h3>\n    <p>{{restaurant.description}}</p>\n    <p>Ubicación: {{restaurant.location}}</p>\n    <p>Categoría: {{restaurant.category}}</p>\n     <button ui-sref=\"app.restaurantsDetails({slug:restaurant.slug})\">See more </button>\n</div>\n");
+  $templateCache.put("components/restaurants-helpers/restaurants-detail.html", "\n<div class=\"restaurant\">\n        <h2 ng-bind=\"$ctrl.restaurant.name\"> </h2>\n        <p ng-bind=\"$ctrl.restaurant.description\"> </p>\n        <p ng-bind=\"\'Lugar: \'+$ctrl.restaurant.location\"> </p>\n        <p ng-bind=\"\'Categoría: \'+$ctrl.restaurant.category\"> </p>\n    </div>\n\n  \n");
+  $templateCache.put("components/restaurants-helpers/restaurants-list.html", "<div class=\"restaurant\" ng-repeat=\"restaurant in $ctrl.restaurants\">\n    <h3>{{restaurant.name}}</h3>\n    <p>Ubicación: {{restaurant.location}}</p>\n     <button ui-sref=\"app.restaurantsDetails({slug:restaurant.slug})\">See more </button>\n</div>\n");
   $templateCache.put("components/users-helpers/users-list.html", "<div id=\"usuarios\" ng-repeat=\"user in $ctrl.users\">\n    <img src=\"{{user.image}}\"></img>\n    <h3>{{user.username}}</h3>\n    <p>{{user.bio}}</p>\n    <follow-btn user=\"user\"></follow-btn>\n</div>");
 }]);
 
@@ -57383,7 +57383,6 @@ Object.defineProperty(exports, "__esModule", {
 function RestaurantsConfig($stateProvider) {
   "ngInject";
 
-  console.log("entra al config de restaurants");
   $stateProvider.state("app.restaurants", {
     url: "/restaurants",
     controller: "RestaurantsCtrl",
@@ -57445,13 +57444,14 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var RestaurantsDetailsCtrl = function RestaurantsDetailsCtrl() {
+var RestaurantsDetailsCtrl = function RestaurantsDetailsCtrl(restaurant) {
   "ngInject";
 
   _classCallCheck(this, RestaurantsDetailsCtrl);
 
-  console.log("entra al controller de restaurants details");
+  this.restaurant = restaurant;
 };
+RestaurantsDetailsCtrl.$inject = ["restaurant"];
 
 exports.default = RestaurantsDetailsCtrl;
 
@@ -58232,8 +58232,8 @@ var Restaurants = function () {
     }
   }, {
     key: "getRestaurant",
-    value: function getRestaurant(id) {
-      var query = "\n    {\n    restaurant(slug:\"" + slug + "\"){\n      title\n      description\n      price\n      category\n  \t\tlocation\n    }\n  }\n    ";
+    value: function getRestaurant(slug) {
+      var query = "\n    {\n    restaurant(slug:\"" + slug + "\"){\n      name\n      description\n      location\n      category\n    }\n  }\n    ";
       return this._GQL.get(query);
     }
   }]);

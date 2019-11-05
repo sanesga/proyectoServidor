@@ -1,7 +1,6 @@
 export default class Restaurants {
   constructor(AppConstants, $http, $q,GraphQLClient) {
     "ngInject";
-
     this._AppConstants = AppConstants;
     this._$http = $http;
     this._$q = $q;
@@ -38,15 +37,14 @@ export default class Restaurants {
     return this._GQL.get(query);
   }
 
-  getRestaurant(id) {
+  getRestaurant(slug) {
     let query = `
     {
     restaurant(slug:"${slug}"){
-      title
+      name
       description
-      price
+      location
       category
-  		location
     }
   }
     `;

@@ -1,7 +1,6 @@
 
 function RestaurantsConfig($stateProvider) {
   "ngInject";
-console.log("entra al config de restaurants");
   $stateProvider
 
     .state("app.restaurants", {
