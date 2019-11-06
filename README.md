@@ -71,6 +71,7 @@
 
 ## Run Server GraphQl (Restaurants)
 
+- cd backendGraphQl
 - Install dependencies: sudo npm install
 - npm run dev
 
@@ -82,6 +83,7 @@
 
 ## Run Server Prisma (Events)
 
+- cd backendPrisma
 - Install Prima CLI: npm install -g prisma
 - Install dependencies: sudo npm install
 - npm run start
@@ -107,6 +109,23 @@
 - http://localhost:4000
 
 ***
+
+## Run Microservers Moleculer
+
+- cd backendMoleculer
+- sudo npm install
+- lanzar portainer : sudo docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer (http://localhost:9000)
+- sudo docker-compose up --build -d
+- Browser: http://localhost:4001
+- Traefik dashboard: http://localhost:4002
+
+### For changes
+
+- sudo docker-compose stop
+- sudo docker-compose up --build -d
+
+
+
 
 
 
