@@ -60,7 +60,7 @@
   float: left;
 
 }
-.hotel, .restaurant, .event {
+.hotel, .restaurant, .event, .promotions{
   border: 1px solid lightgrey;
   margin: 30px;
   padding: 10px;
@@ -71,7 +71,7 @@
 .hotel h2 {
   font-weight: bold;
 }
-.hotel button , .event button, .restaurant button{
+.hotel button , .event button, .restaurant button, .promotions button{
   width: 130px;
   height: 50px;
   border-radius: 10px;

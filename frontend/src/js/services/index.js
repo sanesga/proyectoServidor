@@ -42,5 +42,8 @@ servicesModule.service('Restaurants', RestaurantsService);
 import EventsService from './events.service';
 servicesModule.service('Events', EventsService);
 
+import PromotionsService from './promotions.service';
+servicesModule.service('Promotions', PromotionsService);
+
 
 export default servicesModule;

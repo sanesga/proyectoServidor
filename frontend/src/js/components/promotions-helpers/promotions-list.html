@@ -1,0 +1,4 @@
+<div class="promotions" ng-repeat="p in $ctrl.promotions">
+    <h3>{{p.name}}</h3>
+     <button ui-sref="app.promotionsDetails({id:p.id})">See price </button>
+</div>

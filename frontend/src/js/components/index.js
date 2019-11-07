@@ -48,5 +48,8 @@ componentsModule.component('restaurantsList', RestaurantsList);
 import RestaurantsDetail from './restaurants-helpers/restaurants-detail.component';
 componentsModule.component('restaurantsDetail', RestaurantsDetail);
 
+import PromotionsList from './promotions-helpers/promotions-list.component';
+componentsModule.component('promotionsList', PromotionsList);
+
 
 export default componentsModule;

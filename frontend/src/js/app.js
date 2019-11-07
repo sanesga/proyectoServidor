@@ -26,6 +26,8 @@ import './hotels';
 import './users'; 
 import './restaurants'; 
 import './events';
+import './promotions';
+
 
 // Create and bootstrap application
 const requires = [
@@ -45,6 +47,7 @@ const requires = [
   'app.users',
   'app.restaurants',
   'app.events',
+  'app.promotions',
   toastr
 ];
 
