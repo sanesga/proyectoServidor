@@ -30,11 +30,11 @@ function RestaurantsConfig($stateProvider) {
         }
       }
     })
-    .state("app.restaurantsList", {
-      url: "/restaurantsList",
-      controller: "RestaurantsListCtrl",
+    .state("app.listaRestaurants", {
+      url: "/listaRestaurants",
+      controller: "ListaRestaurantsCtrl",
       controllerAs: "$ctrl",
-      templateUrl: "restaurants/restaurantsList.html",
+      templateUrl: "restaurants/listaRestaurants.html",
       title: "Lista de restaurantes",
       resolve: {
         restaurants: function(Restaurants) {

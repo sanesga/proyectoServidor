@@ -56308,16 +56308,16 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("hotels/detailshotels.html", "<div class=\"hotel\">\n<h2>{{hotel.name}}</h2>\n<p>{{hotel.description}}</p>\n<p>{{hotel.location}}</p>\n<!-- <button ui-sref=\"app.hotels({filter:hotel.category})\">Atrás </button> -->\n</div>\n\n\n\n");
   $templateCache.put("hotels/hotels.html", "<div class=\"hotel\" ng-repeat=\"hotel in hotelesFiltrados\">\n    <h2 > {{hotel.name}}</h2>\n    <p id=\"location\">{{hotel.location}}</p>\n   <button ng-click=\"openDetails()\">Visit</button> \n</div>");
   $templateCache.put("hotels/listaHoteles.html", "<hotels-list  limit=\"5\" list-config=\"$ctrl.listConfig\"></hotels-list>\n\n");
-  $templateCache.put("profile/profile-articles.html", "<article-list limit=\"5\" list-config=\"$ctrl.listConfig\"></article-list>\n");
-  $templateCache.put("profile/profile.html", "<div class=\"profile-page\">\n\n  <!-- User\'s basic info & action buttons -->\n  <div class=\"user-info\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n          <img  ng-src=\"{{::$ctrl.profile.image}}\" class=\"user-img\" />\n          <h4 ng-bind=\"::$ctrl.profile.username\"></h4>\n          <p ng-bind=\"::$ctrl.profile.bio\"></p>\n\n          <a ui-sref=\"app.settings\"\n            class=\"btn btn-sm btn-outline-secondary action-btn\"\n            ng-show=\"$ctrl.isUser\">\n            <i class=\"ion-gear-a\"></i> Edit Profile Settings\n          </a>\n\n          <follow-btn user=\"$ctrl.profile\" ng-hide=\"$ctrl.isUser\"></follow-btn>\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Container where User\'s posts & favs are list w/ toggle tabs -->\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n        <!-- Tabs for switching between author articles & favorites -->\n        <!-- <div class=\"articles-toggle\">\n          <ul class=\"nav nav-pills outline-active\">\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link active\"\n                ui-sref-active=\"active\"\n                ui-sref=\"app.profile.main({username: $ctrl.profile.username})\">\n                My Articles\n              </a>\n            </li>\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link\"\n                ui-sref-active=\"active\"\n                ui-sref=\"app.profile.favorites({username: $ctrl.profile.username})\">\n                Favorited Articles\n              </a>\n            </li>\n\n          </ul>\n        </div> -->\n\n        <!-- List of articles -->\n        <!-- <div ui-view></div> -->\n\n\n      </div>\n\n    <!-- End row & container divs -->\n    </div>\n  </div>\n\n</div>\n");
   $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
   $templateCache.put("layout/footer.html", "<footer>\n  \n  </footer>");
-  $templateCache.put("layout/header.html", "<nav show-authed=\"false\">\n  <!-- Links -->\n  <ul class=\"menu\">\n    <li>\n      <a ui-sref=\"app.home\">Home</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.login\">Sign in</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.register\">Register</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaHoteles\"> Hoteles\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.users\"> Usuarios\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.restaurantsList\"> Restaurantes\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.events\"> Eventos\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.promotions\"> Promociones\n      </a>\n    </li>\n  </ul>\n</nav>\n\n<!--cuando estamos logeados mostrará este menú-->\n<nav show-authed=\"true\">\n  <!-- Links -->\n  <ul class=\"menu\">\n    <li>\n      <a ui-sref=\"app.home\">Home</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.settings\">\n        <i class=\"ion-gear-a\"></i>Settings\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.profile.main({ username: $ctrl.currentUser.username})\">\n        <img id=\"imagenMenuPerfil\" ng-src=\"{{$ctrl.currentUser.image}}\" class=\"user-pic\" />\n        {{ $ctrl.currentUser.username }}\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.editor\">\n        <i class=\"ion-compose\"></i>&nbsp;New Article\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaHoteles\"> Lista Hoteles\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.users\"> Usuarios\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.restaurantsList\"> Restaurantes\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.events\"> Eventos\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.promotions\"> Promociones\n      </a>\n    </li>\n  </ul>\n</nav>\n\n\n<!--header title-->\n<div id=\"title\">\n  <h1>HOTELS BOOKING</h1>\n</div>");
+  $templateCache.put("layout/header.html", "<nav show-authed=\"false\">\n  <!-- Links -->\n  <ul class=\"menu\">\n    <li>\n      <a ui-sref=\"app.home\">Home</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.login\">Sign in</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.register\">Register</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaHoteles\"> Hoteles\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.users\"> Usuarios\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaRestaurants\"> Restaurantes\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.events\"> Eventos\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.promotions\"> Promociones\n      </a>\n    </li>\n  </ul>\n</nav>\n\n<!--cuando estamos logeados mostrará este menú-->\n<nav show-authed=\"true\">\n  <!-- Links -->\n  <ul class=\"menu\">\n    <li>\n      <a ui-sref=\"app.home\">Home</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.settings\">\n        <i class=\"ion-gear-a\"></i>Settings\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.profile.main({ username: $ctrl.currentUser.username})\">\n        <img id=\"imagenMenuPerfil\" ng-src=\"{{$ctrl.currentUser.image}}\" class=\"user-pic\" />\n        {{ $ctrl.currentUser.username }}\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.editor\">\n        <i class=\"ion-compose\"></i>&nbsp;New Article\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaHoteles\"> Lista Hoteles\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.users\"> Usuarios\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaRestaurants\"> Restaurantes\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.events\"> Eventos\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.promotions\"> Promociones\n      </a>\n    </li>\n  </ul>\n</nav>\n\n\n<!--header title-->\n<div id=\"title\">\n  <h1>HOTELS BOOKING</h1>\n</div>");
+  $templateCache.put("profile/profile-articles.html", "<article-list limit=\"5\" list-config=\"$ctrl.listConfig\"></article-list>\n");
+  $templateCache.put("profile/profile.html", "<div class=\"profile-page\">\n\n  <!-- User\'s basic info & action buttons -->\n  <div class=\"user-info\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n          <img  ng-src=\"{{::$ctrl.profile.image}}\" class=\"user-img\" />\n          <h4 ng-bind=\"::$ctrl.profile.username\"></h4>\n          <p ng-bind=\"::$ctrl.profile.bio\"></p>\n\n          <a ui-sref=\"app.settings\"\n            class=\"btn btn-sm btn-outline-secondary action-btn\"\n            ng-show=\"$ctrl.isUser\">\n            <i class=\"ion-gear-a\"></i> Edit Profile Settings\n          </a>\n\n          <follow-btn user=\"$ctrl.profile\" ng-hide=\"$ctrl.isUser\"></follow-btn>\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Container where User\'s posts & favs are list w/ toggle tabs -->\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n        <!-- Tabs for switching between author articles & favorites -->\n        <!-- <div class=\"articles-toggle\">\n          <ul class=\"nav nav-pills outline-active\">\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link active\"\n                ui-sref-active=\"active\"\n                ui-sref=\"app.profile.main({username: $ctrl.profile.username})\">\n                My Articles\n              </a>\n            </li>\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link\"\n                ui-sref-active=\"active\"\n                ui-sref=\"app.profile.favorites({username: $ctrl.profile.username})\">\n                Favorited Articles\n              </a>\n            </li>\n\n          </ul>\n        </div> -->\n\n        <!-- List of articles -->\n        <!-- <div ui-view></div> -->\n\n\n      </div>\n\n    <!-- End row & container divs -->\n    </div>\n  </div>\n\n</div>\n");
   $templateCache.put("promotions/promotions.html", "<!-- <div class=\"promotions\" ng-repeat=\"p in $ctrl.promotions\">\n    <h2 > {{p.name}}</h2>\n    <p id=\"price\">{{p.price}}</p>\n</div> -->\n\n<promotions-list  promotions=\"$ctrl.promotions\"></promotions-list>");
   $templateCache.put("promotions/promotionsDetails.html", "<div class=\"promotions\">\n<p>Promotion\'s price: {{$ctrl.promotion.price}} €</p>\n</div>\n\n\n\n");
+  $templateCache.put("restaurants/listaRestaurants.html", "<restaurants-list restaurants=\"$ctrl.restaurants\"></restaurants-list> \n\n");
   $templateCache.put("restaurants/restaurants.html", "<restaurants-list restaurants=\"restaurantesFiltrados\"></restaurants-list> \n\n");
   $templateCache.put("restaurants/restaurantsDetails.html", "<restaurants-detail restaurant=\"$ctrl.restaurant\"></restaurants-detail>");
-  $templateCache.put("restaurants/restaurantsList.html", "<restaurants-list restaurants=\"restaurants\"></restaurants-list> \n");
   $templateCache.put("settings/settings.html", "<div class=\"settings-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n\n        <h1 class=\"text-xs-center\">Your Settings</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"URL of profile picture\"\n                ng-model=\"$ctrl.formData.image\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"text\"\n                placeholder=\"Username\"\n                ng-model=\"$ctrl.formData.username\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Short bio about you\"\n                ng-model=\"$ctrl.formData.bio\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"email\"\n                placeholder=\"Email\"\n                ng-model=\"$ctrl.formData.email\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"password\"\n                placeholder=\"New Password\"\n                ng-model=\"$ctrl.formData.password\" />\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n              type=\"submit\">\n              Actualizar settings\n            </button>\n\n          </fieldset>\n        </form>\n\n        <!-- Line break for logout button -->\n        <hr />\n\n       <button class=\"btn btn-outline-danger\"\n          ng-click=\"$ctrl.logout()\">\n         Log out\n        </button>\n\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("users/users.html", "\n<!-- <div ng-repeat=\"user in users\">\n    <p>{{user.username}}</p>\n</div> -->\n<users-list users=\"users\"></users-list>");
   $templateCache.put("components/article-helpers/article-list.html", "<article-preview\n  article=\"article\"\n  ng-repeat=\"article in $ctrl.list\">\n</article-preview>\n\n<div class=\"article-preview\"\n  ng-hide=\"!$ctrl.loading\">\n  Loading articles...\n</div>\n\n<div class=\"article-preview\"\n  ng-show=\"!$ctrl.loading && !$ctrl.list.length\">\n  No articles are here... yet.\n</div>\n\n<list-pagination\n total-pages=\"$ctrl.listConfig.totalPages\"\n current-page=\"$ctrl.listConfig.currentPage\"\n ng-hide=\"$ctrl.listConfig.totalPages <= 1\">\n</list-pagination>\n");
@@ -56333,7 +56333,7 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("components/hotels-helpers/list-pagination.html", "<p>Estamos en list pagination</p>\n<nav>\n  <ul class=\"pagination\">\n    <li class=\"page-item\" ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\" ng-click=\"$ctrl.changePage(pageNumber)\">\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n    </li>\n  </ul>\n</nav>");
   $templateCache.put("components/promotions-helpers/promotions-list.html", "<div class=\"promotions\" ng-repeat=\"p in $ctrl.promotions\">\n    <h3>{{p.name}}</h3>\n     <button ui-sref=\"app.promotionsDetails({id:p._id})\">See price </button>\n</div>\n");
   $templateCache.put("components/restaurants-helpers/restaurants-detail.html", "\n<div class=\"restaurant\">\n        <h2 ng-bind=\"$ctrl.restaurant.name\"> </h2>\n        <p ng-bind=\"$ctrl.restaurant.description\"> </p>\n        <p ng-bind=\"\'Lugar: \'+$ctrl.restaurant.location\"> </p>\n        <p ng-bind=\"\'Categoría: \'+$ctrl.restaurant.category\"> </p>\n    </div>\n\n  \n");
-  $templateCache.put("components/restaurants-helpers/restaurants-list.html", "\n<div class=\"restaurant\" ng-repeat=\"restaurant in $ctrl.restaurants\">\n    <h3>{{restaurant.name}}</h3>\n    <p>Ubicación: {{restaurant.location}}</p>\n     <button ui-sref=\"app.restaurantsDetails({slug:restaurant.slug})\">See more </button>\n</div>\n");
+  $templateCache.put("components/restaurants-helpers/restaurants-list.html", "\n<div class=\"restaurant\" ng-repeat=\"restaurant in $ctrl.restaurants\">\n    <h3>{{restaurant.name}}</h3>\n    <p>Ubicación: {{restaurant.location}}</p>\n     <button ui-sref=\"app.restaurantsDetails({slug:restaurant.slug})\">See more </button>\n</div>\n\n");
   $templateCache.put("components/users-helpers/users-list.html", "<div id=\"usuarios\" ng-repeat=\"user in $ctrl.users\">\n    <img src=\"{{user.image}}\"></img>\n    <h3>{{user.username}}</h3>\n    <p>{{user.bio}}</p>\n    <follow-btn user=\"user\"></follow-btn>\n</div>");
 }]);
 
@@ -57522,9 +57522,9 @@ var _restaurantsDetails = require('./restaurantsDetails.controller');
 
 var _restaurantsDetails2 = _interopRequireDefault(_restaurantsDetails);
 
-var _restaurantsList = require('./restaurantsList.controller');
+var _listaRestaurants = require('./listaRestaurants.controller');
 
-var _restaurantsList2 = _interopRequireDefault(_restaurantsList);
+var _listaRestaurants2 = _interopRequireDefault(_listaRestaurants);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57536,11 +57536,32 @@ restaurantsModule.controller('RestaurantsCtrl', _restaurants4.default);
 
 restaurantsModule.controller('RestaurantsDetailsCtrl', _restaurantsDetails2.default);
 
-restaurantsModule.controller('RestaurantsListCtrl', _restaurantsList2.default);
+restaurantsModule.controller('ListaRestaurantsCtrl', _listaRestaurants2.default);
 
 exports.default = restaurantsModule;
 
-},{"./restaurants.config":114,"./restaurants.controller":115,"./restaurantsDetails.controller":116,"./restaurantsList.controller":117,"angular":7}],114:[function(require,module,exports){
+},{"./listaRestaurants.controller":114,"./restaurants.config":115,"./restaurants.controller":116,"./restaurantsDetails.controller":117,"angular":7}],114:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var RestaurantsListCtrl = function RestaurantsListCtrl(restaurants, $scope) {
+  "ngInject";
+
+  _classCallCheck(this, RestaurantsListCtrl);
+
+  this._$scope = $scope;
+  this.restaurants = restaurants.restaurants;
+};
+RestaurantsListCtrl.$inject = ["restaurants", "$scope"];
+
+exports.default = RestaurantsListCtrl;
+
+},{}],115:[function(require,module,exports){
 "use strict";
 
 RestaurantsConfig.$inject = ["$stateProvider"];
@@ -57577,11 +57598,11 @@ function RestaurantsConfig($stateProvider) {
         });
       }]
     }
-  }).state("app.restaurantsList", {
-    url: "/restaurantsList",
-    controller: "RestaurantsListCtrl",
+  }).state("app.listaRestaurants", {
+    url: "/listaRestaurants",
+    controller: "ListaRestaurantsCtrl",
     controllerAs: "$ctrl",
-    templateUrl: "restaurants/restaurantsList.html",
+    templateUrl: "restaurants/listaRestaurants.html",
     title: "Lista de restaurantes",
     resolve: {
       restaurants: ["Restaurants", function restaurants(Restaurants) {
@@ -57594,7 +57615,7 @@ function RestaurantsConfig($stateProvider) {
 };
 exports.default = RestaurantsConfig;
 
-},{}],115:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57625,7 +57646,7 @@ RestaurantsCtrl.$inject = ["restaurants", "$state", "$scope", "$stateParams"];
 
 exports.default = RestaurantsCtrl;
 
-},{}],116:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57644,27 +57665,6 @@ var RestaurantsDetailsCtrl = function RestaurantsDetailsCtrl(restaurant) {
 RestaurantsDetailsCtrl.$inject = ["restaurant"];
 
 exports.default = RestaurantsDetailsCtrl;
-
-},{}],117:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var RestaurantsListCtrl = function RestaurantsListCtrl(restaurants, $scope) {
-  "ngInject";
-
-  _classCallCheck(this, RestaurantsListCtrl);
-
-  this._$scope = $scope;
-  this.restaurants = restaurants.restaurants;
-};
-RestaurantsListCtrl.$inject = ["restaurants", "$scope"];
-
-exports.default = RestaurantsListCtrl;
 
 },{}],118:[function(require,module,exports){
 'use strict';
