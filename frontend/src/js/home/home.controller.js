@@ -1,7 +1,7 @@
 import EventsConfig from "../events/events.config";
 
 class HomeCtrl {
-  constructor(AppConstants, $scope, category, events, restaurants) {
+  constructor(AppConstants, $scope, category, events, restaurants, promotions) {
     "ngInject";
 
     this.appName = AppConstants.appName;
@@ -9,6 +9,7 @@ class HomeCtrl {
     this.category = category;
     this.events = events.events;
     this.restaurants = restaurants.restaurants;
+    this.promotions = promotions;
 
     
     //ordenamos de menor a mayor precio, para mostrarlo en el home

@@ -4,7 +4,6 @@ class PromotionsDetailsCtrl {
     "ngInject";
     this._$scope = $scope;
     this.promotion = promotion;
-
   }
 }
 export default PromotionsDetailsCtrl;

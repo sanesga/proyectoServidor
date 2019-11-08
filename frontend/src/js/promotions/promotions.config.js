@@ -15,7 +15,6 @@ function PromotionsConfig($stateProvider) {
         return Promotions.getPromotions().then(promotions =>promotions);
       }
     }
-  
   })
   .state('app.promotionsDetails', {
     url: "/promotions/:id",
@@ -24,9 +23,9 @@ function PromotionsConfig($stateProvider) {
     templateUrl: 'promotions/promotionsDetails.html',
     title: 'Promotions Details',
     resolve: {
-      promotion: function(Promotions, $state, $stateParams) {
+      promotion: function(Promotions, $stateParams) {
         return Promotions.getPromotion($stateParams.id).then(
-         (data) => data.promotion
+         (data) => data
         )
       }
     }

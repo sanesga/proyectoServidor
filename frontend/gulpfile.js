@@ -88,7 +88,7 @@ gulp.task('default', ['html','css','img', 'browserify'], function() {
     port: 3001, //aquest és el port del frontend
     notify: false,
     ui: {
-      port: 4001
+      port: 4005
     }
   });
 

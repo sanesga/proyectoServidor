@@ -23,6 +23,11 @@ function HomeConfig($stateProvider) {
         return Restaurants.getRestaurants().then(
           (restaurant) => restaurant
         )
+      },
+      promotions: function(Promotions) {
+        return Promotions.getPromotions().then(
+          (promotions) => promotions
+        )
       }
     }
   })

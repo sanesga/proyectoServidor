@@ -19,7 +19,7 @@ export default class Promotions {
    
   getPromotion(id) {
     return this._$http({
-      url: this._AppConstants.apiMoleculer + "/promotion/" + id,
+      url: this._AppConstants.apiMoleculer + "/promotions/" + id,
       method: "GET"
     }) 
       .then(res => res.data);
