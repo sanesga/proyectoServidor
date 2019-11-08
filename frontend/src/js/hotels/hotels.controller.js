@@ -8,6 +8,7 @@ class HotelsCtrl {
     this.hotels=hotels;
 
     this.filter = $stateParams.filter;
+   
 
     var hotelesFiltrados = new Array();
     this.hotels.forEach(hotel => {

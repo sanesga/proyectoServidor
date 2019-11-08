@@ -1,7 +1,8 @@
 class RestaurantsListCtrl {
-  constructor($scope, $state) {
+  constructor($scope) {
     "ngInject";
     this._$scope = $scope;
+    
   }
 }
 

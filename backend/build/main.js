@@ -55046,7 +55046,7 @@ _angular2.default.bootstrap(document, ['app'], {
   strictDi: true
 });
 
-},{"./article":55,"./auth":58,"./components":70,"./config/app.config":77,"./config/app.constants":78,"./config/app.run":79,"./config/app.templates":80,"./contact":85,"./editor":88,"./events":92,"./home":96,"./hotels":100,"./layout":104,"./profile":105,"./promotions":109,"./restaurants":113,"./services":123,"./settings":132,"./users":135,"angular":7,"angular-toastr":4,"angular-ui-router":5}],51:[function(require,module,exports){
+},{"./article":55,"./auth":58,"./components":70,"./config/app.config":77,"./config/app.constants":78,"./config/app.run":79,"./config/app.templates":80,"./contact":85,"./editor":88,"./events":92,"./home":96,"./hotels":100,"./layout":104,"./profile":105,"./promotions":109,"./restaurants":113,"./services":124,"./settings":133,"./users":136,"angular":7,"angular-toastr":4,"angular-ui-router":5}],51:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -56129,14 +56129,14 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var RestaurantsListCtrl = function RestaurantsListCtrl($scope, $state) {
+var RestaurantsListCtrl = function RestaurantsListCtrl($scope) {
   "ngInject";
 
   _classCallCheck(this, RestaurantsListCtrl);
 
   this._$scope = $scope;
 };
-RestaurantsListCtrl.$inject = ["$scope", "$state"];
+RestaurantsListCtrl.$inject = ["$scope"];
 
 var RestaurantsList = {
   bindings: {
@@ -56303,20 +56303,21 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("editor/editor.html", "<div class=\"editor-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-10 offset-md-1 col-xs-12\">\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form>\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                ng-model=\"$ctrl.article.title\"\n                type=\"text\"\n                placeholder=\"Article Title\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                ng-model=\"$ctrl.article.description\"\n                type=\"text\"\n                placeholder=\"What\'s this article about?\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control\"\n                rows=\"8\"\n                ng-model=\"$ctrl.article.body\"\n                placeholder=\"Write your article (in markdown)\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Enter tags\"\n                ng-model=\"$ctrl.tagField\"\n                ng-keyup=\"$event.keyCode == 13 && $ctrl.addTag()\" />\n\n              <div class=\"tag-list\">\n                <span ng-repeat=\"tag in $ctrl.article.tagList\"\n                  class=\"tag-default tag-pill\">\n                  <i class=\"ion-close-round\" ng-click=\"$ctrl.removeTag(tag)\"></i>\n                  {{ tag }}\n                </span>\n              </div>\n            </fieldset>\n\n            <button class=\"btn btn-lg pull-xs-right btn-primary\" type=\"button\" ng-click=\"$ctrl.submit()\">\n              Publish Article\n            </button>\n\n          </fieldset>\n        </form>\n\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("events/events.html", "<events-list events=\"$ctrl.events\"></events-list>\n");
   $templateCache.put("events/eventsDetails.html", "<events-detail event=\"$ctrl.event\"></events-detail>");
-  $templateCache.put("home/home.html", "<div id=\"home\">\n  <!-- <home-slider-cmp></home-slider-cmp> componente creado para el slider de imagenes-->\n  <br>\n\n\n  <h2>HOTELES</h2>\n  <p class=\"homeP\">Categorías</p>\n  <div ng-repeat=\"c in $ctrl.category\">\n    <!--botón de categoría-->\n    <button class=\"categoryButton\" ui-sref=\"app.hotels({filter:c})\">{{ c }}</button>\n  </div>\n  <br><br><br><br><br><br> <br>\n\n\n\n  <h2>RESTAURANTES</h2>\n  <p class=\"homeP\">Categorías</p>\n  <div ng-repeat=\"r in $ctrl.restaurants\">\n    <button class=\"categoryButton\" ui-sref=\"app.restaurants({filter:r.category})\">{{ r.category }}</button>\n  </div>\n  <br><br><br><br><br><br><br>\n\n\n\n  <h2>EVENTOS</h2>\n  <p class=\"homeP\">De menor a mayor precio</p>\n  <events-list events=\"$ctrl.events\"></events-list>\n\n\n  <h2>PROMOCIONES</h2>\n  <p class=\"homeP\">Listado de promociones</p>\n  <promotions-list promotions=\"$ctrl.promotions\"></promotions-list>\n\n</div>");
+  $templateCache.put("home/home.html", "<div id=\"home\">\n  <!-- <home-slider-cmp></home-slider-cmp> componente creado para el slider de imagenes-->\n  <br>\n\n\n  <h2>HOTELES</h2>\n  <p class=\"homeP\">Categorías</p>\n  <div ng-repeat=\"c in $ctrl.category\">\n    <!--botón de categoría-->\n    <button class=\"categoryButton\" ui-sref=\"app.hotels({filter:c})\">{{ c }}</button>\n  </div>\n  <br><br><br><br><br><br> <br>\n\n\n  <h2>RESTAURANTES</h2>\n  <p class=\"homeP\">Categorías</p>\n  <div ng-repeat=\"r in $ctrl.restaurants\">\n    <button class=\"categoryButton\" ui-sref=\"app.restaurants({filter:r.category})\">{{ r.category }}</button>\n  </div>\n  <br><br><br><br><br><br><br>\n\n\n\n  <h2>EVENTOS</h2>\n  <p class=\"homeP\">De menor a mayor precio</p>\n  <events-list events=\"$ctrl.events\"></events-list>\n\n\n  <h2>PROMOCIONES</h2>\n  <p class=\"homeP\">Listado de promociones</p>\n  <promotions-list promotions=\"$ctrl.promotions\"></promotions-list>\n\n</div>");
   $templateCache.put("home/homeSlider.html", "<div style=\"height: 400px\">\n        <div uib-carousel active=\"active\" interval=\"$ctrl.myInterval\" no-wrap=\"$ctrl.noWrapSlides\">\n            <div uib-slide ng-repeat=\"slide in $ctrl.slides track by slide.id\" index=\"slide.id\" style=\"height: 400px\">\n            <img ng-src=\"{{slide.image}}\" class=\"img-fluid\" style=\"filter: blur(2px);\">\n            <div class=\"carousel-caption\" style=\"padding-bottom:100px;\">\n            </div>\n            </div>\n        </div>\n    </div>\n     \n ");
   $templateCache.put("hotels/detailshotels.html", "<div class=\"hotel\">\n<h2>{{hotel.name}}</h2>\n<p>{{hotel.description}}</p>\n<p>{{hotel.location}}</p>\n<!-- <button ui-sref=\"app.hotels({filter:hotel.category})\">Atrás </button> -->\n</div>\n\n\n\n");
   $templateCache.put("hotels/hotels.html", "<div class=\"hotel\" ng-repeat=\"hotel in hotelesFiltrados\">\n    <h2 > {{hotel.name}}</h2>\n    <p id=\"location\">{{hotel.location}}</p>\n   <button ng-click=\"openDetails()\">Visit</button> \n</div>");
   $templateCache.put("hotels/listaHoteles.html", "<hotels-list  limit=\"5\" list-config=\"$ctrl.listConfig\"></hotels-list>\n\n");
-  $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
-  $templateCache.put("layout/footer.html", "<footer>\n  \n  </footer>");
-  $templateCache.put("layout/header.html", "<nav show-authed=\"false\">\n  <!-- Links -->\n  <ul class=\"menu\">\n    <li>\n      <a ui-sref=\"app.home\">Home</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.login\">Sign in</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.register\">Register</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaHoteles\"> Hoteles\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.users\"> Usuarios\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.restaurants\"> Restaurantes\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.events\"> Eventos\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.promotions\"> Promociones\n      </a>\n    </li>\n  </ul>\n</nav>\n\n<!--cuando estamos logeados mostrará este menú-->\n<nav show-authed=\"true\">\n  <!-- Links -->\n  <ul class=\"menu\">\n    <li>\n      <a ui-sref=\"app.home\">Home</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.settings\">\n        <i class=\"ion-gear-a\"></i>Settings\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.profile.main({ username: $ctrl.currentUser.username})\">\n        <img id=\"imagenMenuPerfil\" ng-src=\"{{$ctrl.currentUser.image}}\" class=\"user-pic\" />\n        {{ $ctrl.currentUser.username }}\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.editor\">\n        <i class=\"ion-compose\"></i>&nbsp;New Article\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaHoteles\"> Lista Hoteles\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.users\"> Usuarios\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.restaurants\"> Restaurantes\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.events\"> Eventos\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.promotions\"> Promociones\n      </a>\n    </li>\n  </ul>\n</nav>\n\n\n<!--header title-->\n<div id=\"title\">\n  <h1>HOTELS BOOKING</h1>\n</div>");
   $templateCache.put("profile/profile-articles.html", "<article-list limit=\"5\" list-config=\"$ctrl.listConfig\"></article-list>\n");
   $templateCache.put("profile/profile.html", "<div class=\"profile-page\">\n\n  <!-- User\'s basic info & action buttons -->\n  <div class=\"user-info\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n          <img  ng-src=\"{{::$ctrl.profile.image}}\" class=\"user-img\" />\n          <h4 ng-bind=\"::$ctrl.profile.username\"></h4>\n          <p ng-bind=\"::$ctrl.profile.bio\"></p>\n\n          <a ui-sref=\"app.settings\"\n            class=\"btn btn-sm btn-outline-secondary action-btn\"\n            ng-show=\"$ctrl.isUser\">\n            <i class=\"ion-gear-a\"></i> Edit Profile Settings\n          </a>\n\n          <follow-btn user=\"$ctrl.profile\" ng-hide=\"$ctrl.isUser\"></follow-btn>\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Container where User\'s posts & favs are list w/ toggle tabs -->\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n        <!-- Tabs for switching between author articles & favorites -->\n        <!-- <div class=\"articles-toggle\">\n          <ul class=\"nav nav-pills outline-active\">\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link active\"\n                ui-sref-active=\"active\"\n                ui-sref=\"app.profile.main({username: $ctrl.profile.username})\">\n                My Articles\n              </a>\n            </li>\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link\"\n                ui-sref-active=\"active\"\n                ui-sref=\"app.profile.favorites({username: $ctrl.profile.username})\">\n                Favorited Articles\n              </a>\n            </li>\n\n          </ul>\n        </div> -->\n\n        <!-- List of articles -->\n        <!-- <div ui-view></div> -->\n\n\n      </div>\n\n    <!-- End row & container divs -->\n    </div>\n  </div>\n\n</div>\n");
+  $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
+  $templateCache.put("layout/footer.html", "<footer>\n  \n  </footer>");
+  $templateCache.put("layout/header.html", "<nav show-authed=\"false\">\n  <!-- Links -->\n  <ul class=\"menu\">\n    <li>\n      <a ui-sref=\"app.home\">Home</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.login\">Sign in</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.register\">Register</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaHoteles\"> Hoteles\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.users\"> Usuarios\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.restaurantsList\"> Restaurantes\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.events\"> Eventos\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.promotions\"> Promociones\n      </a>\n    </li>\n  </ul>\n</nav>\n\n<!--cuando estamos logeados mostrará este menú-->\n<nav show-authed=\"true\">\n  <!-- Links -->\n  <ul class=\"menu\">\n    <li>\n      <a ui-sref=\"app.home\">Home</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.contact\">Contact</a>\n    </li>\n    <li>\n      <a ui-sref=\"app.settings\">\n        <i class=\"ion-gear-a\"></i>Settings\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.profile.main({ username: $ctrl.currentUser.username})\">\n        <img id=\"imagenMenuPerfil\" ng-src=\"{{$ctrl.currentUser.image}}\" class=\"user-pic\" />\n        {{ $ctrl.currentUser.username }}\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.editor\">\n        <i class=\"ion-compose\"></i>&nbsp;New Article\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.listaHoteles\"> Lista Hoteles\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.users\"> Usuarios\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.restaurantsList\"> Restaurantes\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.events\"> Eventos\n      </a>\n    </li>\n    <li>\n      <a ui-sref=\"app.promotions\"> Promociones\n      </a>\n    </li>\n  </ul>\n</nav>\n\n\n<!--header title-->\n<div id=\"title\">\n  <h1>HOTELS BOOKING</h1>\n</div>");
   $templateCache.put("promotions/promotions.html", "<!-- <div class=\"promotions\" ng-repeat=\"p in $ctrl.promotions\">\n    <h2 > {{p.name}}</h2>\n    <p id=\"price\">{{p.price}}</p>\n</div> -->\n\n<promotions-list  promotions=\"$ctrl.promotions\"></promotions-list>");
   $templateCache.put("promotions/promotionsDetails.html", "<div class=\"promotions\">\n<p>Promotion\'s price: {{$ctrl.promotion.price}} €</p>\n</div>\n\n\n\n");
-  $templateCache.put("restaurants/restaurants.html", "<restaurants-list restaurants=\"$ctrl.restaurants\"></restaurants-list>");
+  $templateCache.put("restaurants/restaurants.html", "<restaurants-list restaurants=\"restaurantesFiltrados\"></restaurants-list> \n\n");
   $templateCache.put("restaurants/restaurantsDetails.html", "<restaurants-detail restaurant=\"$ctrl.restaurant\"></restaurants-detail>");
+  $templateCache.put("restaurants/restaurantsList.html", "<restaurants-list restaurants=\"restaurants\"></restaurants-list> \n");
   $templateCache.put("settings/settings.html", "<div class=\"settings-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n\n        <h1 class=\"text-xs-center\">Your Settings</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"URL of profile picture\"\n                ng-model=\"$ctrl.formData.image\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"text\"\n                placeholder=\"Username\"\n                ng-model=\"$ctrl.formData.username\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Short bio about you\"\n                ng-model=\"$ctrl.formData.bio\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"email\"\n                placeholder=\"Email\"\n                ng-model=\"$ctrl.formData.email\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"password\"\n                placeholder=\"New Password\"\n                ng-model=\"$ctrl.formData.password\" />\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n              type=\"submit\">\n              Actualizar settings\n            </button>\n\n          </fieldset>\n        </form>\n\n        <!-- Line break for logout button -->\n        <hr />\n\n       <button class=\"btn btn-outline-danger\"\n          ng-click=\"$ctrl.logout()\">\n         Log out\n        </button>\n\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("users/users.html", "\n<!-- <div ng-repeat=\"user in users\">\n    <p>{{user.username}}</p>\n</div> -->\n<users-list users=\"users\"></users-list>");
   $templateCache.put("components/article-helpers/article-list.html", "<article-preview\n  article=\"article\"\n  ng-repeat=\"article in $ctrl.list\">\n</article-preview>\n\n<div class=\"article-preview\"\n  ng-hide=\"!$ctrl.loading\">\n  Loading articles...\n</div>\n\n<div class=\"article-preview\"\n  ng-show=\"!$ctrl.loading && !$ctrl.list.length\">\n  No articles are here... yet.\n</div>\n\n<list-pagination\n total-pages=\"$ctrl.listConfig.totalPages\"\n current-page=\"$ctrl.listConfig.currentPage\"\n ng-hide=\"$ctrl.listConfig.totalPages <= 1\">\n</list-pagination>\n");
@@ -56332,7 +56333,7 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("components/hotels-helpers/list-pagination.html", "<p>Estamos en list pagination</p>\n<nav>\n  <ul class=\"pagination\">\n    <li class=\"page-item\" ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\" ng-click=\"$ctrl.changePage(pageNumber)\">\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n    </li>\n  </ul>\n</nav>");
   $templateCache.put("components/promotions-helpers/promotions-list.html", "<div class=\"promotions\" ng-repeat=\"p in $ctrl.promotions\">\n    <h3>{{p.name}}</h3>\n     <button ui-sref=\"app.promotionsDetails({id:p._id})\">See price </button>\n</div>\n");
   $templateCache.put("components/restaurants-helpers/restaurants-detail.html", "\n<div class=\"restaurant\">\n        <h2 ng-bind=\"$ctrl.restaurant.name\"> </h2>\n        <p ng-bind=\"$ctrl.restaurant.description\"> </p>\n        <p ng-bind=\"\'Lugar: \'+$ctrl.restaurant.location\"> </p>\n        <p ng-bind=\"\'Categoría: \'+$ctrl.restaurant.category\"> </p>\n    </div>\n\n  \n");
-  $templateCache.put("components/restaurants-helpers/restaurants-list.html", "<div class=\"restaurant\" ng-repeat=\"restaurant in $ctrl.restaurants\">\n    <h3>{{restaurant.name}}</h3>\n    <p>Ubicación: {{restaurant.location}}</p>\n     <button ui-sref=\"app.restaurantsDetails({slug:restaurant.slug})\">See more </button>\n</div>\n");
+  $templateCache.put("components/restaurants-helpers/restaurants-list.html", "\n<div class=\"restaurant\" ng-repeat=\"restaurant in $ctrl.restaurants\">\n    <h3>{{restaurant.name}}</h3>\n    <p>Ubicación: {{restaurant.location}}</p>\n     <button ui-sref=\"app.restaurantsDetails({slug:restaurant.slug})\">See more </button>\n</div>\n");
   $templateCache.put("components/users-helpers/users-list.html", "<div id=\"usuarios\" ng-repeat=\"user in $ctrl.users\">\n    <img src=\"{{user.image}}\"></img>\n    <h3>{{user.username}}</h3>\n    <p>{{user.bio}}</p>\n    <follow-btn user=\"user\"></follow-btn>\n</div>");
 }]);
 
@@ -57115,14 +57116,10 @@ var ListaHotelesCtrl = function () {
   ListaHotelesCtrl.$inject = ["User", "hotels"];
   function ListaHotelesCtrl(User, hotels) {
     "ngInject";
-    //console.log("estamos en el controlador de listaHoteles");
 
     _classCallCheck(this, ListaHotelesCtrl);
 
     this.hotels = hotels;
-    //console.log(this.hotels);
-    //console.log(User.current);
-
 
     // Set current list to either feed or all, depending on auth status.
     this.listConfig = {
@@ -57525,6 +57522,10 @@ var _restaurantsDetails = require('./restaurantsDetails.controller');
 
 var _restaurantsDetails2 = _interopRequireDefault(_restaurantsDetails);
 
+var _restaurantsList = require('./restaurantsList.controller');
+
+var _restaurantsList2 = _interopRequireDefault(_restaurantsList);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var restaurantsModule = _angular2.default.module('app.restaurants', []);
@@ -57535,9 +57536,11 @@ restaurantsModule.controller('RestaurantsCtrl', _restaurants4.default);
 
 restaurantsModule.controller('RestaurantsDetailsCtrl', _restaurantsDetails2.default);
 
+restaurantsModule.controller('RestaurantsListCtrl', _restaurantsList2.default);
+
 exports.default = restaurantsModule;
 
-},{"./restaurants.config":114,"./restaurants.controller":115,"./restaurantsDetails.controller":116,"angular":7}],114:[function(require,module,exports){
+},{"./restaurants.config":114,"./restaurants.controller":115,"./restaurantsDetails.controller":116,"./restaurantsList.controller":117,"angular":7}],114:[function(require,module,exports){
 "use strict";
 
 RestaurantsConfig.$inject = ["$stateProvider"];
@@ -57549,7 +57552,7 @@ function RestaurantsConfig($stateProvider) {
   "ngInject";
 
   $stateProvider.state("app.restaurants", {
-    url: "/restaurants",
+    url: "/restaurants:filter",
     controller: "RestaurantsCtrl",
     controllerAs: "$ctrl",
     templateUrl: "restaurants/restaurants.html",
@@ -57574,6 +57577,19 @@ function RestaurantsConfig($stateProvider) {
         });
       }]
     }
+  }).state("app.restaurantsList", {
+    url: "/restaurantsList",
+    controller: "RestaurantsListCtrl",
+    controllerAs: "$ctrl",
+    templateUrl: "restaurants/restaurantsList.html",
+    title: "Lista de restaurantes",
+    resolve: {
+      restaurants: ["Restaurants", function restaurants(Restaurants) {
+        return Restaurants.getRestaurants().then(function (restaurants) {
+          return restaurants;
+        });
+      }]
+    }
   });
 };
 exports.default = RestaurantsConfig;
@@ -57587,18 +57603,27 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var HotelsCtrl = function HotelsCtrl(restaurants, $state, $scope, $stateParams) {
+var RestaurantsCtrl = function RestaurantsCtrl(restaurants, $state, $scope, $stateParams) {
   "ngInject";
 
-  _classCallCheck(this, HotelsCtrl);
+  var _this = this;
+
+  _classCallCheck(this, RestaurantsCtrl);
 
   this._$scope = $scope;
   this.restaurants = restaurants.restaurants;
-  $scope.restaurants = this.restaurants;
+  this.filter = $stateParams.filter;
+  var restaurantesFiltrados = new Array();
+  this.restaurants.forEach(function (restaurant) {
+    if (restaurant.category == _this.filter) {
+      restaurantesFiltrados.push(restaurant);
+    }
+  });
+  $scope.restaurantesFiltrados = restaurantesFiltrados;
 };
-HotelsCtrl.$inject = ["restaurants", "$state", "$scope", "$stateParams"];
+RestaurantsCtrl.$inject = ["restaurants", "$state", "$scope", "$stateParams"];
 
-exports.default = HotelsCtrl;
+exports.default = RestaurantsCtrl;
 
 },{}],116:[function(require,module,exports){
 "use strict";
@@ -57621,6 +57646,27 @@ RestaurantsDetailsCtrl.$inject = ["restaurant"];
 exports.default = RestaurantsDetailsCtrl;
 
 },{}],117:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var RestaurantsListCtrl = function RestaurantsListCtrl(restaurants, $scope) {
+  "ngInject";
+
+  _classCallCheck(this, RestaurantsListCtrl);
+
+  this._$scope = $scope;
+  this.restaurants = restaurants.restaurants;
+};
+RestaurantsListCtrl.$inject = ["restaurants", "$scope"];
+
+exports.default = RestaurantsListCtrl;
+
+},{}],118:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57738,7 +57784,7 @@ var Articles = function () {
 
 exports.default = Articles;
 
-},{}],118:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57799,7 +57845,7 @@ var Comments = function () {
 
 exports.default = Comments;
 
-},{}],119:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57846,7 +57892,7 @@ var Contact = function () {
 
 exports.default = Contact;
 
-},{}],120:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57903,7 +57949,7 @@ var Events = function () {
 
 exports.default = Events;
 
-},{}],121:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57963,7 +58009,7 @@ var GraphQL = function () {
 exports.default = GraphQL;
 ;
 
-},{"apollo-cache-inmemory":8,"apollo-client":10,"apollo-link-http":13,"graphql-tag":19}],122:[function(require,module,exports){
+},{"apollo-cache-inmemory":8,"apollo-client":10,"apollo-link-http":13,"graphql-tag":19}],123:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58092,7 +58138,7 @@ var Hotels = function () {
 
 exports.default = Hotels;
 
-},{}],123:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58194,7 +58240,7 @@ servicesModule.service('Promotions', _promotions2.default);
 
 exports.default = servicesModule;
 
-},{"./articles.service":117,"./comments.service":118,"./contact.service":119,"./events.service":120,"./graphql.service":121,"./hotels.service":122,"./jwt.service":124,"./prisma.service":125,"./profile.service":126,"./promotions.service":127,"./restaurants.service":128,"./tags.service":129,"./toastr.service":130,"./user.service":131,"angular":7}],124:[function(require,module,exports){
+},{"./articles.service":118,"./comments.service":119,"./contact.service":120,"./events.service":121,"./graphql.service":122,"./hotels.service":123,"./jwt.service":125,"./prisma.service":126,"./profile.service":127,"./promotions.service":128,"./restaurants.service":129,"./tags.service":130,"./toastr.service":131,"./user.service":132,"angular":7}],125:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58238,7 +58284,7 @@ var JWT = function () {
 
 exports.default = JWT;
 
-},{}],125:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58298,7 +58344,7 @@ var Prisma = function () {
 exports.default = Prisma;
 ;
 
-},{"apollo-cache-inmemory":8,"apollo-client":10,"apollo-link-http":13,"graphql-tag":19}],126:[function(require,module,exports){
+},{"apollo-cache-inmemory":8,"apollo-client":10,"apollo-link-http":13,"graphql-tag":19}],127:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58357,7 +58403,7 @@ var Profile = function () {
 
 exports.default = Profile;
 
-},{}],127:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58408,7 +58454,7 @@ var Promotions = function () {
 
 exports.default = Promotions;
 
-},{}],128:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58465,7 +58511,7 @@ var Restaurants = function () {
 
 exports.default = Restaurants;
 
-},{}],129:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58505,7 +58551,7 @@ var Tags = function () {
 
 exports.default = Tags;
 
-},{}],130:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58546,7 +58592,7 @@ var Toastr = function () {
 
 exports.default = Toastr;
 
-},{}],131:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58683,7 +58729,7 @@ var User = function () {
 
 exports.default = User;
 
-},{}],132:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58716,7 +58762,7 @@ settingsModule.controller('SettingsCtrl', _settings4.default);
 
 exports.default = settingsModule;
 
-},{"./settings.config":133,"./settings.controller":134,"angular":7}],133:[function(require,module,exports){
+},{"./settings.config":134,"./settings.controller":135,"angular":7}],134:[function(require,module,exports){
 'use strict';
 
 SettingsConfig.$inject = ["$stateProvider"];
@@ -58742,7 +58788,7 @@ function SettingsConfig($stateProvider) {
 
 exports.default = SettingsConfig;
 
-},{}],134:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58793,7 +58839,7 @@ var SettingsCtrl = function () {
 
 exports.default = SettingsCtrl;
 
-},{}],135:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58822,7 +58868,7 @@ usersModule.controller('UsersCtrl', _users4.default);
 
 exports.default = usersModule;
 
-},{"./users.config":136,"./users.controller":137,"angular":7}],136:[function(require,module,exports){
+},{"./users.config":137,"./users.controller":138,"angular":7}],137:[function(require,module,exports){
 "use strict";
 
 UsersConfig.$inject = ["$stateProvider"];
@@ -58851,7 +58897,7 @@ function UsersConfig($stateProvider) {
 
 exports.default = UsersConfig;
 
-},{}],137:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

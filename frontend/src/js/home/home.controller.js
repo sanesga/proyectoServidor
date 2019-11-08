@@ -10,6 +10,7 @@ class HomeCtrl {
     this.events = events.events;
     this.restaurants = restaurants.restaurants;
     this.promotions = promotions;
+    
 
     
     //ordenamos de menor a mayor precio, para mostrarlo en el home

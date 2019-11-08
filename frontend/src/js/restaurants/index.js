@@ -11,4 +11,7 @@ restaurantsModule.controller('RestaurantsCtrl', RestaurantsCtrl);
 import RestaurantsDetailsCtrl from './restaurantsDetails.controller';
 restaurantsModule.controller('RestaurantsDetailsCtrl', RestaurantsDetailsCtrl);
 
+import RestaurantsListCtrl from './restaurantsList.controller';
+restaurantsModule.controller('RestaurantsListCtrl', RestaurantsListCtrl);
+
 export default restaurantsModule;

@@ -4,7 +4,7 @@ function RestaurantsConfig($stateProvider) {
   $stateProvider
 
     .state("app.restaurants", {
-      url: "/restaurants",
+      url: "/restaurants:filter",
       controller: "RestaurantsCtrl",
       controllerAs: "$ctrl",
       templateUrl: "restaurants/restaurants.html",
@@ -27,6 +27,18 @@ function RestaurantsConfig($stateProvider) {
           return Restaurants.getRestaurant($stateParams.slug).then(
            (data) => data.restaurant
           )
+        }
+      }
+    })
+    .state("app.restaurantsList", {
+      url: "/restaurantsList",
+      controller: "RestaurantsListCtrl",
+      controllerAs: "$ctrl",
+      templateUrl: "restaurants/restaurantsList.html",
+      title: "Lista de restaurantes",
+      resolve: {
+        restaurants: function(Restaurants) {
+          return Restaurants.getRestaurants().then(restaurants => restaurants);
         }
       }
     })
