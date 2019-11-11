@@ -21,6 +21,12 @@
 * **GraphQL with Apollo Server**
 * **Connected to Mongo DB**
 
+### Backend Moleculer
+* **Moleculer**
+* **Docker**
+* **Nats**
+* **Traefik**
+
 ### Frontend
 
 * **AngularJS v1.5**
@@ -69,9 +75,9 @@
 
 ***
 
-## Run Server GraphQl (Restaurants)
+## Run Server GraphQL (Restaurants)
 
-- cd backendGraphQl
+- cd backendGraphQL
 - Install dependencies: sudo npm install
 - npm run dev
 
@@ -118,6 +124,7 @@
 - sudo docker-compose up --build -d
 - Browser: http://localhost:4001
 - Traefik dashboard: http://localhost:4002
+- npm run start
 
 ### For changes
 
