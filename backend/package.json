@@ -45,7 +45,7 @@
     "@sendgrid/mail": "^6.3.1",
     "slug": "^1.1.0",
     "swagger-ui-express": "2.0.6",
-    "underscore": "1.8.3",
+    "underscore": "1.12.1",
     "fs": "0.0.1-security",
     "lodash": "^4.17.11",
     "multer": "^1.4.1",
